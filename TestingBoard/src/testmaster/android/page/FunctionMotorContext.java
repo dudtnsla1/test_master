@@ -18,11 +18,15 @@ public class FunctionMotorContext extends FunctionContext implements OnClickList
 	private static EditText PID_I_e;
 	private static EditText PID_D_e;
 	private static EditText Object_RPM_e;
+	private static EditText Motor_Gear_e;
+	private static EditText Motor_Pulse_e;
 
-	String PID_P;
-	String PID_I;
-	String PID_D;
-	String Object_RPM;
+	String PID_P="";
+	String PID_I="";
+	String PID_D="";
+	String Object_RPM="";
+	String Motor_Gear="";
+	String Motor_Pulse="";
 
 
 	public FunctionMotorContext(Context context) {
@@ -40,7 +44,6 @@ public class FunctionMotorContext extends FunctionContext implements OnClickList
 	@Override
 	public int pageChanged(int pageNum) {
 		// TODO Auto-generated method stub
-
 
 		btn_Send_PID = (Button) activity.findViewById(R.id.btn_PID);
 		btn_Send_PID.setOnClickListener(this);
@@ -60,48 +63,33 @@ public class FunctionMotorContext extends FunctionContext implements OnClickList
 
 	@Override
 	public void onClick(View v) {
-		try{
-			Object_RPM_e=(EditText) activity.findViewById(R.id.object_RPM);
-			Object_RPM = Object_RPM_e.getText().toString();
-			if(Object_RPM.equals(""))
-			{
-				Toast.makeText(activity, "목표 RPM을 입력하세요", Toast.LENGTH_SHORT).show();
-			}
-		}catch(Exception e){
-			Toast.makeText(activity, "목표 RPM을 입력하세요", Toast.LENGTH_SHORT).show();
-		}
-		try{
-			PID_P_e=(EditText) activity.findViewById(R.id.pid_p_Edit);
-			PID_P = PID_P_e.getText().toString();
-			if(PID_P.equals(""))
-			{
-				Toast.makeText(activity, "P계수를 입력하세요", Toast.LENGTH_SHORT).show();
-			} 
-		}catch(Exception e){
-			Toast.makeText(activity, "P계수를 입력하세요", Toast.LENGTH_SHORT).show();
-		}
-		try{
-			PID_I_e=(EditText) activity.findViewById(R.id.pid_i_Edit);
-			PID_I = PID_I_e.getText().toString();
-			if(PID_I.equals(""))
-			{
-				Toast.makeText(activity, "I계수를 입력하세요", Toast.LENGTH_SHORT).show();
-			} 
-		}catch(Exception e){
-			Toast.makeText(activity, "I계수를 입력하세요", Toast.LENGTH_SHORT).show();
-		}
-		try{
-			PID_D_e=(EditText) activity.findViewById(R.id.pid_d_Edit);
-			PID_D = PID_D_e.getText().toString();
-			if(PID_I.equals(""))
-			{
-				Toast.makeText(activity, "D계수를 입력하세요", Toast.LENGTH_SHORT).show();
-			} 
-		}catch(Exception e){
-			Toast.makeText(activity, "D계수를 입력하세요", Toast.LENGTH_SHORT).show();
-		}
-		if(PID_D!=null && PID_I!= null && PID_D!=null &&Object_RPM !=null)
+
+		Motor_Gear_e=(EditText) activity.findViewById(R.id.pid_gear_e);
+		Motor_Gear=Motor_Gear_e.getText().toString();
+
+		Motor_Pulse_e = (EditText) activity.findViewById(R.id.pid_pulse_e);
+		Motor_Pulse = Motor_Pulse_e.getText().toString();
+
+		Object_RPM_e=(EditText) activity.findViewById(R.id.object_RPM);
+		Object_RPM = Object_RPM_e.getText().toString();
+
+		PID_P_e=(EditText) activity.findViewById(R.id.pid_p_Edit);
+		PID_P = PID_P_e.getText().toString();
+
+		PID_I_e=(EditText) activity.findViewById(R.id.pid_i_Edit);
+		PID_I = PID_I_e.getText().toString();
+
+		PID_D_e=(EditText) activity.findViewById(R.id.pid_d_Edit);
+		PID_D = PID_D_e.getText().toString();
+
+		if(PID_D.equals("") || PID_I.equals("") || PID_D.equals("") 
+				|| Object_RPM.equals("") || Motor_Gear.equals("") || Motor_Pulse.equals(""))
 		{
+			Toast.makeText(activity, "항목을 모두 입력하세요", Toast.LENGTH_SHORT).show();
+		}
+		else
+		{
+			//Toast.makeText(activity, PID_D, Toast.LENGTH_SHORT).show();
 			//((PageChanger)activity).setNextPage();
 		}
 	}

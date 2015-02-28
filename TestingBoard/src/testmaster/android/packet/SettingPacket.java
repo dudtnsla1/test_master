@@ -2,6 +2,8 @@ package testmaster.android.packet;
 
 import org.apache.http.util.ByteArrayBuffer;
 
+import android.util.Log;
+
 /*
  * $,k,Mode,Pin_number,data1,data2,data3*
  * 
@@ -30,10 +32,8 @@ public class SettingPacket extends BluetoothPacket implements PacketInfo{
 		endPacket();
 	}
 	
- 	public void setUSARTPacket(byte startCode, byte endCode, byte buadrateNum) {
+ 	public void setUSARTPacket(byte buadrateNum) {
 		initPacket(MODE_USART);
-		packet.append(startCode);
-		packet.append(endCode);
 		packet.append(buadrateNum);
 		endPacket();
 	}
@@ -51,6 +51,12 @@ public class SettingPacket extends BluetoothPacket implements PacketInfo{
 		endPacket();
 	}
 	
+	public void setInitPacket() {
+		initPacket(MODE_I2C);
+		packet.append(MODE_RESET);
+		endPacket();				
+	}
+	
 	public void initPacket(int mode) {
 		packet.clear();
 		packet.append("$".getBytes(), 0, 1);
@@ -58,7 +64,7 @@ public class SettingPacket extends BluetoothPacket implements PacketInfo{
 	}
 	
 	public void endPacket() {
-		packet.append("\n/r".getBytes(), 0, 2);;			
+		packet.append("\r\n".getBytes(), 0, 2);;			
 	}
 	
 	public byte[] getPacket() {

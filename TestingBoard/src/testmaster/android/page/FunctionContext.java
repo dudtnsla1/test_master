@@ -12,7 +12,6 @@ public abstract class FunctionContext implements PageChangeListener{
 	
 	protected Activity activity;
 	private LinearLayout barChartLayout;
-	private LinearLayout lineChartLayout;
 	protected SettingPacket packet = new SettingPacket();
 	GraphicalView chart = null;
 	
@@ -23,7 +22,8 @@ public abstract class FunctionContext implements PageChangeListener{
 	}
 	
 	public void destroy() {
-
+		packet.setInitPacket();
+		packet.sendPacket(packet.getPacket());
 	}
 	
 	public void updateChart() {

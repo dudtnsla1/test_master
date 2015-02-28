@@ -167,5 +167,6 @@ public class FunctionADCContext extends FunctionContext implements OnClickListen
 	@Override
 	public void destroy() {
 		dbHelper.close();
+		super.destroy();
 	}
 }

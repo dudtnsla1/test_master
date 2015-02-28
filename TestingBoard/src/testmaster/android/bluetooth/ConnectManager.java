@@ -29,6 +29,12 @@ public class ConnectManager extends Thread implements DestroyInterface{
 	public boolean isConnected() {
 		return connected;
 	} 
+	
+	protected ConnectManager() {
+		mmSocket = null;
+		mmInStream = null;
+		mmOutStream = null;
+	}
 
 	public ConnectManager(BluetoothSocket socket) {
 		DestroyDecorator.addDecorate(this);
@@ -67,7 +73,7 @@ public class ConnectManager extends Thread implements DestroyInterface{
 				read_str = in.readLine();
 				msg.obj = read_str;
 
-				//				Log.i("TestingBoard ConnectManager", "read:" + read_str);
+				Log.i("TestingBoard ConnectManager", "read:" + read_str);
 				BluetoothObservable.messageReceiver.sendMessage(msg);
 			}
 		}
@@ -89,7 +95,7 @@ public class ConnectManager extends Thread implements DestroyInterface{
 			StringBuffer logBuffer = new StringBuffer();
 
 			for (int i = 0; i < write_buffer.length; i++) {
-				logBuffer.append((char)write_buffer[i]);
+				logBuffer.append(write_buffer[i]+" ");
 			}
 
 			Log.i("TestingBoard ConnectManager", "write:" + logBuffer.toString());
