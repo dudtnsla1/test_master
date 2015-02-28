@@ -8,9 +8,14 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-public class FunctionMotorContext extends FunctionContext{
+public class FunctionMotorContext extends FunctionContext implements OnClickListener{
 
 	Button btn_Send_PID;
+	String PID_P;
+	String PID_I;
+	String PID_D;
+	String Object_RPM;
+	
 	
 	public FunctionMotorContext(Context context) {
 		super(context);
@@ -30,14 +35,7 @@ public class FunctionMotorContext extends FunctionContext{
 		
 		
 		btn_Send_PID = (Button) activity.findViewById(R.id.btn_PID);
-		btn_Send_PID.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				
-
-			}
-		});
+		btn_Send_PID.setOnClickListener(this);
 		return 0;
 	}
 
@@ -49,6 +47,22 @@ public class FunctionMotorContext extends FunctionContext{
 	@Override
 	public void updateChartTemplate() {
 		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void onClick(View v) {
+		try{
+			String PID_P;
+			 PID_I;
+			 PID_D;
+			Object_RPM;
+		}catch(Exception e){
+			
+		}
+		
+		
+		
 		
 	}
 }
