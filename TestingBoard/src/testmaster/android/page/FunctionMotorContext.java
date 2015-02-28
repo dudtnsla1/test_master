@@ -33,7 +33,7 @@ public class FunctionMotorContext extends FunctionContext implements OnClickList
 	@Override
 	public SettingPacket settingChanged() {
 		// TODO Auto-generated method stub
-		packet.setPacket(PacketInfo.MODE_MOTOR);
+		packet.setMotorPacket((byte)0, (byte)0, (byte)0);
 		return packet;
 	}
 

@@ -66,7 +66,7 @@ public class FunctionI2CContext extends FunctionContext implements OnClickListen
 	@Override
 	public SettingPacket settingChanged() {
 		// TODO Auto-generated method stub
-		packet.setPacket(PacketInfo.MODE_I2C);
+		packet.setI2CPacket();;
 		return packet;
 	}
 

@@ -38,7 +38,7 @@ public class FunctionUSARTContext extends FunctionContext implements OnClickList
 	public SettingPacket settingChanged() {
 		// TODO Auto-generated method stub
 
-		packet.setPacket(PacketInfo.MODE_USART, Integer.parseInt(present_rate));
+		packet.setUSARTPacket((byte)0, (byte)0, Byte.parseByte(present_rate));
 		return packet;
 	}
 

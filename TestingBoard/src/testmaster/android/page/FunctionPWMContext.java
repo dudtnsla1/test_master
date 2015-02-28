@@ -44,7 +44,7 @@ public class FunctionPWMContext extends FunctionContext implements OnClickListen
 	@Override
 	public SettingPacket settingChanged() {
 		// TODO Auto-generated method stub
-		packet.setPacket(PacketInfo.MODE_PWM, Integer.parseInt(SendHz_Frequency));
+		packet.setPWMPacket((byte)0, Byte.parseByte(SendHz_Frequency));
 		return packet;
 	}
 	private void setUnitSpinner(Activity context) {

@@ -105,7 +105,7 @@ public class FunctionADCContext extends FunctionContext implements OnClickListen
 	@Override
 	public SettingPacket settingChanged() {
 		// TODO Auto-generated method stub
-		packet.setPacket(PacketInfo.MODE_ADC, pinNumber);		
+		packet.setADCPacket((byte)pinNumber);		
 		return packet;
 	}
 
