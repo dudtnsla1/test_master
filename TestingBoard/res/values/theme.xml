@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <style name="MyApp.ActionBarTheme" parent="@style/Theme.AppCompat.Light">
+    </style>
+
+    <!-- Bonus: if you want to style whole Action Bar, not just the menu -->
+
+    <style name="MyAppActionBar">
+        <item name="android:background">#0F0</item>
+    </style>
+
+    <style name="MyApp.ActionBar.TitleTextStyle" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
+        <item name="android:textColor">#333</item>
+    </style>
+
+</resources>

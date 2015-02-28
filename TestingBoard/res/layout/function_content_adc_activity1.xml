@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center|start"
+    android:orientation="vertical" >
+
+    <TextView
+        style="@style/setting_paragraph_name"
+        android:text="@string/function_adc_data_config" />
+
+    <RadioGroup
+        android:id="@+id/function_content_adc_dataconfig_radio_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/setting_sub1"
+        android:checkedButton="@+id/function_content_adc_adc_pureradio" >
+
+        <RadioButton
+            android:id="@id/function_content_adc_adc_pureradio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/function_adc_result_fure" />
+
+        <RadioButton
+            android:id="@+id/function_content_adc_adc_calibrationradio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/function_adc_result_calibration" />
+    </RadioGroup>
+
+    <LinearLayout
+        android:id="@+id/function_adc_modify_layout"
+		style="@style/setting_sub2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:gravity="start|center" >
+
+        <TextView
+            android:id="@+id/function_adc_result_variable"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/DATA" >
+        </TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/Equal" />
+
+        <EditText
+            android:id="@+id/function_adc_modification_edittext"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:hint="@string/Modify" >
+
+            <requestFocus android:layout_width="match_parent" />
+        </EditText>
+
+        <Spinner
+            android:id="@+id/function_adc_unitSpinner"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:prompt="@string/unit" />
+    </LinearLayout>
+
+    <LinearLayout
+       	style="@style/setting_sub1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" 
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/pin_number" />
+
+        <Spinner
+            android:id="@+id/function_adc_pinSpinner"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:prompt="@string/pin_number" />
+
+        <Button
+            android:id="@+id/function_adc_setting"
+            style="@style/function_setting_submit_button" />
+
+    </LinearLayout>
+
+</LinearLayout>

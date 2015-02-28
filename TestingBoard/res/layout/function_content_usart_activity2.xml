@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="30dp" >
+
+    <TextView
+        style="@style/setting_paragraph_name"
+        android:text="@string/function_usart_data_receive" />
+
+    <ScrollView
+        style="@style/function_usart_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="100dp" >
+
+        <TextView
+            android:id="@+id/function_usart_receive_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1\n2\n3\n4\n5\n6\n7" />
+    </ScrollView>
+
+    <TextView
+        style="@style/setting_paragraph_name"
+        android:text="@string/function_usart_data_send" />
+
+    <ScrollView
+        style="@style/function_usart_scrollview"
+        android:layout_width="match_parent"
+        android:layout_height="100dp" >
+
+        <TextView
+            android:id="@+id/function_usart_send_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="1\n2\n3\n4\n5\n6\n7" />
+    </ScrollView>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_margin="10dp"
+        android:layout_weight="1" >
+
+        <EditText
+            android:id="@+id/function_usart_send_edittext"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:ems="10" >
+
+            <requestFocus />
+        </EditText>
+
+        <Button
+            android:id="@+id/function_adc_setting"
+            style="@style/function_setting_send_button" />
+    </LinearLayout>
+
+</LinearLayout>

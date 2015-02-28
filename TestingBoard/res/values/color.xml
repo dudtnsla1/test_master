@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<color name="main_home_gray_alpha_b">#BAAA</color>
+<color name="main_home_emerald_alpha_b">#F7CC</color>
+</resources>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+<style name="main_home_function_btn">
+    <item name="android:layout_margin">5dp</item>
+    <item name="android:layout_width">35dp</item>
+    <item name="android:layout_height">20dp</item>
+</style>
+
+<style name="setting_unit_font_size">
+    <item name="android:textSize">20sp</item>
+</style>
+
+<style name="main_home_function_text">
+    <item name="android:layout_marginLeft">13dp</item>
+    <item name="android:padding">6dp</item>
+    <item name="android:textSize">13sp</item>       
+    <item name="android:textStyle">bold</item>
+    <item name="android:textColor">#F5CC</item>
+    <item name="android:layout_width">wrap_content</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:gravity">center</item>
+    <item name="android:visibility">gone</item>
+    <item name="android:background">@drawable/rounded_corner_border_button</item>
+</style>
+
+<style name="main_home_function_btn_text_layout">
+    <item name="android:background">@drawable/rounded_corner_border_gray</item>
+    <item name="android:layout_marginLeft">5dp</item>
+    <item name="android:layout_marginRight">5dp</item>
+    <item name="android:layout_marginTop">5dp</item>
+    <item name="android:layout_marginBottom">5dp</item>
+    <item name="android:paddingRight">7dp</item>
+    <item name="android:layout_width">fill_parent</item>
+    <item name="android:gravity">left|center</item>	<item name="android:layout_height">wrap_content</item>
+</style>
+
+<style name="function_setting_submit_button">
+    <item name="android:background">@drawable/rounded_corner_noborder_button</item>
+	<item name="android:layout_width">wrap_content</item> 
+	<item name="android:layout_height">wrap_content</item>
+	<item name="android:layout_marginLeft">40dp</item>
+	<item name="android:text">@string/configure</item>
+	
+</style>
+
+<style name="function_setting_send_button">
+    <item name="android:background">@drawable/rounded_corner_noborder_button</item>
+	<item name="android:layout_width">wrap_content</item> 
+	<item name="android:layout_height">wrap_content</item>
+	<item name="android:text">@string/Send</item>
+</style>
+
+<style name="function_usart_textarea">
+    <item name="android:layout_width">match_parent</item>
+    <item name="android:layout_height">wrap_content</item>
+    <item name="android:lines">5</item>
+    <item name="android:singleLine">false</item>
+</style>
+
+<style name="function_usart_scrollview">
+    <item name="android:background">@drawable/squarebox_filled_emerald</item>
+    <item name="android:layout_margin">10dp</item>
+    
+</style>
+
+</resources>
