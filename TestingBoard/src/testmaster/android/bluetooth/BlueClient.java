@@ -8,7 +8,7 @@ import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
 import android.util.Log;
 
-
+/*test*/
 public class BlueClient extends Thread{
 	private static final UUID MY_UUID = UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");//UUID.fromString("00001101-0000-1000-8000-00805F9B34FB");
 	private final BluetoothSocket mmSocket;
