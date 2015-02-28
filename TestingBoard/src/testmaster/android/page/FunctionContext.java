@@ -26,32 +26,33 @@ public abstract class FunctionContext implements PageChangeListener{
 		return Double.parseDouble(data);
 	}
 	
-	protected void update(String data) {
+	protected void updateTemplate(String data) {
 		((GraphicalActivity)activity).updateCurrent(parsingData(data));
 		updateChart();
 		Log.d("TestingBoard MaingFunctionActivity", "bluetooth Observer Updated:" + data);				
 	}	
 	
+	protected void resetDataTemplate() {
+		((GraphicalActivity)activity).resetLineChart(0);
+		updateChart();		
+	}
+	
 	private BluetoothObserver dataRecvObserver = new BluetoothObserver("Function Observer") {	
 		
 		@Override
-		public void update(String data) {	
+		public void update(String data) {
+			updateTemplate(data);
 		}
 
 		@Override
 		public void bluetoothDisconnect() {
-			// TODO Auto-generated method stub
 		}
 
 		@Override
 		public void resetData() {
-			// TODO Auto-generated method stub
-			((GraphicalActivity)activity).resetLineChart(0);
-			updateChart();
+			resetDataTemplate();
 		}
-	};	
-	
-	abstract protected void updateChartTemplate();
+	};		
 	
 	public void updatePreference() {
 		

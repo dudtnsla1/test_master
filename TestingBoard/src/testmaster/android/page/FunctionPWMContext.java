@@ -92,12 +92,6 @@ public class FunctionPWMContext extends FunctionContext implements OnClickListen
 	}
 
 	@Override
-	public void updateChartTemplate() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public void onCheckedChanged(RadioGroup group, int checkedId) {
 		// TODO Auto-generated method stub
 

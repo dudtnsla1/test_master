@@ -154,12 +154,6 @@ public class FunctionADCContext extends FunctionContext implements OnClickListen
 	}
 
 	@Override
-	protected void updateChartTemplate() {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 	}	

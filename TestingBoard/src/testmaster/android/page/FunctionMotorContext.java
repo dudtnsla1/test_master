@@ -56,12 +56,6 @@ public class FunctionMotorContext extends FunctionContext implements OnClickList
 	}
 
 	@Override
-	public void updateChartTemplate() {
-		// TODO Auto-generated method stub
-
-	}
-
-	@Override
 	public void onClick(View v) {
 
 		Motor_Gear_e=(EditText) activity.findViewById(R.id.pid_gear_e);

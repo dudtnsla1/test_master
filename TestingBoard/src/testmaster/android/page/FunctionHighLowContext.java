@@ -75,21 +75,11 @@ public class FunctionHighLowContext extends FunctionContext implements OnClickLi
 		return 0;
 	}
 
-
-
 	@Override
 	public void saveSettingData() {
 		// TODO Auto-generated method stub
 
 	}
-
-	@Override
-	public void updateChartTemplate() {
-		// TODO Auto-generated method stub
-
-	}
-
-
 
 	@Override
 	public void onClick(View v) {

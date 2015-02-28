@@ -57,8 +57,6 @@ public class MainFunctionActivity extends GraphicalActivity implements OnClickLi
 		ContentLayoutIds.MOTOR
 	};
 	
-	
-	
 	@Override
 	public void onBackPressed() {
 		pagerAdapter.destroy();
@@ -124,5 +122,12 @@ public class MainFunctionActivity extends GraphicalActivity implements OnClickLi
 	public void setNextPage() {
 		// TODO Auto-generated method stub
 		viewPager.setCurrentItem(viewPager.getCurrentItem() + 1);
+	}
+
+	@Override
+	public void bluetoothDisconnect() {
+		// TODO Auto-generated method stub
+		setResult(-1);
+		onBackPressed();
 	}
 }

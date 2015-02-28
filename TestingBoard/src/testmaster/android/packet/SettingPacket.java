@@ -52,8 +52,7 @@ public class SettingPacket extends BluetoothPacket implements PacketInfo{
 	}
 	
 	public void setInitPacket() {
-		initPacket(MODE_I2C);
-		packet.append(MODE_RESET);
+		initPacket(MODE_RESET);
 		endPacket();				
 	}
 	

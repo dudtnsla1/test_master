@@ -1,9 +1,11 @@
 package testmaster.android.page;
 
+import testmaster.android.chart.GraphicalActivity;
 import testmaster.android.packet.SettingPacket;
 import testmaster.android.testingboard.R;
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -64,13 +66,7 @@ public class FunctionUSARTContext extends FunctionContext implements OnClickList
 		// TODO Auto-generated method stub
 		
 	}
-
-	@Override
-	public void updateChartTemplate() {
-		// TODO Auto-generated method stub
-		
-	}
-
+	
 	@Override
 	public void onCheckedChanged(RadioGroup group, int checkedId) {
 		// TODO Auto-generated method stub
@@ -99,6 +95,12 @@ public class FunctionUSARTContext extends FunctionContext implements OnClickList
 		} else {
 			Toast.makeText(activity, "baud rate를 설정하세요", Toast.LENGTH_SHORT).show();
 		}		
+	}
+
+	protected void updateTemplate(String data) {	
+	}	
+	
+	protected void resetDataTemplate() {
 	}
 }
 

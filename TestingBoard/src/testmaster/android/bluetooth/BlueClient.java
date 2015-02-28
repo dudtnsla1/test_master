@@ -31,19 +31,18 @@ public class BlueClient extends Thread{
 
 		} 
 		catch (IOException e) { 
-			Log.e("TestBoard BlueClient", "start");
+			Log.e("TestingBoard BlueClient", "start");
 		}
 		mmSocket = tmp;
-		Log.d("TestBoard BlueClient", "start");
+		Log.d("TestingBoard BlueClient", "start");
 	}
 
 	public void run() {
-
 		try {
 			mmSocket.connect();
 		}  
 		catch (IOException connectException) {
-			Log.e("TestBoard BlueClient", "IOException");
+			Log.e("TestingBoard BlueClient", "IOException");
 		}
 		connectManager = new ConnectManager(mmSocket);
 		connectManager.start();
@@ -64,10 +63,10 @@ public class BlueClient extends Thread{
 				connectManager.interrupt();
 				mmSocket.close();
 			}
-			Log.i("TestBoard BlueClient", "cancel");
+			Log.i("TestingBoard BlueClient", "cancel");
 		} 
 		catch (IOException e) { 
-			Log.e("TestBoard BlueClient", "Cancle IOException");
+			Log.e("TestingBoard BlueClient", "Cancle IOException");
 		}
 	}
 	

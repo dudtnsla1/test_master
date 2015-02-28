@@ -32,6 +32,7 @@ public class MainHomeActivity extends Activity{
 	public final static String extraFunctionSettingListener = "settingListener";
 
 	private static final int REQUEST_ENABLE_BT = 0;	
+	private static final int REQUEST_FUNCTION_ACTIVITY = 0;
 
 	public BluetoothAdapter mBluetoothAdapter;
 	public BlueClient blueClient;
@@ -113,7 +114,6 @@ public class MainHomeActivity extends Activity{
 			functionButtons[i] = (ImageButton)findViewById(functionButtonIds[i]);
 			functionButtons[i].setOnGenericMotionListener(functionExplainListener);
 		}
-
 	}
 
 	private void initBluetooth() {		
@@ -146,8 +146,8 @@ public class MainHomeActivity extends Activity{
 
 	public void superOnbackPressed() {
 		super.onBackPressed();
-	}
-
+	}	
+	
 	@Override
 	public void onBackPressed() {
 		// TODO Auto-generated method stub
@@ -173,6 +173,17 @@ public class MainHomeActivity extends Activity{
 
 			}
 		}).show();
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		// TODO Auto-generated method stub
+		if (requestCode == REQUEST_FUNCTION_ACTIVITY) {
+			if (resultCode == -1) {
+				init();
+			}
+		}
+		super.onActivityResult(requestCode, resultCode, data);
 	}
 
 	/**
@@ -257,7 +268,7 @@ public class MainHomeActivity extends Activity{
 			}
 
 			if (bigBluetoothFlag) {
-				if (!bluetoothConnectVirtual())
+				if (!bluetoothConnect())
 					return;
 				resizeBluetooth = new ScaleAnimation(1, 0f, 1, 1f);
 				bluetoothLayoutParams.width = bluetoothConnectBtn.getBackground().getBounds().width() / 2;
@@ -303,7 +314,7 @@ public class MainHomeActivity extends Activity{
 					intent.putExtra(extraFunctionLayout, MainFunctionActivity.contentLayoutIds[i]);
 			}
 
-			startActivity(intent);
+			startActivityForResult(intent, REQUEST_FUNCTION_ACTIVITY);
 		}
 	}
 

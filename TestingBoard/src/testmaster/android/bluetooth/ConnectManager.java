@@ -102,6 +102,8 @@ public class ConnectManager extends Thread implements DestroyInterface{
 			Log.i("TestingBoard ConnectManager", "write:" + logBuffer.toString());
 		}
 		catch (IOException e) {
+			Log.e("TestingBoard ConnectManager", "Exception");
+			e.printStackTrace();
 			detroy();
 		}
 	}
