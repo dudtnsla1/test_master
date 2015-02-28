@@ -1,6 +1,5 @@
 package testmaster.android.testingboard;
 
-import testmaster.android.bluetoothobserver.BluetoothObserver;
 import testmaster.android.chart.GraphicalActivity;
 import testmaster.android.page.PageChanger;
 import testmaster.android.page.ViewPagerAdapter;
@@ -58,40 +57,10 @@ public class MainFunctionActivity extends GraphicalActivity implements OnClickLi
 		ContentLayoutIds.MOTOR
 	};
 	
-	private BluetoothObserver dataRecvObserver = new BluetoothObserver("Function Observer") {	
-		private double parsingData(String data) {
-			return Double.parseDouble(data);
-
-		}
-		
-		@Override
-		public void update(String data) {
-			updateCurrent(parsingData(data));
-			pagerAdapter.updateChart();
-			Log.d("TestingBoard MaingFunctionActivity", "bluetooth Observer Updated:" + data);			
-		}
-
-		@Override
-		public void bluetoothDisconnect() {
-			// TODO Auto-generated method stub
-		}
-
-		@Override
-		public void resetData() {
-			// TODO Auto-generated method stub
-			resetLineChart(0);
-			pagerAdapter.updateChart();
-		}
-	};	
 	
-	private void ObserverInit() {
-		dataRecvObserver.insertObserver(); 
-	}
 	
 	@Override
 	public void onBackPressed() {
-		dataRecvObserver.deleteObserver();
-		Log.d("TestingBoard MaingFunctionActivity", "bluetooth Observer Delete");
 		pagerAdapter.destroy();
 		super.onBackPressed();
 	};
@@ -113,7 +82,6 @@ public class MainFunctionActivity extends GraphicalActivity implements OnClickLi
 		chartInit();
 		setContentView(R.layout.main_function_container);
 		pageInit(getIntent());
-		ObserverInit();
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 	}	
 	

@@ -257,7 +257,7 @@ public class MainHomeActivity extends Activity{
 			}
 
 			if (bigBluetoothFlag) {
-				if (!bluetoothConnect())
+				if (!bluetoothConnectVirtual())
 					return;
 				resizeBluetooth = new ScaleAnimation(1, 0f, 1, 1f);
 				bluetoothLayoutParams.width = bluetoothConnectBtn.getBackground().getBounds().width() / 2;

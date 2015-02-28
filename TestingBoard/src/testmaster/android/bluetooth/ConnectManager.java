@@ -73,8 +73,9 @@ public class ConnectManager extends Thread implements DestroyInterface{
 				read_str = in.readLine();
 				msg.obj = read_str;
 
-				Log.i("TestingBoard ConnectManager", "read:" + read_str);
-				BluetoothObservable.messageReceiver.sendMessage(msg);
+//				Log.i("TestingBoard ConnectManager", "read:" + read_str);
+//				BluetoothObservable.messageReceiver.sendMessage(msg);
+				BluetoothObservable.update(read_str);
 			}
 		}
 
