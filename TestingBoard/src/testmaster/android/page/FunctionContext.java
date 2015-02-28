@@ -37,14 +37,7 @@ public abstract class FunctionContext implements PageChangeListener{
 		barChartLayout.removeAllViews();
 		barChartLayout.addView(chart);
 	}
-	
-	protected void setLineChart(GraphicalView chart) {
-		this.chart = chart;
-		lineChartLayout = (LinearLayout)activity.findViewById(R.id.linechart_layout);
-		lineChartLayout.removeAllViews();
-		lineChartLayout.addView(chart);		
-	}
-	
+		
 	protected FunctionContext(Context context) {
 		// TODO Auto-generated constructor stub
 		activity = (Activity)context;
