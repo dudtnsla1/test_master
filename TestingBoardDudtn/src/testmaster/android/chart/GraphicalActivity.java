@@ -16,6 +16,7 @@ import org.achartengine.renderer.XYSeriesRenderer;
 import android.graphics.Color;
 import android.graphics.Paint.Align;
 import android.support.v7.app.ActionBarActivity;
+import android.util.Log;
 
 public class GraphicalActivity extends ActionBarActivity{ 
 
@@ -31,12 +32,12 @@ public class GraphicalActivity extends ActionBarActivity{
 	private String chartTitle = "";
 	private String xLableText = "";
 	private String yLableText = "";
-	int[] colors = new int[] { Color.rgb(0xff, 0xcc, 0xf1), Color.rgb(0xa8, 0xff, 0xd7), Color.rgb(0xff, 0x7d, 0x88), Color.rgb(0xff, 0xd4, 0xd5)};
+	int[] colors = new int[] { Color.rgb(0xff, 0x00, 0x00), Color.rgb(0xa8, 0xff, 0xd7), Color.rgb(0xff, 0x7d, 0x88), Color.rgb(0xff, 0xd4, 0xd5)};
 	PointStyle[] styles = new PointStyle[] { PointStyle.SQUARE, PointStyle.SQUARE, PointStyle.SQUARE, PointStyle.SQUARE};
 	
 	XYMultipleSeriesRenderer renderer = buildRenderer(colors, styles);
 	
-	public void updateChart(double xMin, double xMax, int yMin, int yMax) {
+	public void setLables(double xMin, double xMax, int yMin, int yMax) {
 		
 		if (graphicalView != null) {
 			renderer.setXAxisMin(xMin);
@@ -47,26 +48,73 @@ public class GraphicalActivity extends ActionBarActivity{
 		}
 	}
 	
-	public void updateChart(double data) {
+	protected void chartInit() {
 		
+		double [][] sample = new double[][] {
+				{ 0},
+				{ 0},
+				{ 0},
+				{ 0},
+		};
+		setChartData(sample, "", "", "");  
+	}
+	
+	private boolean seriesLockFlag = false;
+	
+	private synchronized void seriesLock() {
+		while (seriesLockFlag)
+			Log.d("TestingBoard GraphicalActivity", "lock");
+		seriesLockFlag = true;
+	}
+	
+	private synchronized void seriesRelease() {
+		seriesLockFlag = false;
+	}
+	
+	public void resetLineChart(int index) {
+		seriesLock();
 		if (dataset != null) {
+			XYSeries series = dataset.getSeriesAt(index);
+			series.clear();
+			series.add(0, 0);
+			chartInit();
+			setLineChartGraphicalView();
+			datasetBuffer.clear();	
+		}		
+		seriesRelease();
+		Log.d("TestingBoard GraphicalActivity", "reset chart");
+	}
+	
+	public void updateChart(int chartNum, ChartUpdateAdeptor adapter) {
+		double []data = adapter.getIndex();
+		seriesLock();
+		if (dataset != null) {
+			XYSeries series = dataset.getSeriesAt(chartNum);
+			for (int i = 0; i < data.length; i++) {
+				series.add(series.getMaxX() + 1, data[i]);		
+			}
+		} 
+		seriesRelease();
+	}
+	
+	public void updateCurrent(double data) {
+
+		seriesLock();
+		if (dataset != null) {
+
 			XYSeries series = dataset.getSeriesAt(0);
-			
 			for (int i = 0; i < datasetBuffer.size(); i++) {
 				series.add(series.getMaxX() + 1, datasetBuffer.get(i));
 			}
+
 			datasetBuffer.clear();
 			series.add(series.getMaxX() + 1, data);
 			
 		} else {
 			datasetBuffer.add(data);
 		}
-		/*
-		if (dataset != null) {
-			XYSeries series = dataset.getSeriesAt(0);
-			series.add(series.getMaxX() + 1, data);
-		}
-		*/
+
+		seriesRelease();
 	}
 	
 	public void setChartData(double [][]data, String chartTitle, String xLableText, String yLableText) {
@@ -89,8 +137,8 @@ public class GraphicalActivity extends ActionBarActivity{
 		return graphicalView;
 	}
 
-	public GraphicalView getLineChartGraphicalView(int xMin, int xMax, int yMin, int yMax, int xLabelDevide, int yLabelDevide) {
-		setCommonChartGraphicalView(xMin, xMax, yMin, yMax, xLabelDevide, yLabelDevide);
+	public GraphicalView getLineChartGraphicalView(int xMin, int xMax, int yMin, int yMax) {
+		setCommonChartGraphicalView(xMin, xMax, yMin, yMax, 10, 4);
 		setLineChartGraphicalView();
 		graphicalView = ChartFactory.getLineChartView(getApplicationContext(), dataset, renderer);
 		return graphicalView;
@@ -108,7 +156,7 @@ public class GraphicalActivity extends ActionBarActivity{
 	}
 	
 	private void setLineChartGraphicalView() {
-
+		x.clear();
 		for (int i = 0; i < titles.length; i++) {
 			x.add(getXSeries(values.get(i).length, 0));
 		}

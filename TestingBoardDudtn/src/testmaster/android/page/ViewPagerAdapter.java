@@ -20,6 +20,10 @@ public class ViewPagerAdapter extends PagerAdapter {
 
 	Context context;
 	
+	public void updatePreference() {
+		functionContext.updatePreference();
+	}
+	
 	public void updateChart() {
 		functionContext.updateChart();
 	}
@@ -74,6 +78,10 @@ public class ViewPagerAdapter extends PagerAdapter {
 		view = mLayoutInflater.inflate(layoutIds[index], null);
 		((ViewPager)pager).addView(view, 0);
 		return view; 
+	}
+	
+	public void destroy() {
+		functionContext.destroy();
 	}
 
 	@Override

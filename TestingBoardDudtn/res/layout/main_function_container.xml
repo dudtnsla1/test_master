@@ -5,12 +5,6 @@
     android:background="#EEE"
     android:orientation="vertical" >
 
-    <Button
-        android:id="@+id/testbtn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Button" />
-
     <TextView
         android:id="@+id/main_function_container_title"
         android:layout_width="match_parent"
@@ -27,7 +21,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="15dp"
+        android:layout_margin="10dp"
         android:background="@drawable/rounded_corner_border_lightgray"
         android:orientation="vertical" >
 

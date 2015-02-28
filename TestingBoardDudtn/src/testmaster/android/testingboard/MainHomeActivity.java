@@ -1,7 +1,9 @@
 package testmaster.android.testingboard;
 
 import java.util.Set;
+
 import testmaster.android.bluetooth.BlueClient;
+import testmaster.android.bluetooth.VirtualConnectManager;
 import testmaster.android.bluetoothobserver.BluetoothObservable;
 import testmaster.android.resource.LoadedImage;
 import android.app.Activity;
@@ -11,6 +13,7 @@ import android.bluetooth.BluetoothDevice;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.StateSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -63,7 +66,7 @@ public class MainHomeActivity extends Activity{
 	private boolean bigBluetoothFlag = true;
 	private LayoutParams bluetoothLayoutParams;
 	private LayoutParams functionLayoutParams;
-
+	private TextView stateText;
 
 	private boolean onceInitialize = false;	
 
@@ -96,6 +99,8 @@ public class MainHomeActivity extends Activity{
 		bluetoothConnectBtn.setOnClickListener(new BluetoothConnectOnClick());
 		bluetoothConnectLinearLayout = (LinearLayout)findViewById(R.id.main_home_bluetooth_connect_layout);
 		bluetoothLayoutParams = bluetoothConnectLinearLayout.getLayoutParams();
+		
+		stateText = (TextView)findViewById(R.id.main_home_state_textview);
 
 		optionBtn = (ImageButton)findViewById(R.id.main_home_option_btn);
 		optionBtn.setOnClickListener(new OptionOnClick());
@@ -122,7 +127,7 @@ public class MainHomeActivity extends Activity{
 			// Device does not support Bluetooth
 			Toast.makeText(this, "Device does not support Bluetooth", Toast.LENGTH_SHORT).show();
 		}
-		if (!mBluetoothAdapter.isEnabled()) {
+		else if (!mBluetoothAdapter.isEnabled()) {
 			Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
 			startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
 		}
@@ -215,6 +220,12 @@ public class MainHomeActivity extends Activity{
 	class BluetoothConnectOnClick implements OnClickListener {
 		Animation resizeBluetooth = null;
 
+		private boolean bluetoothConnectVirtual() {
+			VirtualConnectManager blue = new VirtualConnectManager();
+			blue.start();
+			return true;
+		}
+		
 		private boolean bluetoothConnect() {
 			Set<BluetoothDevice> pairedDevices = mBluetoothAdapter
 					.getBondedDevices();
@@ -227,6 +238,7 @@ public class MainHomeActivity extends Activity{
 				}
 
 				blueClient = new BlueClient(item[0]);
+				
 				blueClient.start();
 				while(blueClient.connecting){};
 				if (blueClient.isConnected())
@@ -234,6 +246,7 @@ public class MainHomeActivity extends Activity{
 				else
 					Toast.makeText(getApplicationContext(), "Blue연결에 실패하였습니다.", Toast.LENGTH_SHORT).show();
 			}
+			
 			return blueClient.isConnected();
 		}
 
@@ -249,7 +262,7 @@ public class MainHomeActivity extends Activity{
 			}
 
 			if (bigBluetoothFlag) {
-				if (!bluetoothConnect())
+				if (!bluetoothConnectVirtual())
 					return;
 				resizeBluetooth = new ScaleAnimation(1, 0f, 1, 1f);
 				bluetoothLayoutParams.width = bluetoothConnectBtn.getBackground().getBounds().width() / 2;

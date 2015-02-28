@@ -24,7 +24,7 @@ public class DestroyDecorator {
 		return singletone;
 	}
 	
-	public static synchronized void addThreadDecorate(DestroyInterface th) {		
+	public static synchronized void addDecorate(DestroyInterface th) {		
 		if (!singletone) {
 			This = new DestroyDecorator();
 			singletone = true;
@@ -34,7 +34,7 @@ public class DestroyDecorator {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public static void deleteThreadDecorate(DestroyInterface th) {
+	public static void deleteDecorate(DestroyInterface th) {
 		for (int i = 0; i < resourceList.size(); i++) {
 			if (resourceList.get(i) == th)
 				resourceList.remove(i);

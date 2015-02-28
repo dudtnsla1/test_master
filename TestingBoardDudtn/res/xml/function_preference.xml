@@ -1,12 +1,81 @@
 <?xml version="1.0" encoding="utf-8"?>
 <PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
 
-    <PreferenceCategory
-        android:title="@string/chart_setting">
-        <ListPreference 
-            android:defaultValue="1" />
+    <PreferenceCategory android:title="@string/database_setting" >
         <Preference 
-            android:title="@string/init"/>
+            android:dependency="init_database"
+            android:title="@string/init"
+            android:key="init_database"
+            android:defaultValue="0" />
+
+        <PreferenceScreen android:title="@string/data_setting" >
+            <PreferenceCategory android:title="@string/adcdataset_summary" >
+                <Preference
+                    android:dependency="@string/adc_dep"
+                    android:order="0"
+                    android:defaultValue="2"
+                    android:key="adc_dataset1"
+                    android:summary="@string/dataset1summary"
+                    android:title="@string/adc_dataset1" />
+                <Preference
+                    android:dependency="@string/adc_dep"
+                    android:order="1"
+                    android:defaultValue="0"
+                    android:key="adc_dataset2"
+                    android:summary="@string/dataset2summary"
+                    android:title="@string/adc_dataset2" />
+                <Preference
+                    android:dependency="@string/adc_dep"
+                    android:order="2"
+                    android:defaultValue="0"
+                    android:key="adc_dataset3"
+                    android:summary="@string/dataset3summary"
+                    android:title="@string/adc_dataset3" />
+                <Preference android:key="adc_dep"
+                    android:order="3"
+                    android:title=" " />
+            </PreferenceCategory>
+            <PreferenceCategory android:title="@string/motordataset_summary" >
+                <Preference
+                    android:dependency="@string/motor_dep"
+                    android:order="0"
+                    android:defaultValue="0"
+                    android:key="motor_dataset1"
+                    android:summary="@string/dataset1summary"
+                    android:title="@string/motor_dataset1" />
+                <Preference
+                    android:dependency="@string/motor_dep"
+                    android:order="1"
+                    android:defaultValue="0"
+                    android:key="motor_dataset2"
+                    android:summary="@string/dataset2summary"
+                    android:title="@string/motor_dataset2" />
+                <Preference
+                    android:dependency="@string/motor_dep"
+                    android:order="2"
+                    android:defaultValue="0"
+                    android:key="motor_dataset3"
+                    android:summary="@string/dataset3summary"
+                    android:title="@string/motor_dataset3" />
+                <Preference android:key="motor_dep"
+                    android:order="3"
+                    android:title=" " />
+            </PreferenceCategory>
+        </PreferenceScreen>
+    </PreferenceCategory>
+    <PreferenceCategory android:title="@string/chart_setting" >
+        <EditTextPreference
+            android:defaultValue="3500"
+            android:inputType="number"
+            android:key="baudrate"
+            android:summary="@string/x_max_summary"
+            android:title="@string/x_max" />
+        <EditTextPreference
+            android:defaultValue="100"
+            android:inputType="number"
+            android:key="baudrate"
+            android:summary="@string/y_max_summary"
+            android:title="@string/y_max" />
     </PreferenceCategory>
 
 </PreferenceScreen>

@@ -3,14 +3,43 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="5dp" >
+    android:padding="10dp" >
 
     <LinearLayout
- 		android:id="@+id/barchart_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ACCC"
+        android:gravity="center"
+        android:layout_marginBottom="5dp"
+        android:padding="5dp" >
+
+        <ImageButton
+            android:id="@+id/barchart_reset_btn"
+            style="@style/barchart_layout_button"
+            android:background="@drawable/ic_reset" />
+
+        <ImageButton
+            android:id="@+id/barchart_upload_btn"
+            style="@style/barchart_layout_button"
+            android:background="@drawable/ic_upload" />
+
+        <ImageButton
+            android:id="@+id/barchart_stop_btn"
+            style="@style/barchart_layout_button"
+            android:background="@drawable/ic_stop" />
+
+        <ImageButton
+            android:id="@+id/barchart_play_btn"
+            style="@style/barchart_layout_button"
+            android:background="@drawable/ic_play" />
+    </LinearLayout>
+
+    <LinearLayout 
+        android:id="@+id/barchart_layout"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:orientation="vertical"
-        android:background="#6ACC" >
+        android:background="#6ACC"
+        android:orientation="vertical" >
     </LinearLayout>
 
 </LinearLayout>

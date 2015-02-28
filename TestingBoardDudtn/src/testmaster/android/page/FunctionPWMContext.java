@@ -26,7 +26,7 @@ public class FunctionPWMContext extends FunctionContext{
 	@Override
 	public int pageChanged(int pageNum) {
 		if (pageNum == 1) {
-			lineChart = ((GraphicalActivity)activity).getLineChartGraphicalView(0, 30, 0, 40, 20, 20);
+			lineChart = ((GraphicalActivity)activity).getLineChartGraphicalView(0, 30, 0, 40);
 			setLineChart(lineChart);
 		}
 		// TODO Auto-generated method stub

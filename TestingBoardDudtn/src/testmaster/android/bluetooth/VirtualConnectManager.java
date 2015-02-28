@@ -13,7 +13,7 @@ import android.bluetooth.BluetoothSocket;
 import android.os.Message;
 import android.util.Log;
 
-public class ConnectManager extends Thread implements DestroyInterface{
+public class VirtualConnectManager extends Thread implements DestroyInterface{
 
 	private final BluetoothSocket mmSocket;
 	private final InputStream mmInStream;
@@ -27,48 +27,38 @@ public class ConnectManager extends Thread implements DestroyInterface{
 	}
 
 	public boolean isConnected() {
-		return connected;
-	} 
+		//		return connected;
+		return true;
+	}
 
-	public ConnectManager(BluetoothSocket socket) {
+	public VirtualConnectManager() {
 		DestroyDecorator.addDecorate(this);
-		mmSocket = socket;
-		InputStream ip = null;
-		OutputStream op = null;
-		if (mmSocket.isConnected()) {
 
-			Log.e("TestBoard", "connect");
-			try {
-				ip = mmSocket.getInputStream();
-				op = mmSocket.getOutputStream();
-			}
-			catch (IOException e) {
-				e.printStackTrace();
-			}
-
-			connected = true;
-			mmInStream = ip;
-			mmOutStream = op;
-			BluetoothObservable.setBluetoothServer(this);
-		}
-		else { 
-			mmInStream = null;
-			mmOutStream = null;
-		}
+		connected = true;
+		mmSocket = null;
+		mmInStream = null;
+		mmOutStream = null;
 	}
 
 	public void run() {
 		String read_str = null;
 
-		BufferedReader in = new BufferedReader(new InputStreamReader(mmInStream));
+		//		BufferedReader in = new BufferedReader(new InputStreamReader(mmInStream));
 		try {
 			while (state) {
+
 				Message msg = new Message();
-				read_str = in.readLine();
+				//				read_str = in.readLine();
+
+				/**/
+				Thread.sleep(2000);
+				read_str = "1000";
+				/**/
+
 				msg.obj = read_str;
 
-//				Log.i("TestingBoard ConnectManager", "read:" + read_str);
-				BluetoothObservable.messageReceiver.sendMessage(msg);
+				Log.i("TestingBoard ConnectManager", "read:" + read_str);
+				BluetoothObservable.update(read_str);
 			}
 		}
 
@@ -104,8 +94,10 @@ public class ConnectManager extends Thread implements DestroyInterface{
 		// TODO Auto-generated method stub		
 		state = false;
 		try {
-			if (mmSocket.isConnected())
-				mmSocket.close();
+			if (mmSocket != null) {
+				if (mmSocket.isConnected())
+					mmSocket.close();
+			}
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

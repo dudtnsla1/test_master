@@ -2,12 +2,15 @@ package testmaster.android.page;
 
 import org.achartengine.GraphicalView;
 
+import testmaster.android.chart.ChartFacade;
 import testmaster.android.chart.GraphicalActivity;
+import testmaster.android.database.DbOpenHelper;
 import testmaster.android.packet.PacketInfo;
 import testmaster.android.packet.SettingPacket;
 import testmaster.android.testingboard.R;
 import android.app.Activity;
 import android.content.Context;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -34,10 +37,22 @@ public class FunctionADCContext extends FunctionContext implements OnClickListen
 	private Spinner pinSpinner;
 	private RadioGroup adcValueCalibrationSelect;
 	private GraphicalView chart;
+	private ChartOnClickAdpater barChartListener;
+	private ChartFacade databaseDrawer;
+	
+	private int pinNumber;
+	DbOpenHelper dbHelper;
 
+	public void updatePreference() {
+		databaseDrawer.updateSelectedDatabases();
+	}
+	
 	public FunctionADCContext(Context context) {
 		// TODO Auto-generated constructor stub
 		super(context);
+		dbHelper = new DbOpenHelper(context);
+		dbHelper.open();
+		databaseDrawer = new ChartFacade(dbHelper, (GraphicalActivity)activity, ChartFacade.KIND_ADC);
 	}
 
 	private void setUnitSpinner(Activity context) {
@@ -63,10 +78,12 @@ public class FunctionADCContext extends FunctionContext implements OnClickListen
 		modify = (EditText)context.findViewById(R.id.function_adc_modification_edittext);
 	}
 	
-	private void initThirdPage(Activity context) {
-		chart = ((GraphicalActivity)activity).getBarChartGraphicalView(0, 30, 0, 3500);
-//		chart = ((GraphicalActivity)activity).getBarChartGraphicalView(0, 30, 0, 3500);
-		setBarChart(chart);
+	private void initSecondPage(Activity context) {
+		chart = ((GraphicalActivity)activity).getLineChartGraphicalView(0, 30, 0, 3500);
+		setBarChart(chart); 
+		barChartListener = new ChartOnClickAdpater(dbHelper, context, ChartOnClickAdpater.KIND_ADC);
+		barChartListener.setBarChartListener();
+		updatePreference();
 	}
 
 	@Override
@@ -75,7 +92,7 @@ public class FunctionADCContext extends FunctionContext implements OnClickListen
 		if (pageNum == 0) {
 			initFirstPage(activity);
 		} else if (pageNum == 1) {
-			initThirdPage(activity);
+			initSecondPage(activity);
 		}
 		return 0;
 	}
@@ -87,15 +104,23 @@ public class FunctionADCContext extends FunctionContext implements OnClickListen
 	@Override
 	public SettingPacket settingChanged() {
 		// TODO Auto-generated method stub
-		packet.setPacket(PacketInfo.MODE_ADC);
+		packet.setPacket(PacketInfo.MODE_ADC, pinNumber);		
 		return packet;
-	} 
+	}
 
 	/**
 	 *  unit spinner listener */
 	@Override
 	public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2,
 			long arg3) {
+		switch (arg0.getId()) {
+		case R.id.function_adc_unitSpinner:
+			break;
+		case R.id.function_adc_pinSpinner:
+			pinNumber = Integer.parseInt((String) arg0.getSelectedItem());
+			Log.d("TestBoard FunctionADCContext", pinNumber+"");
+			break;
+		}
 
 		//		unitSpinner.setPrompt((CharSequence) arg0.getSelectedItem());
 		// TODO Auto-generated method stub
@@ -137,4 +162,9 @@ public class FunctionADCContext extends FunctionContext implements OnClickListen
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 	}	
+	
+	@Override
+	public void destroy() {
+		dbHelper.close();
+	}
 }

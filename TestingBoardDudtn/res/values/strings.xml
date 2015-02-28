@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="adc_dep">adc_dep</string>
+    <string name="motor_dep">motor_dep</string>
     <string name="init">초기화</string>
     <string name="baudrate_summary">주파수를 설정하세요.</string>
+    <string name="database_setting">데이터베이스</string>
+    <string name="data_setting">저장된 데이터 불러오기</string>
     <string name="chart_setting">차트 설정</string>
     <string name="baudrate">주파수</string>
     <string name="Equal">Equal</string>
@@ -29,6 +33,23 @@
     <string name="P">P :</string>
     <string name="I">I :</string>
     <string name="D">D :</string>
+    <string name="adcdataset">ADC 비교값 설정</string>
+    <string name="motordataset">Motor 비교값 설정</string>
+    <string name="adcdataset_summary">ADC 비교값을 설정 합니다.</string>
+    <string name="motordataset_summary">Motor 비교값을 설정 합니다.</string>
+    <string name="adc_dataset1">ADC dataset1</string>
+    <string name="adc_dataset2">ADC dataset2</string>
+    <string name="adc_dataset3">ADC dataset3</string>
+    <string name="motor_dataset1">Motor dataset1</string>
+    <string name="motor_dataset2">Motor dataset2</string>
+    <string name="motor_dataset3">Motor dataset3</string>
+    <string name="dataset1summary">첫 번재 비교 데이터를 선택하세요.</string>
+    <string name="dataset2summary">두 번째 비교 데이터를 선택하세요.</string>
+    <string name="dataset3summary">세 번째 비교 데이터를 선택하세요.</string>
+    <string name="x_max">xMax</string>
+    <string name="y_max">yMax</string>
+    <string name="x_max_summary">x의치 최대값을 설정하세요.</string>
+    <string name="y_max_summary">y의치 최대값을 설정하세요.</string>
     
     <string name="function_adc_data_config">Data Confing</string>
     <string name="function_adc_result_fure">ADC 값 자체로 출력</string>

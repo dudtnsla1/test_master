@@ -11,7 +11,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.TextView;
 
 public class MainFunctionActivity extends GraphicalActivity implements OnClickListener{
@@ -22,6 +21,8 @@ public class MainFunctionActivity extends GraphicalActivity implements OnClickLi
 	private static final int []PAGES_I2C = {R.layout.function_content_i2c_activity1, R.layout.function_content_i2c_activity2};
 	private static final int []PAGES_CLOCK = {R.layout.function_content_highlow_activity1};
 	private static final int []PAGES_MOTOR = {R.layout.function_content_motor_activity1};
+	
+	private final int REQUEST_CODE_PREFERENCE = 1;
 
 	private ViewPagerAdapter pagerAdapter;
 	private ViewPager viewPager;
@@ -56,17 +57,16 @@ public class MainFunctionActivity extends GraphicalActivity implements OnClickLi
 		ContentLayoutIds.MOTOR
 	};
 	
-	private BluetoothObserver dataRecvObserver = new BluetoothObserver() {	
+	private BluetoothObserver dataRecvObserver = new BluetoothObserver("Function Observer") {	
 		private double parsingData(String data) {
 			return Double.parseDouble(data);
-
 		}
 		
 		@Override
 		public void update(String data) {
-			updateChart(parsingData(data));
+			updateCurrent(parsingData(data));
 			pagerAdapter.updateChart();
-			Log.d("TestingBoard MaingFunctionActivity", "bluetooth Observer Updated:" + data);			
+//			Log.d("TestingBoard MaingFunctionActivity", "bluetooth Observer Updated:" + data);			
 		}
 
 		@Override
@@ -74,17 +74,23 @@ public class MainFunctionActivity extends GraphicalActivity implements OnClickLi
 			// TODO Auto-generated method stub
 			
 		}
+
+		@Override
+		public void resetData() {
+			// TODO Auto-generated method stub
+			resetLineChart(0);
+			pagerAdapter.updateChart();
+		}
 	};	
 	
 	private void ObserverInit() {
-		Log.d("TestingBoard MaingFunctionActivity", "bluetooth Observer Added");
 		dataRecvObserver.insertObserver(); 
 	}
 	
 	@Override
 	public void onBackPressed() {
 		dataRecvObserver.deleteObserver();
-		Log.d("TestingBoard MaingFunctionActivity", "bluetooth Observer Delete");
+		pagerAdapter.destroy();
 		super.onBackPressed();
 	};
 	
@@ -97,17 +103,6 @@ public class MainFunctionActivity extends GraphicalActivity implements OnClickLi
 		title.setText(layoutId.toString());
 	}
 	
-	private void chartInit() {
-		
-		double [][] sample = new double[][] {
-				{ 0},
-				{ 0},
-				{ 0},
-				{ 0},
-		};
-		setChartData(sample, "", "", "");  
-	}
-	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
@@ -118,10 +113,7 @@ public class MainFunctionActivity extends GraphicalActivity implements OnClickLi
 		pageInit(getIntent());
 		ObserverInit();
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-		testModule();
-	}
-	
-	
+	}	
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
@@ -129,16 +121,11 @@ public class MainFunctionActivity extends GraphicalActivity implements OnClickLi
 		return super.onCreateOptionsMenu(menu);
 	};	
 
-	public void testModule() {
-		Button testBtn = (Button)findViewById(R.id.testbtn);
-		testBtn.setOnClickListener(this);
-	}
-
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 		Log.d("TestingBoard MainFuntionActivity", "test");
-		updateChart(0, 100, 0, 100);
+		setLables(0, 100, 0, 100);
 	}
 
 	@Override
@@ -149,10 +136,17 @@ public class MainFunctionActivity extends GraphicalActivity implements OnClickLi
 			onBackPressed();
 			break;
 		case R.id.function_menu_configure:
-			Intent intent = new Intent(MainFunctionActivity.this, MainPreferenceActivity.class);
-			startActivity(intent);
+			Intent intent = new Intent(MainFunctionActivity.this, FunctionPreferenceActivity.class);
+			startActivityForResult(intent, REQUEST_CODE_PREFERENCE);
 			break;
 		}
 		return super.onOptionsItemSelected(item);
+	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+		// TODO Auto-generated method stub
+		pagerAdapter.updatePreference();
+		super.onActivityResult(requestCode, resultCode, intent);
 	}
 }
