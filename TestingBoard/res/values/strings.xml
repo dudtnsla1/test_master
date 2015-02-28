@@ -15,6 +15,7 @@
     <string name="Address">Address</string>
     <string name="Slave_Address">Slave Address</string>
     <string name="Register_Address">Register Address</string>
+    <string name="objective_RPM_">Objective RPM</string>
     <string name="Write_Data">Write Data</string>
     <string name="Number_Read">Number of Read</string>
     <string name="Hz">Hz</string>
@@ -47,7 +48,7 @@
     <string name="highlow_test">HighLow Test</string>
     <string name="motor_test">Motor Test</string>
     <string name="P">P :</string>
-    <string name="I">I :</string>
+    <string name="I">I   :</string>
     <string name="D">D :</string>
     <string name="function_highlow1_config">1 H/L Pin</string>
     <string name="function_highlow2_config">2 H/L Pin</string>
@@ -68,7 +69,8 @@
     <string name="function_motor_frequency_set">Frequency Set</string>
     <string name="function_motor_PID_controll_set">PID Control Set</string>
     <string name="function_motor_data_graph">Data Graph</string>
-    <string name="function_motor_data_text">Data Text</string>
+    <string name="Object_RPM">목표 RPM 설정</string>
+    <string name="PID_number">PID 계수 설정</string>
     <string name="adcdataset">ADC 비교값 설정</string>
     <string name="motordataset">Motor 비교값 설정</string>
     <string name="adcdataset_summary">ADC 비교값을 설정 합니다.</string>

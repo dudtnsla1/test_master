@@ -5,21 +5,50 @@
     android:orientation="vertical"
     android:paddingTop="30dp" >
 
-    <TextView
-        android:id="@+id/textView1"
-        style="@style/setting_paragraph_name"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/function_motor_data_graph" />
+        android:orientation="vertical" >
 
+        <TextView
+            style="@style/setting_paragraph_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Object_RPM" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/object_RPM"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginLeft="30dp"
+                android:gravity="center"
+                android:hint="@string/objective_RPM_"
+                android:inputType="number" >
+            </EditText>
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+        <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:orientation="vertical" >
+        </LinearLayout>
     
-
+    
     <TextView
         android:id="@+id/textView3"
         style="@style/setting_paragraph_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/function_motor_data_text" />
+        android:text="@string/PID_number" />
 
     <LinearLayout
         style="@style/setting_sub2"
@@ -33,13 +62,11 @@
             android:text="@string/P" />
 
         <EditText
-            android:id="@+id/editText2"
-            android:layout_width="0dp"
+            android:id="@+id/pid_p_Edit"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
+            android:hint="  P 계수"
             android:inputType="number" />
-
     </LinearLayout>
 
     <LinearLayout
@@ -48,19 +75,17 @@
         android:layout_height="wrap_content" >
 
         <TextView
-     	   	style="@style/setting_unit_font_size"
+            style="@style/setting_unit_font_size"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/I" />
 
         <EditText
-            android:id="@+id/editText3"
-            android:layout_width="0dp"
+            android:id="@+id/pid_i_Edit"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
+            android:hint="  I 계수"
             android:inputType="number" />
-
     </LinearLayout>
 
     <LinearLayout
@@ -69,19 +94,24 @@
         android:layout_height="wrap_content" >
 
         <TextView
-     	   	style="@style/setting_unit_font_size"
+            style="@style/setting_unit_font_size"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/D" />
 
         <EditText
-            android:id="@+id/editText4"
-            android:layout_width="0dp"
+            android:id="@+id/pid_d_Edit"
+            android:layout_width="150dp"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:ems="10"
+            android:hint="  D 계수"
             android:inputType="number" />
-
     </LinearLayout>
 
+              <Button
+                android:id="@+id/btn_PID"
+                style="@style/function_setting_submit_button2"
+                android:layout_marginRight="30dp"
+                android:layout_gravity="right" />
+    
+    
 </LinearLayout>
