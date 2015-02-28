@@ -5,17 +5,15 @@ import testmaster.android.packet.SettingPacket;
 import testmaster.android.testingboard.R;
 import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.webkit.WebView.FindListener;
 import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.RadioGroup;
-import android.widget.Spinner;
-import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.RadioGroup.OnCheckedChangeListener;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 public class FunctionUSARTContext extends FunctionContext implements OnClickListener, OnItemSelectedListener, OnCheckedChangeListener{
