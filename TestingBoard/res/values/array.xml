@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="adc_unit">
+        <item>MM</item>
+        <item>CM</item>
+        <item>M</item>
+        <item>KM</item>
+    </string-array>
+    <string-array name="adc_pin">
+        <item>0</item>
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+    <string-array name="pwm_hz">
+        <item>hz</item>
+        <item>Khz</item>
+        <item>Mhz</item>
+    </string-array>
+    <string-array name="baud_rate">
+        <item>9600</item>
+        <item>19200</item>
+        <item>57600</item>
+        <item>115200</item>
+        <item>230400</item>
+    </string-array>
+    <string-array name="i2c_setting">
+        <item>0</item>
+        <item>S</item>
+        <item>AD+W</item>
+        <item>AD+R</item>
+        <item>ACK</item>
+        <item>RA</item>
+        <item>NACK</item>
+        <item>DATA</item>
+        <item>P</item>
+    </string-array>
+    <string-array name="databse_entries">
+        <item>ADC Data</item>
+        <item>Motor Data</item>
+    </string-array>
+    <string-array name="database_values">
+        <item>0</item>
+        <item>1</item>
+    </string-array>
+
+</resources>

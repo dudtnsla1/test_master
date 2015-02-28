@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingTop="30dp" >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:orientation="vertical" >
+
+        <TextView
+            style="@style/setting_paragraph_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/function_pwm_frequencyset" />
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/setting_sub1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="start|center" >
+
+        <EditText
+            android:id="@+id/editText1"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:hint="@string/Frequency"
+            android:inputType="number" >
+
+            <requestFocus />
+        </EditText>
+
+        <Spinner
+            android:id="@+id/pwmspinner1"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:prompt="@string/unit" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:orientation="horizontal" >
+
+        <TextView
+            style="@style/setting_paragraph_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/function_pwm_duty_ratio_set" />
+
+        <Button
+            android:id="@+id/function_pwm_setting"
+            style="@style/function_setting_submit_button"
+            android:layout_gravity="bottom" />
+    </LinearLayout>
+
+    <include
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        layout="@layout/pulse_layout" />
+
+</LinearLayout>

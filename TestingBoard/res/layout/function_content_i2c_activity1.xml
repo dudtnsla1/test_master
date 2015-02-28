@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingLeft="20dp" >
+ <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:orientation="vertical"
+         >
+        <TextView
+            style="@style/setting_paragraph_name"
+            android:layout_width="150dp"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:text="@string/function_i2c_SlaveSet" />
+</LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/i2cEdit"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:hint="@string/Slave_Address"
+                android:inputType="textVisiblePassword" >
+            </EditText>
+        </LinearLayout>
+        
+         <TextView
+            style="@style/setting_paragraph_name"
+            android:layout_width="150dp"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:text="@string/Register_Address" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/Register_Address"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:hint="@string/Register_Address"
+                android:inputType="textVisiblePassword" >
+            </EditText>
+        </LinearLayout>
+        
+         <TextView
+            style="@style/setting_paragraph_name"
+            android:layout_width="150dp"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:text="@string/Write_Data" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/Write_data"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:hint="@string/Write_Data"
+                android:inputType="textVisiblePassword" >
+
+                <requestFocus />
+            </EditText>
+        </LinearLayout>
+        
+         <TextView
+            style="@style/setting_paragraph_name"
+            android:layout_width="150dp"
+            android:gravity="center"
+            android:layout_height="wrap_content"
+            android:text="@string/Number_Read" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <EditText
+                android:id="@+id/Number_of_Read"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:gravity="center"
+                android:hint="@string/Number_Read"
+                android:inputType="number" >
+            </EditText>
+
+            <Button
+                android:id="@+id/function_i2c_setting_btn"
+                style="@style/function_setting_submit_button2"
+                android:layout_gravity="bottom" />
+        </LinearLayout>
+        
+    </LinearLayout>
+<LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="10dp"
+        android:orientation="horizontal" >
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" 
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/function_i2c_send_btn"
+            style="@style/function_setting_i2c_send"
+            android:layout_gravity="center" />
+
+        <Button
+            android:id="@+id/function_i2c_receive_btn"
+            style="@style/function_setting_i2c_receive"
+            android:layout_gravity="center" />
+    </LinearLayout>
+
+    
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:orientation="horizontal" >
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" 
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/function_i2c_send_btn_true"
+            style="@style/function_setting_i2c_send_true"
+            android:layout_gravity="center" />
+
+        <Button
+            android:id="@+id/function_i2c_receive_btn_true"
+            style="@style/function_setting_i2c_receive_true"
+            android:layout_gravity="center" />
+    </LinearLayout>
+    
+    
+    
+    
+    
+</LinearLayout>

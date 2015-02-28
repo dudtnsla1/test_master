@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#999999"
+            android:stretchColumns="*" >
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    style="@style/function_setting_i2c_item_ex_M"
+                    android:layout_gravity="center" />
+
+                <Spinner
+                    android:id="@+id/i2c_setting_btn1"
+                    style="@style/function_setting_i2c_item"
+                    android:layout_gravity="bottom" />
+
+                <Spinner
+                    android:id="@+id/i2c_setting_btn2"
+                    style="@style/function_setting_i2c_item"
+                    android:layout_gravity="bottom" />
+
+               <Spinner
+                    android:id="@+id/i2c_setting_btn3"
+                    style="@style/function_setting_i2c_item"
+                    android:layout_gravity="bottom" />
+
+                <Spinner
+                    android:id="@+id/i2c_setting_btn4"
+                    style="@style/function_setting_i2c_item"
+                    android:layout_gravity="bottom" />
+
+                <Spinner
+                    android:id="@+id/i2c_setting_btn5"
+                    style="@style/function_setting_i2c_item"
+                    android:layout_gravity="bottom" />
+            </TableRow>
+        </TableLayout>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#999999"
+            android:stretchColumns="*" >
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    style="@style/function_setting_i2c_item_ex_S"
+                    android:layout_gravity="center" />
+
+                <Spinner
+                    android:id="@+id/i2c_setting_btn6"
+                    style="@style/function_setting_i2c_item"
+                    android:layout_gravity="bottom" />
+
+                <Spinner
+                    android:id="@+id/i2c_setting_btn7"
+                    style="@style/function_setting_i2c_item" />
+
+                <Spinner
+                    android:id="@+id/i2c_setting_btn8"
+                    style="@style/function_setting_i2c_item"
+                    android:layout_gravity="bottom" />
+
+                <Spinner
+                    android:id="@+id/i2c_setting_btn9"
+                    style="@style/function_setting_i2c_item"
+                    android:layout_gravity="bottom" />
+
+                <Spinner
+                    android:id="@+id/i2c_setting_btn10"
+                    style="@style/function_setting_i2c_item"
+                    android:layout_gravity="bottom" />
+            </TableRow>
+        </TableLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="10dp"
+            android:gravity="start|center" >
+        </LinearLayout>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#999999"
+            android:stretchColumns="*" >
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                 <Spinner
+                    android:id="@+id/i2c_setting_btn11"
+                    style="@style/function_setting_i2c_item"
+                    android:layout_gravity="bottom" />
+
+                <Spinner
+                    android:id="@+id/i2c_setting_btn12"
+                    style="@style/function_setting_i2c_item"
+                    android:layout_gravity="bottom" />
+
+                <Spinner
+                    android:id="@+id/i2c_setting_btn13"
+                    style="@style/function_setting_i2c_item"
+                    android:layout_gravity="bottom" />
+
+                <Spinner
+                    android:id="@+id/i2c_setting_btn14"
+                    style="@style/function_setting_i2c_item"
+                    android:layout_gravity="bottom" />
+
+                <Spinner
+                    android:id="@+id/i2c_setting_btn15"
+                    style="@style/function_setting_i2c_item"
+                    android:layout_gravity="bottom" />
+
+                <Spinner
+                    android:id="@+id/i2c_setting_btn16"
+                    style="@style/function_setting_i2c_item"
+                    android:layout_gravity="bottom" />
+            </TableRow>
+        </TableLayout>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#999999"
+            android:stretchColumns="*" >
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp" />
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <Spinner
+                    android:id="@+id/i2c_setting_btn17"
+                    style="@style/function_setting_i2c_item"
+                    android:layout_gravity="bottom" />
+
+                <Spinner
+                    android:id="@+id/i2c_setting_btn18"
+                    style="@style/function_setting_i2c_item"
+                    android:layout_gravity="bottom" />
+
+                <Spinner
+                    android:id="@+id/i2c_setting_btn19"
+                    style="@style/function_setting_i2c_item"
+                    android:layout_gravity="bottom" />
+
+                <Spinner
+                    android:id="@+id/i2c_setting_btn20"
+                    style="@style/function_setting_i2c_item"
+                    android:layout_gravity="bottom" />
+
+                <Spinner
+                    android:id="@+id/i2c_setting_btn21"
+                    style="@style/function_setting_i2c_item"
+                    android:layout_gravity="bottom" />
+
+                <Spinner
+                    android:id="@+id/i2c_setting_btn22"
+                    style="@style/function_setting_i2c_item"
+                    android:layout_gravity="bottom" />
+            </TableRow>
+        </TableLayout>
+
+    
+    
+    
+
+</LinearLayout>
