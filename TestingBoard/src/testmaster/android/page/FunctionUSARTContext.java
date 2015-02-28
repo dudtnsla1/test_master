@@ -1,5 +1,6 @@
 package testmaster.android.page;
 
+import testmaster.android.packet.PacketInfo;
 import testmaster.android.packet.SettingPacket;
 import testmaster.android.testingboard.R;
 import android.app.Activity;
@@ -38,8 +39,9 @@ public class FunctionUSARTContext extends FunctionContext implements OnClickList
 	@Override
 	public SettingPacket settingChanged() {
 		// TODO Auto-generated method stub
-		
-		return null;
+
+		packet.setPacket(PacketInfo.MODE_USART, Integer.parseInt(present_rate));
+		return packet;
 	}
 
 	@Override

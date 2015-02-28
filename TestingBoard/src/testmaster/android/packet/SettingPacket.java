@@ -9,25 +9,7 @@ import org.apache.http.util.ByteArrayBuffer;
 
 public class SettingPacket extends BluetoothPacket implements PacketInfo{
 	private ByteArrayBuffer packet = new ByteArrayBuffer(0);
-	
-	private void adcPacket() {
-	}
-	
-	private void pwmPacket() {
-	}
-	
-	private void usartPacket() {	
-	}
-	
-	private void highlowPacket() {	
-	}
-	
-	private void i2cPacket() {		
-	}
-	
-	private void motorPacket() {	
-	}
-	
+		
 	public void initPacket(int mode) {
 		packet.clear();
 		packet.append("$k,".getBytes(), 0, 3);
