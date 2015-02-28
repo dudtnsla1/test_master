@@ -20,9 +20,9 @@ public class ViewPagerAdapter extends PagerAdapter {
 
 	Context context;
 	
-	public void updateChart() {
-		functionContext.updateChart();
-	}
+	public void update(String data) {
+		functionContext.update(data);
+	}	
 	
 	public void updatePreference() {
 		functionContext.updatePreference();

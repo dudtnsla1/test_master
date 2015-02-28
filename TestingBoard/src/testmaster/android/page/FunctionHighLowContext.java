@@ -27,8 +27,7 @@ public class FunctionHighLowContext extends FunctionContext implements OnClickLi
 	@Override
 	public SettingPacket settingChanged() {
 		// TODO Auto-generated method stub
-		packet.setPacket(PacketInfo.MODE_HIGHLOW);
-		return packet;
+		return null;
 	}
 
 	@Override
@@ -40,6 +39,7 @@ public class FunctionHighLowContext extends FunctionContext implements OnClickLi
 			public void onClick(View v) {
 				String state1 = toggle1.getText().toString();
 				Toast.makeText(activity, "1번 "+state1, Toast.LENGTH_SHORT).show();
+				packet.setHightLowPacket((byte)0, (byte)0);
 			}
 		});
 		toggle2=((ToggleButton) activity.findViewById(R.id.highlow2));
@@ -49,17 +49,16 @@ public class FunctionHighLowContext extends FunctionContext implements OnClickLi
 			public void onClick(View v) {
 				String state2 = toggle2.getText().toString();
 				Toast.makeText(activity, "2번 "+state2, Toast.LENGTH_SHORT).show();
-
+				packet.setHightLowPacket((byte)0, (byte)0);
 			}
 		});
 		toggle3=((ToggleButton) activity.findViewById(R.id.highlow3));
 		toggle3.setOnClickListener(new OnClickListener() {
-
 			@Override
 			public void onClick(View v) {
 				String state3 = toggle3.getText().toString();
 				Toast.makeText(activity, "3번 "+state3, Toast.LENGTH_SHORT).show();
-
+				packet.setHightLowPacket((byte)0, (byte)0);
 			}
 		});
 		toggle4=((ToggleButton) activity.findViewById(R.id.highlow4));
@@ -69,7 +68,7 @@ public class FunctionHighLowContext extends FunctionContext implements OnClickLi
 			public void onClick(View v) {
 				String state4 = toggle4.getText().toString();
 				Toast.makeText(activity, "4번 "+state4, Toast.LENGTH_SHORT).show();
-
+				packet.setHightLowPacket((byte)0, (byte)0);
 			}
 		});
 
@@ -94,13 +93,6 @@ public class FunctionHighLowContext extends FunctionContext implements OnClickLi
 
 	@Override
 	public void onClick(View v) {
-		
-
-
-
-
 	}
-
-
 }
 

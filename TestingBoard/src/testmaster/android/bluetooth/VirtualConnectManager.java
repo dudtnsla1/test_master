@@ -13,7 +13,7 @@ import android.bluetooth.BluetoothSocket;
 import android.os.Message;
 import android.util.Log;
 
-public class VirtualConnectManager extends Thread implements DestroyInterface{
+public class VirtualConnectManager extends ConnectManager implements DestroyInterface{
 
 	private final BluetoothSocket mmSocket;
 	private final InputStream mmInStream;
@@ -32,12 +32,14 @@ public class VirtualConnectManager extends Thread implements DestroyInterface{
 	}
 
 	public VirtualConnectManager() {
+		super();
 		DestroyDecorator.addDecorate(this);
 
 		connected = true;
 		mmSocket = null;
 		mmInStream = null;
 		mmOutStream = null;
+		BluetoothObservable.setBluetoothServer(this);
 	}
 
 	public void run() {
@@ -56,8 +58,6 @@ public class VirtualConnectManager extends Thread implements DestroyInterface{
 				/**/
 
 				msg.obj = read_str;
-
-				Log.i("TestingBoard ConnectManager", "read:" + read_str);
 				BluetoothObservable.update(read_str);
 			}
 		}
@@ -74,19 +74,13 @@ public class VirtualConnectManager extends Thread implements DestroyInterface{
 	}
 
 	public void write(byte[] write_buffer) {
-		try {
-			mmOutStream.write(write_buffer);
-			StringBuffer logBuffer = new StringBuffer();
+		StringBuffer logBuffer = new StringBuffer();
 
-			for (int i = 0; i < write_buffer.length; i++) {
-				logBuffer.append((char)write_buffer[i]);
-			}
+		for (int i = 0; i < write_buffer.length; i++) {
+			logBuffer.append((char)write_buffer[i]);
+		}
 
-			Log.i("TestingBoard ConnectManager", "write:" + logBuffer.toString());
-		}
-		catch (IOException e) {
-			detroy();
-		}
+		Log.i("TestingBoard ConnectManager", "write:" + logBuffer.toString());
 	}
 
 	@Override

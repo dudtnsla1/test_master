@@ -2,29 +2,25 @@ package testmaster.android.page;
 
 import org.achartengine.GraphicalView;
 
-import testmaster.android.chart.GraphicalActivity;
-import testmaster.android.packet.PacketInfo;
 import testmaster.android.packet.SettingPacket;
 import testmaster.android.testingboard.R;
 import android.app.Activity;
 import android.content.Context;
-import android.content.pm.PackageInfo;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.webkit.WebView.FindListener;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 import android.widget.RadioGroup.OnCheckedChangeListener;
-import android.widget.ArrayAdapter;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 public class FunctionPWMContext extends FunctionContext implements OnClickListener, OnItemSelectedListener, OnCheckedChangeListener{
-	String SendHz_Frequency=null;
-	String Pin_number_String=null;
+	String SendHz_Frequency="0";
+	String Pin_number_String="0";
 	String dan=null;
 	String result;
 	GraphicalView lineChart;
@@ -44,7 +40,7 @@ public class FunctionPWMContext extends FunctionContext implements OnClickListen
 	@Override
 	public SettingPacket settingChanged() {
 		// TODO Auto-generated method stub
-		packet.setPacket(PacketInfo.MODE_PWM, Integer.parseInt(SendHz_Frequency));
+		packet.setPWMPacket(Byte.parseByte(Pin_number_String), Byte.parseByte(SendHz_Frequency));
 		return packet;
 	}
 	private void setUnitSpinner(Activity context) {

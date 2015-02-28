@@ -74,5 +74,4 @@ public class BlueClient extends Thread{
 	public boolean isConnected() {
 		return connected;
 	}
-
 }
