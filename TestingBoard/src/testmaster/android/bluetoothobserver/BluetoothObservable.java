@@ -60,9 +60,12 @@ public class BluetoothObservable implements DestroyInterface{
 	}
 
 	public static void disconnected() {
+		Log.d("TestingBoard MaingFunctionActivity", 
+				"Bluetooth Disconnected");
 		for (int i = 0; i < observerList.size(); i++)	{
 			observerList.get(i).bluetoothDisconnect();
 		}
+		
 		bluetoothServer = null;
 	}
 

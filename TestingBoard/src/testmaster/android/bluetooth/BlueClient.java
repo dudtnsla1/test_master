@@ -43,6 +43,8 @@ public class BlueClient extends Thread{
 		}  
 		catch (IOException connectException) {
 			Log.e("TestingBoard BlueClient", "IOException");
+			connecting = false;
+			return;
 		}
 		connectManager = new ConnectManager(mmSocket);
 		connectManager.start();

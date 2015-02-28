@@ -53,7 +53,7 @@ public class VirtualConnectManager extends ConnectManager implements DestroyInte
 				//				read_str = in.readLine();
 
 				/**/
-				Thread.sleep(2000);
+				Thread.sleep(100);
 				read_str = "1000";
 				/**/
 

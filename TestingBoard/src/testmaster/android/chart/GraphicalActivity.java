@@ -34,6 +34,7 @@ public class GraphicalActivity extends ActionBarActivity{
 	private String yLableText = "";
 	int[] colors = new int[] { Color.rgb(0xff, 0x00, 0x00), Color.rgb(0xa8, 0xff, 0xd7), Color.rgb(0xff, 0x7d, 0x88), Color.rgb(0xff, 0xd4, 0xd5)};
 	PointStyle[] styles = new PointStyle[] { PointStyle.SQUARE, PointStyle.SQUARE, PointStyle.SQUARE, PointStyle.SQUARE};
+	private int xScale = 0;
 	
 	XYMultipleSeriesRenderer renderer = buildRenderer(colors, styles);
 	
@@ -44,6 +45,7 @@ public class GraphicalActivity extends ActionBarActivity{
 			renderer.setXAxisMax(xMax);
 			renderer.setYAxisMin(yMin);
 			renderer.setYAxisMax(yMax);
+			xScale = (int) (xMax - xMin);
 			graphicalView.repaint();
 		}
 	}
@@ -110,10 +112,14 @@ public class GraphicalActivity extends ActionBarActivity{
 			datasetBuffer.clear();
 			series.add(series.getMaxX() + 1, data);
 			
+			int max = (int) (series.getMaxX() + xScale/2);
+
+			renderer.setXAxisMin(max - xScale);
+			renderer.setXAxisMax(max);
 		} else {
 			datasetBuffer.add(data);
 		}
-
+		
 		seriesRelease();
 	}
 	
@@ -277,11 +283,10 @@ public class GraphicalActivity extends ActionBarActivity{
 			int labelsColor) {
 
 		renderer.setChartTitle(title);
-//		renderer.setXTitle(xTitle);
 		renderer.setLegendHeight(60);
-//		renderer.setYTitle(yTitle);
 		renderer.setXAxisMin(xMin);
 		renderer.setXAxisMax(xMax);
+		xScale = (int) (xMax - xMin);
 		renderer.setYAxisMin(yMin);
 		renderer.setYAxisMax(yMax);
 		renderer.setAxesColor(axesColor);

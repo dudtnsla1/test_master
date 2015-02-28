@@ -128,6 +128,6 @@ public class MainFunctionActivity extends GraphicalActivity implements OnClickLi
 	public void bluetoothDisconnect() {
 		// TODO Auto-generated method stub
 		setResult(-1);
-		onBackPressed();
+		finish();
 	}
 }

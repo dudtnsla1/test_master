@@ -46,6 +46,8 @@ public abstract class FunctionContext implements PageChangeListener{
 
 		@Override
 		public void bluetoothDisconnect() {
+			dataRecvObserver.deleteObserver();
+			((PageChanger)activity).bluetoothDisconnect();
 		}
 
 		@Override

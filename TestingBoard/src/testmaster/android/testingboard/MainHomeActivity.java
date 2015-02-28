@@ -26,7 +26,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainHomeActivity extends Activity{
+public class MainHomeActivity extends Activity {
 
 	public final static String extraFunctionLayout = "functionLayout";
 	public final static String extraFunctionSettingListener = "settingListener";
@@ -87,10 +87,12 @@ public class MainHomeActivity extends Activity{
 			functionLayoutParams.width -= bluetoothLayoutParams.width;
 			bluetoothLayoutParams.width = bluetoothConnectBtn.getBackground().getBounds().width() * 2;
 			setFunctionTextVisible(View.GONE);
+			bluetoothConnectLinearLayout.setBackgroundColor(getResources().getColor(R.color.main_home_gray_alpha_b));
 
 			bluetoothConnectLinearLayout.setLayoutParams(bluetoothLayoutParams);
 			bluetoothConnectBtn.setBackground(LoadedImage.getImage(R.drawable.image_bluetooth_connect));
 		}
+		bigBluetoothFlag = true;
 	}
 
 	private void initView() {
@@ -268,7 +270,7 @@ public class MainHomeActivity extends Activity{
 			}
 
 			if (bigBluetoothFlag) {
-				if (!bluetoothConnect())
+				if (!bluetoothConnectVirtual())
 					return;
 				resizeBluetooth = new ScaleAnimation(1, 0f, 1, 1f);
 				bluetoothLayoutParams.width = bluetoothConnectBtn.getBackground().getBounds().width() / 2;
