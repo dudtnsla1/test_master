@@ -125,7 +125,7 @@
                 android:layout_height="50dp"
                 android:gravity="center"
                 android:hint="  P 계수"
-                android:inputType="number" />
+                android:inputType="textVisiblePassword" />
         </LinearLayout>
 
         <LinearLayout
@@ -146,7 +146,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:hint="  I 계수"
-                android:inputType="number" />
+                android:inputType="textVisiblePassword" />
         </LinearLayout>
 
         <LinearLayout
@@ -167,7 +167,7 @@
                 android:layout_gravity="center"
                 android:gravity="center"
                 android:hint="  D 계수"
-                android:inputType="number" />
+                android:inputType="textVisiblePassword" />
         </LinearLayout>
     </LinearLayout>
 
