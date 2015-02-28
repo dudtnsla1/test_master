@@ -24,6 +24,7 @@ import android.widget.Spinner;
 
 public class FunctionPWMContext extends FunctionContext implements OnClickListener, OnItemSelectedListener, OnCheckedChangeListener{
 	String SendHz_Frequency=null;
+	String Pin_number_String=null;
 	String dan=null;
 	String result;
 	GraphicalView lineChart;
@@ -31,6 +32,7 @@ public class FunctionPWMContext extends FunctionContext implements OnClickListen
 	EditText editText;
 
 	private Spinner hzSpinner;
+	private Spinner Pin_number_pwm;
 
 
 	public FunctionPWMContext(Context context) {
@@ -51,6 +53,15 @@ public class FunctionPWMContext extends FunctionContext implements OnClickListen
 		pwmadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		hzSpinner.setAdapter(pwmadapter);
 		hzSpinner.setOnItemSelectedListener(this);
+
+		Pin_number_pwm = (Spinner)activity.findViewById(R.id.pwm_pin);
+		ArrayAdapter<CharSequence> pwmadapter2 = ArrayAdapter.createFromResource(context, R.array.pwm_pin_num, android.R.layout.simple_spinner_item);
+		pwmadapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		Pin_number_pwm.setAdapter(pwmadapter2);
+		Pin_number_pwm.setOnItemSelectedListener(this);
+
+
+
 		editText = (EditText) activity.findViewById(R.id.editText1);
 		setting = (Button) activity.findViewById(R.id.function_pwm_setting);
 	}
@@ -65,7 +76,7 @@ public class FunctionPWMContext extends FunctionContext implements OnClickListen
 		}
 
 		setting.setOnClickListener(this);
-		
+
 
 		return 0;
 	}
@@ -73,9 +84,9 @@ public class FunctionPWMContext extends FunctionContext implements OnClickListen
 	private void initFirstPage(Activity context) {
 		setUnitSpinner(context);
 	}
-	
+
 	private void initSecondPage(Activity context) {
-		
+
 	}
 
 	@Override
@@ -100,7 +111,7 @@ public class FunctionPWMContext extends FunctionContext implements OnClickListen
 	public void onItemSelected(AdapterView<?> parent, View view, int position,
 			long id) {
 		dan =parent.getItemAtPosition(position).toString();
-
+		Pin_number_String=parent.getItemAtPosition(position).toString();
 
 	}
 
@@ -116,11 +127,11 @@ public class FunctionPWMContext extends FunctionContext implements OnClickListen
 		try	{
 			SendHz_Frequency=editText.getText().toString();
 		} catch(Exception e){
-			Toast.makeText(activity, "주파수를 설정하세요",Toast.LENGTH_SHORT ).show();
 		}
 
-		if(SendHz_Frequency != null) {
-
+		if(SendHz_Frequency.equals("")) {
+			Toast.makeText(activity, "주파수를 설정하세요",Toast.LENGTH_SHORT ).show();
+		} else {
 			if(dan.equals("hz")) {
 				result = SendHz_Frequency;
 			} else if(dan.equals("Khz")) {
@@ -129,9 +140,19 @@ public class FunctionPWMContext extends FunctionContext implements OnClickListen
 				result = SendHz_Frequency+"000000";
 			}
 
+			if(Integer.parseInt(result)>72000000)
+			{
+				
+			}
+			if(Integer.parseInt(result)<1000)
+			{
+				
+			}
+			
+			
 			Toast.makeText(activity, result,Toast.LENGTH_SHORT ).show();
-		} else {
-			Toast.makeText(activity, "주파수를 설정하세요",Toast.LENGTH_SHORT ).show();
 		}
+		
+
 	}
 }
