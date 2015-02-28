@@ -20,7 +20,7 @@ public abstract class FunctionContext implements PageChangeListener{
 	
 	public void updatePreference() {
 		
-	}
+	} 
 	
 	public void destroy() {
 
