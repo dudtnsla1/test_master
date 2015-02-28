@@ -67,7 +67,7 @@ public class ConnectManager extends Thread implements DestroyInterface{
 				read_str = in.readLine();
 				msg.obj = read_str;
 
-//				Log.i("TestingBoard ConnectManager", "read:" + read_str);
+				//				Log.i("TestingBoard ConnectManager", "read:" + read_str);
 				BluetoothObservable.messageReceiver.sendMessage(msg);
 			}
 		}
@@ -103,12 +103,14 @@ public class ConnectManager extends Thread implements DestroyInterface{
 	public void decoratingDestroy() {
 		// TODO Auto-generated method stub		
 		state = false;
-		try {
-			if (mmSocket.isConnected())
-				mmSocket.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+		if (mmSocket != null) {
+			try {
+				if (mmSocket.isConnected())
+					mmSocket.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		Log.d("TestingBoard ConnectManager", "Destroy (final decorator)");
 	}

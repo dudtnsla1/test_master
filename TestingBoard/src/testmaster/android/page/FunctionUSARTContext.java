@@ -44,30 +44,12 @@ public class FunctionUSARTContext extends FunctionContext implements OnClickList
 
 	@Override
 	public int pageChanged(int pageNum) {
-			if(pageNum==0)
-			{
+			if(pageNum==0) {
 				initFirstPage(activity);
 			}
 			
 			Send_rate = (Button) activity.findViewById(R.id.function_usart_setting);
-			Send_rate.setOnClickListener(new OnClickListener() {
-				
-				@Override
-				public void onClick(View v) {
-					if(present_rate!= null){
-						//present_rate 에 담긴거 보내면됨
-						//Toast.makeText(activity, present_rate, Toast.LENGTH_SHORT).show();
-						((PageChanger)activity).setNextPage();
-					}
-					else
-					{
-						Toast.makeText(activity, "baud rate를 설정하세요", Toast.LENGTH_SHORT).show();
-					}
-				
-					
-				}
-			});
-			
+			Send_rate.setOnClickListener(this);			
 			
 		return 0;
 	}
@@ -113,7 +95,11 @@ public class FunctionUSARTContext extends FunctionContext implements OnClickList
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
-		
+		if(present_rate!= null){
+			((PageChanger)activity).setNextPage();
+		} else {
+			Toast.makeText(activity, "baud rate를 설정하세요", Toast.LENGTH_SHORT).show();
+		}		
 	}
 }
 

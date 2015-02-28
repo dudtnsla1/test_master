@@ -28,6 +28,7 @@ public class FunctionPWMContext extends FunctionContext implements OnClickListen
 	String result;
 	GraphicalView lineChart;
 	Button setting;
+	EditText editText;
 
 	private Spinner hzSpinner;
 
@@ -41,7 +42,7 @@ public class FunctionPWMContext extends FunctionContext implements OnClickListen
 	@Override
 	public SettingPacket settingChanged() {
 		// TODO Auto-generated method stub
-		packet.setPacket(PacketInfo.MODE_PWM);
+		packet.setPacket(PacketInfo.MODE_PWM, Integer.parseInt(SendHz_Frequency));
 		return packet;
 	}
 	private void setUnitSpinner(Activity context) {
@@ -50,6 +51,8 @@ public class FunctionPWMContext extends FunctionContext implements OnClickListen
 		pwmadapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		hzSpinner.setAdapter(pwmadapter);
 		hzSpinner.setOnItemSelectedListener(this);
+		editText = (EditText) activity.findViewById(R.id.editText1);
+		setting = (Button) activity.findViewById(R.id.function_pwm_setting);
 	}
 
 	@Override
@@ -62,51 +65,8 @@ public class FunctionPWMContext extends FunctionContext implements OnClickListen
 			setLineChart(lineChart);
 		}
 
-		setting = (Button) activity.findViewById(R.id.function_pwm_setting);
-		setting.setOnClickListener(new OnClickListener() {
-
-			@Override
-			public void onClick(View v) {
-				try
-				{
-					EditText editText = (EditText) activity.findViewById(R.id.editText1);
-					SendHz_Frequency=editText.getText().toString();
-				}catch(Exception e){
-					Toast.makeText(activity, "주파수를 설정하세요",Toast.LENGTH_SHORT ).show();
-				}
-
-
-				if(SendHz_Frequency != null)
-				{
-					//블루투스를 에 값을 보내는곳 
-					//SendHz_Frequency
-
-
-					if(dan.equals("hz"))
-					{
-						result = SendHz_Frequency;
-					}
-					else if(dan.equals("Khz"))
-					{
-						result = SendHz_Frequency+"000";
-					}
-					else if(dan.equals("Mhz"))
-					{
-						result = SendHz_Frequency+"000000";
-					}
-
-					Toast.makeText(activity, result,Toast.LENGTH_SHORT ).show();
-				}
-				else
-				{
-					Toast.makeText(activity, "주파수를 설정하세요",Toast.LENGTH_SHORT ).show();
-				}
-
-
-
-			}
-		});
-
+		setting.setOnClickListener(this);
+		
 
 		return 0;
 	}
@@ -151,6 +111,25 @@ public class FunctionPWMContext extends FunctionContext implements OnClickListen
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
+		try	{
+			SendHz_Frequency=editText.getText().toString();
+		} catch(Exception e){
+			Toast.makeText(activity, "주파수를 설정하세요",Toast.LENGTH_SHORT ).show();
+		}
 
+		if(SendHz_Frequency != null) {
+
+			if(dan.equals("hz")) {
+				result = SendHz_Frequency;
+			} else if(dan.equals("Khz")) {
+				result = SendHz_Frequency+"000"; 
+			} else if(dan.equals("Mhz")) {
+				result = SendHz_Frequency+"000000";
+			}
+
+			Toast.makeText(activity, result,Toast.LENGTH_SHORT ).show();
+		} else {
+			Toast.makeText(activity, "주파수를 설정하세요",Toast.LENGTH_SHORT ).show();
+		}
 	}
 }
