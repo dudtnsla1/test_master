@@ -61,8 +61,7 @@ public class FunctionPWMContext extends FunctionContext implements OnClickListen
 			initFirstPage(activity);
 		}
 		else if (pageNum == 1) {
-			lineChart = ((GraphicalActivity)activity).getLineChartGraphicalView(0, 30, 0, 40);
-			setLineChart(lineChart);
+			initSecondPage(activity);
 		}
 
 		setting.setOnClickListener(this);
@@ -73,7 +72,10 @@ public class FunctionPWMContext extends FunctionContext implements OnClickListen
 
 	private void initFirstPage(Activity context) {
 		setUnitSpinner(context);
-
+	}
+	
+	private void initSecondPage(Activity context) {
+		
 	}
 
 	@Override
