@@ -26,7 +26,7 @@
             </intent-filter>
         </activity>
         <activity android:label="@string/main_title" android:name="testmaster.android.testingboard.MainHomeActivity" android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen"></activity>
-        <activity android:name="MainFunctionActivity" android:theme="@style/MyApp.ActionBarTheme" android:windowSoftInputMode="stateHidden"></activity>
+        <activity android:name="MainFunctionActivity" android:theme="@style/MyApp.ActionBarTheme" android:windowSoftInputMode="adjustPan"></activity>
         <activity android:name="MainPreferenceActivity"></activity>
         <activity android:name="FunctionPreferenceActivity"></activity>
         <activity android:name="ListActivity"></activity>
