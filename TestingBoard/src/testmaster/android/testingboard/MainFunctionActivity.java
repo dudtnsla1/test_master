@@ -16,7 +16,7 @@ import android.widget.TextView;
 public class MainFunctionActivity extends GraphicalActivity implements OnClickListener, PageChanger{
 
 	private static final int []PAGES_ADC = {R.layout.function_content_adc_activity1, R.layout.chart_layout};
-	private static final int []PAGES_PWM = {R.layout.function_content_pwm_activity1, R.layout.pulse_layout};
+	private static final int []PAGES_PWM = {R.layout.function_content_pwm_activity1};
 	private static final int []PAGES_USART = {R.layout.function_content_usart_activity1, R.layout.function_content_usart_activity2};
 	private static final int []PAGES_I2C = {R.layout.function_content_i2c_activity1, R.layout.function_content_i2c_activity2};
 	private static final int []PAGES_CLOCK = {R.layout.function_content_highlow_activity1};
