@@ -9,17 +9,27 @@
         style="@style/setting_paragraph_name"
         android:text="@string/function_adc_data_config" />
 
-    
+    <RadioGroup
+        android:id="@+id/function_content_adc_dataconfig_radio_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/setting_sub1"
+        android:checkedButton="@+id/function_content_adc_adc_pureradio" >
 
-        <TextView
+        <RadioButton
+            android:id="@id/function_content_adc_adc_pureradio"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="15dp"
-            android:textSize="20sp"
-            android:textColor="#666666"
-            android:layout_gravity="center"
             android:text="@string/function_adc_result_fure" />
 
+        <RadioButton
+            android:id="@+id/function_content_adc_adc_calibrationradio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="15dp"
+            android:text="@string/function_adc_result_calibration" />
+    </RadioGroup>
 
     <LinearLayout
         android:id="@+id/function_adc_modify_layout"

@@ -63,7 +63,7 @@
             </PreferenceCategory>
         </PreferenceScreen>
     </PreferenceCategory>
-    <PreferenceCategory android:title="@string/chart_setting" >
+    <PreferenceCategory android:title="@string/adc_chart_setting" >
         <EditTextPreference
             android:defaultValue="3500"
             android:inputType="number"

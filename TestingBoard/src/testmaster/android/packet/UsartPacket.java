@@ -2,7 +2,7 @@ package testmaster.android.packet;
 
 import org.apache.http.util.ByteArrayBuffer;
 
-public class UsartPacket extends BluetoothPacket {
+public class UsartPacket extends BluetoothPacket implements PacketInfo {
 	private ByteArrayBuffer packet = new ByteArrayBuffer(0);
 	
 	public void setPacket(String data) {
@@ -13,11 +13,13 @@ public class UsartPacket extends BluetoothPacket {
 	
 	public void initPacket() {
 		packet.clear();
+		packet.append("$".getBytes(), 0, 1);
+		packet.append(MODE_USART);
 		packet.append(5);
 	}
 	
 	public void endPacket() {
-		packet.append("\n".getBytes(), 0, 1);			
+		packet.append("\r\n".getBytes(), 0, 2);			
 	}
 	public byte[] getPacket() {
 		return packet.toByteArray();

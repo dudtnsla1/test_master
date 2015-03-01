@@ -56,14 +56,13 @@
     <string name="function_highlow2_config">2 H/L Pin</string>
     <string name="function_highlow3_config">3 H/L Pin</string>
     <string name="function_highlow4_config">4 H/L Pin</string>
-    <string name="function_adc_data_config">Data Type</string>
-    <string name="function_adc_result_fure">입력 ADC값 출력</string>
+    <string name="function_adc_data_config">Data Confing</string>
+    <string name="function_adc_result_fure">ADC 값 자체로 출력</string>
     <string name="function_adc_result_calibration">ADC 값 변환해서 출력</string>
     <string name="function_i2c_SlaveSet">Slave Address</string>
     <string name="function_i2c_Set">Setting</string>
     <string name="function_pwm_frequencyset">Frequenct Set</string>
     <string name="Frequency">Frequency </string>
-    <string name="duty_rate">duty rate(%)</string>
     <string name="function_pwm_duty_ratio_set">Duty Ratio Set</string>
     <string name="function_usart_band_rate_set">Baud Rate Set</string>
     <string name="function_usart_connect_ok">Connect OK</string>

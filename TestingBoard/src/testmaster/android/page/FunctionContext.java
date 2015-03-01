@@ -5,13 +5,15 @@ import org.achartengine.GraphicalView;
 import testmaster.android.bluetoothobserver.BluetoothObserver;
 import testmaster.android.chart.GraphicalActivity;
 import testmaster.android.packet.SettingPacket;
+import testmaster.android.testingboard.MainIntroActivity;
 import testmaster.android.testingboard.R;
 import android.app.Activity;
 import android.content.Context;
-import android.util.Log;
 import android.widget.LinearLayout;
 
 public abstract class FunctionContext implements PageChangeListener{
+
+	protected static final String _DEBUG_TAG = MainIntroActivity._DEBUG_TAG;
 	
 	protected Activity activity = null;
 	private LinearLayout barChartLayout;

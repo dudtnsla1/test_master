@@ -84,12 +84,10 @@ public class ConnectManager extends Thread implements DestroyInterface{
 						break;
 					}
 				}
-				
-				if (badPacket)
+				if (badPacket || read_str.equals(""))
 					continue;
 
-//				Log.i("TestingBoard ConnectManager", "read:" + read_str);
-//				Log.d("TestingBoard ConnectManager", read_str);
+				Log.i("TestingBoard ConnectManager", "read:" + read_str);
 				BluetoothObservable.update(read_str);
 				ackPacket.send();
 //				mmOutStream.write(buffer);

@@ -49,6 +49,7 @@ public class ListActivity extends Activity implements OnItemClickListener, Prefe
 		listView = (ListView)findViewById(R.id.list_listview);
 		adapter = new ArrayAdapterListItem(this, R.layout.listview_item);
 		dbHelper = new DbOpenHelper(this);
+		dbHelper.open();
 		preference = PreferenceManager.getDefaultSharedPreferences(this);
 		editor = preference.edit();
 

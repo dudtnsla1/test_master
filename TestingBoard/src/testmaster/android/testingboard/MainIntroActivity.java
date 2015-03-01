@@ -9,7 +9,7 @@ import android.util.Log;
 import android.view.Menu;
 
 public class MainIntroActivity extends Activity {
-
+	public static final String _DEBUG_TAG = "TestingBoard";
 	private final int MAIN_ACTIVITY_RESULT = 0;
 
 	private void testingCode() {

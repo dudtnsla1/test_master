@@ -26,9 +26,7 @@ public class FunctionPWMContext extends FunctionContext implements OnClickListen
 	GraphicalView lineChart;
 	Button setting;
 	EditText editText;
-	EditText pwm_duty_e;
-	String pwm_duty_s;
-	
+
 	private Spinner hzSpinner;
 	private Spinner Pin_number_pwm;
 
@@ -61,9 +59,7 @@ public class FunctionPWMContext extends FunctionContext implements OnClickListen
 
 
 		editText = (EditText) activity.findViewById(R.id.editText1);
-		pwm_duty_e = (EditText) activity.findViewById(R.id.duty_rate_e);
 		setting = (Button) activity.findViewById(R.id.function_pwm_setting);
-		
 	}
 
 	@Override
@@ -118,17 +114,13 @@ public class FunctionPWMContext extends FunctionContext implements OnClickListen
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
-		
-	
 		try	{
 			SendHz_Frequency=editText.getText().toString();
-			pwm_duty_s=pwm_duty_e.getText().toString();
-			
 		} catch(Exception e){
 		}
 
-		if(SendHz_Frequency.equals("")||pwm_duty_s.equals("")) {
-			Toast.makeText(activity, "항목을 모두 입력하세요",Toast.LENGTH_SHORT ).show();
+		if(SendHz_Frequency.equals("")) {
+			Toast.makeText(activity, "주파수를 설정하세요",Toast.LENGTH_SHORT ).show();
 		} else {
 			if(dan.equals("hz")) {
 				result = SendHz_Frequency;

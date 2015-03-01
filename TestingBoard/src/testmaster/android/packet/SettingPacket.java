@@ -1,5 +1,7 @@
 package testmaster.android.packet;
 
+import java.nio.ByteBuffer;
+
 import org.apache.http.util.ByteArrayBuffer;
 
 /*
@@ -41,11 +43,15 @@ public class SettingPacket extends BluetoothPacket implements PacketInfo{
 		endPacket();		
 	}
 	
-	public void setMotorPacket(byte P, byte I, byte D) {
-		initPacket(MODE_MOTOR);
-		packet.append(P);
-		packet.append(I);
-		packet.append(D);
+	public void setMotorPacket(String P, String I, String D, String RPM, String gear, String pulse) {
+		initPacket(MODE_MOTOR);		
+		
+		packet.append(ByteBuffer.allocate(4).putFloat(Float.parseFloat(P)).array(), 0, 4);
+		packet.append(ByteBuffer.allocate(4).putFloat(Float.parseFloat(I)).array(), 0, 4);
+		packet.append(ByteBuffer.allocate(4).putFloat(Float.parseFloat(D)).array(), 0, 4);
+		packet.append(ByteBuffer.allocate(4).putInt(Integer.parseInt(RPM)).array(), 0, 4);
+		packet.append(ByteBuffer.allocate(4).putInt(Integer.parseInt(gear)).array(), 0, 4);
+		packet.append(ByteBuffer.allocate(4).putInt(Integer.parseInt(pulse)).array(), 0, 4);
 		endPacket();
 	}
 	
