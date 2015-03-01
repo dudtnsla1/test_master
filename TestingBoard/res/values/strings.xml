@@ -90,8 +90,8 @@
     <string name="dataset1summary">첫 번재 비교 데이터를 선택하세요.</string>
     <string name="dataset2summary">두 번째 비교 데이터를 선택하세요.</string>
     <string name="dataset3summary">세 번째 비교 데이터를 선택하세요.</string>
-    <string name="x_max">xMax</string>
-    <string name="y_max">yMax</string>
+    <string name="x_max">X Size</string>
+    <string name="y_max">Y Size</string>
     <string name="x_max_summary">x의치 최대값을 설정하세요.</string>
     <string name="y_max_summary">y의치 최대값을 설정하세요.</string>
 

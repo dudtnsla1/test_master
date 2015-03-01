@@ -87,6 +87,7 @@ public class FunctionMotorContext extends FunctionContext implements OnClickList
 	@Override
 	public void destroy() {
 		dbHelper.close();
+		super.destroy();
 	}
 	
 	@Override
@@ -98,6 +99,7 @@ public class FunctionMotorContext extends FunctionContext implements OnClickList
 	@Override
 	public void updatePreference() {
 		databaseDrawer.updateSelectedDatabases();
+		databaseDrawer.updateLables();
 	}
 	
 	public FunctionMotorContext(Context context) {
@@ -111,7 +113,12 @@ public class FunctionMotorContext extends FunctionContext implements OnClickList
 	@Override
 	public SettingPacket settingChanged() {
 		// TODO Auto-generated method stub
-		packet.setMotorPacket(PID_P_e.getText(), PID_I_e.getText(), PID_D_e.getText(), Object_RPM_e.getText(), Motor_Gear_e.getText(), Motor_Pulse_e.getText());
+		packet.setMotorPacket(PID_P_e.getNotEmptyText(), 
+				PID_I_e.getNotEmptyText(), 
+				PID_D_e.getNotEmptyText(), 
+				Object_RPM_e.getNotEmptyText(), 
+				Motor_Gear_e.getNotEmptyText(),
+				Motor_Pulse_e.getNotEmptyText());
 		return packet;
 	}
 	
@@ -129,7 +136,7 @@ public class FunctionMotorContext extends FunctionContext implements OnClickList
 	}
 	
 	public void initSecondPage() {
-		chart = ((GraphicalActivity)activity).getLineChartGraphicalView(0, 100, 0, 100);
+		chart = ((GraphicalActivity)activity).getLineChartGraphicalView(0, 100, 0, 1000);
 		setBarChart(chart);
 		barChartListener = new ChartOnClickAdpater(dbHelper, activity, ChartOnClickAdpater.KIND_MOTOR);
 		barChartListener.setBarChartListener();

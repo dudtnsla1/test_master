@@ -31,7 +31,7 @@ public class GraphicalActivity extends ActionBarActivity{
 	private String chartTitle = "";
 	private String xLableText = "";
 	private String yLableText = "";
-	int[] colors = new int[] { Color.rgb(0xff, 0x00, 0x00), Color.rgb(0x00, 0xff, 0xd7), Color.rgb(0x00, 0x00, 0x00), Color.rgb(0x00, 0x00, 0xff)};
+	int[] colors = new int[] { Color.rgb(0xff, 0x00, 0x00), Color.rgb(0x00, 0x00, 0xff), Color.rgb(0x00, 0x00, 0x00), Color.rgb(0x00, 0x00, 0xff)};
 	PointStyle[] styles = new PointStyle[] { PointStyle.SQUARE, PointStyle.SQUARE, PointStyle.SQUARE, PointStyle.SQUARE};
 	private int xScale = 0;
 	

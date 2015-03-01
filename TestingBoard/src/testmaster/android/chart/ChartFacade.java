@@ -46,6 +46,13 @@ public class ChartFacade implements PreferenceChartInfo, ChartUpdateAdeptor {
 			chartActivity.updateChart(i + 1, this);
 		}
 	}
+	
+	public void updateLables() {
+		SharedPreferences preference = PreferenceManager.getDefaultSharedPreferences(chartActivity);
+		String x_max = preference.getString(KEY_X_MAX, "100");
+		String y_max = preference.getString(KEY_Y_MAX, "3500");
+		chartActivity.setLables(0, Integer.parseInt(x_max), 0, Integer.parseInt(y_max));
+	}
 
 	@Override
 	public double []getIndex() {

@@ -46,6 +46,7 @@ public class FunctionADCContext extends FunctionContext implements OnClickListen
 	@Override
 	public void updatePreference() {
 		databaseDrawer.updateSelectedDatabases();
+		databaseDrawer.updateLables();
 	}
 	
 	public FunctionADCContext(Context context) {
@@ -80,7 +81,7 @@ public class FunctionADCContext extends FunctionContext implements OnClickListen
 	}
 	
 	private void initSecondPage(Activity context) {
-		chart = ((GraphicalActivity)activity).getLineChartGraphicalView(0, 30, 0, 3500);
+		chart = ((GraphicalActivity)activity).getLineChartGraphicalView(0, 80, 0, 3500);
 		setBarChart(chart); 
 		barChartListener = new ChartOnClickAdpater(dbHelper, context, ChartOnClickAdpater.KIND_ADC);
 		barChartListener.setBarChartListener();

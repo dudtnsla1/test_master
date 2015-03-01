@@ -65,15 +65,15 @@
     </PreferenceCategory>
     <PreferenceCategory android:title="@string/adc_chart_setting" >
         <EditTextPreference
-            android:defaultValue="3500"
+            android:defaultValue="100"
             android:inputType="number"
-            android:key="baudrate"
+            android:key="max_x"
             android:summary="@string/x_max_summary"
             android:title="@string/x_max" />
         <EditTextPreference
-            android:defaultValue="100"
+            android:defaultValue="3500"
             android:inputType="number"
-            android:key="baudrate"
+            android:key="max_y"
             android:summary="@string/y_max_summary"
             android:title="@string/y_max" />
     </PreferenceCategory>
