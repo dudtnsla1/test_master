@@ -63,6 +63,7 @@
     <string name="function_i2c_Set">Setting</string>
     <string name="function_pwm_frequencyset">Frequenct Set</string>
     <string name="Frequency">Frequency </string>
+    <string name="duty_rate">duty rate(%)</string>
     <string name="function_pwm_duty_ratio_set">Duty Ratio Set</string>
     <string name="function_usart_band_rate_set">Baud Rate Set</string>
     <string name="function_usart_connect_ok">Connect OK</string>

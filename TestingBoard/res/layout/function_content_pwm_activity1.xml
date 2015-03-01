@@ -34,6 +34,7 @@
             android:id="@+id/editText1"
             android:layout_width="100dp"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:layout_marginLeft="10dp"
             android:hint="@string/Frequency"
             android:inputType="number" />
@@ -49,18 +50,33 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="left"
-        android:orientation="horizontal" >
+        android:orientation="vertical" >
 
         <TextView
             style="@style/setting_paragraph_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/function_pwm_duty_ratio_set" />
-
+<LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="left"
+        android:orientation="horizontal" >
+        
+    <EditText
+            android:id="@+id/duty_rate_e"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:layout_marginLeft="20dp"
+            android:hint="@string/duty_rate"
+            android:inputType="number" />
         <Button
             android:id="@+id/function_pwm_setting"
             style="@style/function_setting_submit_button"
             android:layout_gravity="bottom" />
+        </LinearLayout>
+        
     </LinearLayout>
 
     <include
