@@ -35,7 +35,7 @@ public class FunctionADCContext extends FunctionContext implements OnClickListen
 	private EditText modify;
 	private Spinner unitSpinner;
 	private Spinner pinSpinner;
-	private RadioGroup adcValueCalibrationSelect;
+	//private RadioGroup adcValueCalibrationSelect;
 	private GraphicalView chart;
 	private ChartOnClickAdpater barChartListener;
 	private ChartFacade databaseDrawer;
@@ -72,8 +72,8 @@ public class FunctionADCContext extends FunctionContext implements OnClickListen
 
 	private void initFirstPage(Activity context) {
 		setUnitSpinner(context);
-		adcValueCalibrationSelect = (RadioGroup)activity.findViewById(R.id.function_content_adc_dataconfig_radio_group);
-		adcValueCalibrationSelect.setOnCheckedChangeListener(this);
+		//adcValueCalibrationSelect = (RadioGroup)activity.findViewById(R.id.function_content_adc_dataconfig_radio_group);
+		//adcValueCalibrationSelect.setOnCheckedChangeListener(this);
 		configure = (Button)activity.findViewById(R.id.function_adc_setting);
 		configure.setOnClickListener(this);
 		modify = (EditText)context.findViewById(R.id.function_adc_modification_edittext);
@@ -138,13 +138,13 @@ public class FunctionADCContext extends FunctionContext implements OnClickListen
 	public void onCheckedChanged(RadioGroup group, int checkedId) {
 		// TODO Auto-generated method stub
 
-		if (checkedId == R.id.function_content_adc_adc_calibrationradio) {
-			LinearLayout layout = (LinearLayout)activity.findViewById(R.id.function_adc_modify_layout);
-			layout.setVisibility(View.VISIBLE);
-		} else {
-			LinearLayout layout = (LinearLayout)activity.findViewById(R.id.function_adc_modify_layout);
-			layout.setVisibility(View.INVISIBLE);
-		}
+//		if (checkedId == R.id.function_content_adc_adc_calibrationradio) {
+//			LinearLayout layout = (LinearLayout)activity.findViewById(R.id.function_adc_modify_layout);
+//			layout.setVisibility(View.VISIBLE);
+//		} else {
+//			LinearLayout layout = (LinearLayout)activity.findViewById(R.id.function_adc_modify_layout);
+//			layout.setVisibility(View.INVISIBLE);
+//		}
 	}
 
 	@Override
