@@ -9,36 +9,35 @@
         style="@style/setting_paragraph_name"
         android:text="@string/function_usart_data_receive" />
 
-    <ScrollView
+    <TextView
+        android:id="@+id/function_usart_receive_textview"
         style="@style/function_usart_scrollview"
-        android:layout_width="match_parent"
-        android:layout_height="100dp" >
-
-        <TextView
-            android:id="@+id/function_usart_receive_textview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="1\n2\n3\n4\n5\n6\n7" />
-    </ScrollView>
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:lines="10"
+        android:gravity="bottom"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:scrollbars="vertical"
+        android:text="" />
 
     <TextView
         style="@style/setting_paragraph_name"
         android:text="@string/function_usart_data_send" />
 
-    <ScrollView
+    <TextView
+        android:id="@+id/function_usart_send_textview"
         style="@style/function_usart_scrollview"
-        android:layout_width="match_parent"
-        android:layout_height="100dp" >
-
-        <TextView
-            android:id="@+id/function_usart_send_textview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="1\n2\n3\n4\n5\n6\n7" />
-    </ScrollView>
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:lines="3"
+        android:gravity="bottom"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:scrollbars="vertical"
+        android:text="" />
 
     <LinearLayout
         android:layout_width="match_parent"
+        android:gravity="center"
         android:layout_height="0dp"
         android:layout_margin="10dp"
         android:layout_weight="1" >
@@ -53,7 +52,7 @@
         </EditText>
 
         <Button
-            android:id="@+id/function_adc_setting"
+            android:id="@+id/function_usart_send"
             style="@style/function_setting_send_button" />
     </LinearLayout>
 

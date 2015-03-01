@@ -2,8 +2,6 @@ package testmaster.android.packet;
 
 import org.apache.http.util.ByteArrayBuffer;
 
-import android.util.Log;
-
 /*
  * $,k,Mode,Pin_number,data1,data2,data3*
  * 

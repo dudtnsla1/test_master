@@ -1,9 +1,7 @@
 package testmaster.android.bluetooth;
 
-import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
-import java.io.InputStreamReader;
 import java.io.OutputStream;
 
 import testmaster.android.bluetoothobserver.BluetoothObservable;
@@ -16,11 +14,8 @@ import android.util.Log;
 public class VirtualConnectManager extends ConnectManager implements DestroyInterface{
 
 	private final BluetoothSocket mmSocket;
-	private final InputStream mmInStream;
-	private final OutputStream mmOutStream;
-
+	
 	private boolean state = true;
-	private boolean connected = false;
 
 	private void detroy() {
 		BluetoothObservable.disconnected();
@@ -35,10 +30,7 @@ public class VirtualConnectManager extends ConnectManager implements DestroyInte
 		super();
 		DestroyDecorator.addDecorate(this);
 
-		connected = true;
 		mmSocket = null;
-		mmInStream = null;
-		mmOutStream = null;
 		BluetoothObservable.setBluetoothServer(this);
 	}
 
