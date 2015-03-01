@@ -5,6 +5,7 @@ import java.util.Set;
 import testmaster.android.bluetooth.BlueClient;
 import testmaster.android.bluetooth.VirtualConnectManager;
 import testmaster.android.bluetoothobserver.BluetoothObservable;
+import testmaster.android.bluetoothobserver.BluetoothObserver;
 import testmaster.android.resource.LoadedImage;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -13,6 +14,7 @@ import android.bluetooth.BluetoothDevice;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -30,14 +32,11 @@ public class MainHomeActivity extends Activity {
 
 	public final static String extraFunctionLayout = "functionLayout";
 	public final static String extraFunctionSettingListener = "settingListener";
+	private final int bluetoothConnectBtnId = R.id.main_home_bluetooth_connect_btn;
 
 	private static final int REQUEST_ENABLE_BT = 0;	
-	private static final int REQUEST_FUNCTION_ACTIVITY = 0;
+	private static final int REQUEST_FUNCTION_ACTIVITY = 1;
 
-	public BluetoothAdapter mBluetoothAdapter;
-	public BlueClient blueClient;
-
-	private final int bluetoothConnectBtnId = R.id.main_home_bluetooth_connect_btn;
 	
 	private int []functionButtonIds = new int[] {
 			R.id.main_home_adc_btn, 
@@ -66,6 +65,10 @@ public class MainHomeActivity extends Activity {
 	private boolean bigBluetoothFlag = true;
 	private LayoutParams bluetoothLayoutParams;
 	private LayoutParams functionLayoutParams;
+	
+
+	private BluetoothAdapter mBluetoothAdapter;
+	private BlueClient blueClient;
 
 	private boolean onceInitialize = false;	
 
@@ -73,7 +76,9 @@ public class MainHomeActivity extends Activity {
 		if (onceInitialize == false) {
 			initView();
 			LoadedImage.loadImage(this);
-			onceInitialize = true;
+			onceInitialize = true;		
+			bluetoothServerObserver.insertObserver();
+			BluetoothObservable.insertDestroyDecorator();
 		}
 		initBluetoothImage();
 		initBluetooth();
@@ -129,7 +134,6 @@ public class MainHomeActivity extends Activity {
 			Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
 			startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
 		}
-		BluetoothObservable.insertDestroyDecorator();
 	}
 
 	@Override
@@ -164,6 +168,7 @@ public class MainHomeActivity extends Activity {
 			@Override
 			public void onClick(DialogInterface dialog,
 					int which) {
+				bluetoothServerObserver.deleteObserver();
 				MainHomeActivity.this.superOnbackPressed();
 			}
 		})
@@ -184,13 +189,17 @@ public class MainHomeActivity extends Activity {
 			if (resultCode == -1) {
 				init();
 			}
+		} else if (requestCode == REQUEST_ENABLE_BT) {
+			if (resultCode == 0) { 
+				Toast.makeText(this, "블루투스를 사용 할 수 없습니다.", Toast.LENGTH_SHORT).show();
+			}
 		}
 		super.onActivityResult(requestCode, resultCode, data);
 	}
 
 	/**
 	 *  Item listeners */	
-	class BluetoothResizeAnimationListener implements AnimationListener {
+	private class BluetoothResizeAnimationListener implements AnimationListener {
 
 		@Override
 		public void onAnimationEnd(Animation animation) {
@@ -226,7 +235,7 @@ public class MainHomeActivity extends Activity {
 		}		
 	}
 
-	class BluetoothConnectOnClick implements OnClickListener {
+	private class BluetoothConnectOnClick implements OnClickListener {
 		Animation resizeBluetooth = null;
 
 		private boolean bluetoothConnectVirtual() {
@@ -238,6 +247,8 @@ public class MainHomeActivity extends Activity {
 		private boolean bluetoothConnect() {
 			Set<BluetoothDevice> pairedDevices = mBluetoothAdapter
 					.getBondedDevices();
+
+
 			if(pairedDevices.size()>0){
 				final BluetoothDevice[] item =new BluetoothDevice[pairedDevices.size()];
 				int count=0;
@@ -245,7 +256,6 @@ public class MainHomeActivity extends Activity {
 					item[count] = device;
 					count++;
 				}
-
 				blueClient = new BlueClient(item[0]);
 				blueClient.start();
 				while(blueClient.connecting){};
@@ -253,6 +263,9 @@ public class MainHomeActivity extends Activity {
 					Toast.makeText(getApplicationContext(), "Blue가 연결되었습니다.", Toast.LENGTH_SHORT).show();
 				else
 					Toast.makeText(getApplicationContext(), "Blue연결에 실패하였습니다.", Toast.LENGTH_SHORT).show();
+			} else {
+				Toast.makeText(getApplicationContext(), "Blue연결에 실패하였습니다.", Toast.LENGTH_SHORT).show();
+				return false;
 			}
 			return blueClient.isConnected();
 		}
@@ -270,7 +283,7 @@ public class MainHomeActivity extends Activity {
 			}
 
 			if (bigBluetoothFlag) {
-				if (!bluetoothConnectVirtual())
+				if (!bluetoothConnect())
 					return;
 				resizeBluetooth = new ScaleAnimation(1, 0f, 1, 1f);
 				bluetoothLayoutParams.width = bluetoothConnectBtn.getBackground().getBounds().width() / 2;
@@ -279,9 +292,12 @@ public class MainHomeActivity extends Activity {
 				showDeviceInfo();
 
 			} else {
+				return;
+				/*
 				resizeBluetooth = new ScaleAnimation(1, 0f, 1, 1f);
 				functionLayoutParams.width -= bluetoothLayoutParams.width;
 				bluetoothLayoutParams.width = bluetoothConnectBtn.getBackground().getBounds().width() * 2;
+				*/
 			}
 
 			resizeBluetooth.setDuration(500);
@@ -294,7 +310,7 @@ public class MainHomeActivity extends Activity {
 		}
 	}
 
-	class FunctionImageOnClick implements OnGenericMotionListener {
+	private class FunctionImageOnClick implements OnGenericMotionListener {
 
 		@Override
 		public boolean onGenericMotion(View v, MotionEvent event) {
@@ -303,7 +319,7 @@ public class MainHomeActivity extends Activity {
 		}
 	}
 
-	class FunctionTextOnClick implements OnClickListener {
+	private class FunctionTextOnClick implements OnClickListener {
 
 		@Override
 		public void onClick(View v) {
@@ -320,7 +336,7 @@ public class MainHomeActivity extends Activity {
 		}
 	}
 
-	class OptionOnClick implements OnClickListener {
+	private class OptionOnClick implements OnClickListener {
 
 		@Override
 		public void onClick(View v) {
@@ -329,4 +345,32 @@ public class MainHomeActivity extends Activity {
 			startActivity(intent);
 		}
 	}
+	
+	private BluetoothObserver bluetoothServerObserver = new BluetoothObserver("MainActivity Server Observer") {
+
+		@Override
+		public void update(String data) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void bluetoothDisconnect() {
+			runOnUiThread(new Runnable() {
+				
+				@Override
+				public void run() {
+					// TODO Auto-generated method stub
+					init();
+				}
+			});
+		}
+
+		@Override
+		public void resetData() {
+			// TODO Auto-generated method stub
+			
+		}
+		
+	};
 }

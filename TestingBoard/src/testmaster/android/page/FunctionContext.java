@@ -29,7 +29,7 @@ public abstract class FunctionContext implements PageChangeListener{
 	protected void updateTemplate(String data) {
 		((GraphicalActivity)activity).updateCurrent(parsingData(data));
 		updateChart();
-		Log.d("TestingBoard MaingFunctionActivity", "bluetooth Observer Updated:" + data);				
+//		Log.d("TestingBoard FunctionContext", "bluetooth Observer Updated:" + data);				
 	}	
 	
 	protected void resetDataTemplate() {

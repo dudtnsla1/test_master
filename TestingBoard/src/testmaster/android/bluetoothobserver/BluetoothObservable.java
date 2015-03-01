@@ -54,7 +54,7 @@ public class BluetoothObservable implements DestroyInterface{
 
 	public static int insertObserver(BluetoothObserver ob) {
 		observerList.add(ob);
-		Log.d("TestingBoard MaingFunctionActivity", 
+		Log.d("TestingBoard BluetoothObservable", 
 				ob.getName() + " Observer Added");
 		return 0;
 	}
@@ -64,6 +64,10 @@ public class BluetoothObservable implements DestroyInterface{
 				"Bluetooth Disconnected");
 		for (int i = 0; i < observerList.size(); i++)	{
 			observerList.get(i).bluetoothDisconnect();
+		}
+		
+		if (bluetoothServer != null) {
+			bluetoothServer.disconnected();
 		}
 		
 		bluetoothServer = null;
@@ -80,7 +84,7 @@ public class BluetoothObservable implements DestroyInterface{
 	public static void deleteObserver(BluetoothObserver ob) {
 		for (int i = 0; i < observerList.size(); i++) {
 			if (observerList.get(i).equals(ob)) {
-				Log.d("TestingBoard MaingFunctionActivity",
+				Log.d("TestingBoard BluetoothObservable",
 						observerList.get(i).getName() + " Observer Delete");
 				observerList.remove(i);
 			}
@@ -97,7 +101,7 @@ public class BluetoothObservable implements DestroyInterface{
 	public void decoratingDestroy() {
 		// TODO Auto-generated method stub
 		observerList.clear();
-		bluetoothServer = null;
+		disconnected();
 		This = null;
 		enableSwitch = true;
 		Log.d("TestingBoard BluetoothObservable", "destroy (final decorator)");

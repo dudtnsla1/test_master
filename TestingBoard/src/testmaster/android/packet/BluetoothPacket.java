@@ -11,8 +11,14 @@ public class BluetoothPacket {
 		bluetoothServer = BluetoothObservable.getBluetoothServer();
 		// TODO Auto-generated constructor stub
 	}
+	
 	public void sendPacket(byte []packet) {
-		if (bluetoothServer != null)
+		
+		if (bluetoothServer == null) {
+			bluetoothServer = BluetoothObservable.getBluetoothServer();			
+		}
+		if (bluetoothServer != null) {
 			bluetoothServer.write(packet);
+		} 
 	}
 }

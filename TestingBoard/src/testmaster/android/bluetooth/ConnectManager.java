@@ -7,10 +7,10 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 
 import testmaster.android.bluetoothobserver.BluetoothObservable;
+import testmaster.android.packet.AckPacket;
 import testmaster.android.resource.DestroyDecorator;
 import testmaster.android.resource.DestroyInterface;
 import android.bluetooth.BluetoothSocket;
-import android.os.Message;
 import android.util.Log;
 
 public class ConnectManager extends Thread implements DestroyInterface{
@@ -18,6 +18,7 @@ public class ConnectManager extends Thread implements DestroyInterface{
 	private final BluetoothSocket mmSocket;
 	private final InputStream mmInStream;
 	private final OutputStream mmOutStream;
+	private final AckPacket ackPacket = new AckPacket();
 
 	private boolean state = true;
 	private boolean connected = false;
@@ -69,13 +70,29 @@ public class ConnectManager extends Thread implements DestroyInterface{
 		BufferedReader in = new BufferedReader(new InputStreamReader(mmInStream));
 		try {
 			while (state) {
-				Message msg = new Message();
 				read_str = in.readLine();
-				msg.obj = read_str;
 
-//				Log.i("TestingBoard ConnectManager", "read:" + read_str);
-//				BluetoothObservable.messageReceiver.sendMessage(msg);
+				byte []read_buffer;
+				boolean badPacket = false;
+
+				read_buffer = read_str.getBytes();
+				
+				/*이상현상 예외*/
+				for (int i = 0; i < read_buffer.length; i++) {
+					if (read_buffer[i] == 0) {
+						badPacket = true;
+						break;
+					}
+				}
+				
+				if (badPacket)
+					continue;
+
+				Log.i("TestingBoard ConnectManager", "read:" + read_str);
+//				Log.d("TestingBoard ConnectManager", read_str);
 				BluetoothObservable.update(read_str);
+				ackPacket.send();
+//				mmOutStream.write(buffer);
 			}
 		}
 
@@ -107,11 +124,8 @@ public class ConnectManager extends Thread implements DestroyInterface{
 			detroy();
 		}
 	}
-
-	@Override
-	public void decoratingDestroy() {
-		// TODO Auto-generated method stub		
-		state = false;
+	
+	public void disconnected() {
 		if (mmSocket != null) {
 			try {
 				if (mmSocket.isConnected())
@@ -121,6 +135,13 @@ public class ConnectManager extends Thread implements DestroyInterface{
 				e.printStackTrace();
 			}
 		}
+	}
+
+	@Override
+	public void decoratingDestroy() {
+		// TODO Auto-generated method stub		
+		state = false;
+		disconnected();
 		Log.d("TestingBoard ConnectManager", "Destroy (final decorator)");
 	}
 }
