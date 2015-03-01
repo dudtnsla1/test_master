@@ -30,7 +30,7 @@ public class MainFunctionActivity extends GraphicalActivity implements OnClickLi
 	private TextView title;
 	
 	public enum ContentLayoutIds {
-		ADC(PAGES_ADC, 0), PWM(PAGES_PWM, 0), USART(PAGES_USART, 0), I2C(PAGES_I2C, 0), CLOCK(PAGES_CLOCK, 0), MOTOR(PAGES_MOTOR, 0);
+		ADC(PAGES_ADC, 0), PWM(PAGES_PWM, 0), USART(PAGES_USART, 0), I2C(PAGES_I2C, 0), HIGHLOW(PAGES_CLOCK, 0), MOTOR(PAGES_MOTOR, 0);
 		int []ids;
 		int settingLayoutNum;
 		ContentLayoutIds(int []ids, int settingLayoutNum) {
@@ -53,7 +53,7 @@ public class MainFunctionActivity extends GraphicalActivity implements OnClickLi
 		ContentLayoutIds.PWM,
 		ContentLayoutIds.USART,
 		ContentLayoutIds.I2C,
-		ContentLayoutIds.CLOCK,
+		ContentLayoutIds.HIGHLOW,
 		ContentLayoutIds.MOTOR
 	};
 	

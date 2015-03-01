@@ -18,7 +18,7 @@ public abstract class FunctionContextFactory{
 			return (FunctionContext) new FunctionUSARTContext(context);
 		else if (content == ContentLayoutIds.I2C)
 			return (FunctionContext) new FunctionI2CContext(context);
-		else if (content == ContentLayoutIds.CLOCK)
+		else if (content == ContentLayoutIds.HIGHLOW)
 			return (FunctionContext) new FunctionHighLowContext(context);
 		else if (content == ContentLayoutIds.MOTOR)
 			return (FunctionContext) new FunctionMotorContext(context);
