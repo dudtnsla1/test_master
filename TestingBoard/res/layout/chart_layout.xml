@@ -35,7 +35,7 @@
     </LinearLayout>
 
     <LinearLayout 
-        android:id="@+id/barchart_layout"
+        android:id="@+id/chart_layout"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:background="#6ACC"

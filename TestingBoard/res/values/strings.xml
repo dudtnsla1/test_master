@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+	<string name="duty_rate">duty rate(%)</string>
     <string name="adc_dep">adc_dep</string>
     <string name="motor_dep">motor_dep</string>
     <string name="init">초기화</string>

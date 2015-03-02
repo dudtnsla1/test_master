@@ -37,6 +37,15 @@ public class GraphicalActivity extends ActionBarActivity{
 	
 	XYMultipleSeriesRenderer renderer = buildRenderer(colors, styles);
 	
+	public void setOrientationHorizontal() {
+		renderer.setOrientation(XYMultipleSeriesRenderer.Orientation.HORIZONTAL);
+		renderer.setShowLabels(false);
+		renderer.setShowGrid(false);
+		renderer.setShowGridY(false);
+		renderer.setShowGridX(false);
+		renderer.setPanEnabled(false);
+	}
+	
 	public void setLables(double xMin, double xMax, int yMin, int yMax) {
 		
 		if (graphicalView != null) {
@@ -84,6 +93,18 @@ public class GraphicalActivity extends ActionBarActivity{
 		}		
 		seriesRelease();
 		Log.d("TestingBoard GraphicalActivity", "reset chart");
+	}
+	
+	public void updateChart(int chartNum, ChartUpdateAdeptor adapter, double []xList) {
+		double []data = adapter.getIndex();
+		seriesLock();
+		if (dataset != null) {
+			XYSeries series = dataset.getSeriesAt(chartNum);
+			for (int i = 0; i < data.length; i++) {
+				series.add(xList[i], data[i]);		
+			}
+		} 
+		seriesRelease();
 	}
 	
 	public void updateChart(int chartNum, ChartUpdateAdeptor adapter) {
