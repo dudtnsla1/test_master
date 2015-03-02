@@ -23,11 +23,12 @@ public class NotNullEditTextDecorator {
 	}
 
 	public void addEditText(EditText edit) {
-		if (!edit.getText().toString().equals(""))
+		if (!edit.getText().toString().equals("")) {			
 			editedCount++;
+		}
 		Log.d(MainIntroActivity._DEBUG_TAG + " NotNullEditTextAdapter", "add" + edit.getText().toString() + editedCount);
 		editList.add(edit);
-		edit.addTextChangedListener(new NotNullTextWhatcher());
+		edit.addTextChangedListener(new NotNullTextWhatcher(edit));
 		if (editedCount == editList.size()) {
 			pageChanger.setEnable();
 		}
@@ -45,9 +46,9 @@ public class NotNullEditTextDecorator {
 	private class NotNullTextWhatcher implements TextWatcher {
 		private int index;
 
-		public NotNullTextWhatcher() {
+		public NotNullTextWhatcher(EditText edit) {
 			// TODO Auto-generated constructor stub
-			textList.add("");
+			textList.add(edit.getText().toString());
 			index = textList.size() - 1;
 		}
 
