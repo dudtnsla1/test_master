@@ -56,7 +56,7 @@ public class FunctionPWMContext extends FunctionContext implements OnClickListen
 		xList[7] = 120;
 		
 		((GraphicalActivity)activity).resetLineChart(2);
-		((GraphicalActivity)activity).updateChart(2, this, xList);;
+		((GraphicalActivity)activity).updateChart(2, this, xList);
 	}
 
 	public FunctionPWMContext(Context context) {

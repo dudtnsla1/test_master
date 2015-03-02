@@ -26,7 +26,7 @@ public class GraphicalActivity extends ActionBarActivity{
 	private List<double[]> x = new ArrayList<double[]>();
 	private List<Double> datasetBuffer = new ArrayList<Double>();
 	private final int CHART_COLOR = Color.argb(0xff, 0x0, 0xAA, 0xAA);
-			
+
 	static final String[] titles = new String[] { "State1", "State2" , "State3", "State4"};
 	private String chartTitle = "";
 	private String xLableText = "";
@@ -34,9 +34,9 @@ public class GraphicalActivity extends ActionBarActivity{
 	int[] colors = new int[] { Color.rgb(0xff, 0x00, 0x00), Color.rgb(0x00, 0x00, 0xff), Color.rgb(0x00, 0x00, 0x00), Color.rgb(0x00, 0x00, 0xff)};
 	PointStyle[] styles = new PointStyle[] { PointStyle.SQUARE, PointStyle.SQUARE, PointStyle.SQUARE, PointStyle.SQUARE};
 	private int xScale = 0;
-	
+
 	XYMultipleSeriesRenderer renderer = buildRenderer(colors, styles);
-	
+
 	public void setOrientationHorizontal() {
 		renderer.setOrientation(XYMultipleSeriesRenderer.Orientation.HORIZONTAL);
 		renderer.setShowLabels(false);
@@ -45,9 +45,9 @@ public class GraphicalActivity extends ActionBarActivity{
 		renderer.setShowGridX(false);
 		renderer.setPanEnabled(false);
 	}
-	
+
 	public void setLables(double xMin, double xMax, int yMin, int yMax) {
-		
+
 		if (graphicalView != null) {
 			renderer.setXAxisMin(xMin);
 			renderer.setXAxisMax(xMax);
@@ -57,9 +57,9 @@ public class GraphicalActivity extends ActionBarActivity{
 			graphicalView.repaint();
 		}
 	}
-	
+
 	protected void chartInit() {
-		
+
 		double [][] sample = new double[][] {
 				{ 0},
 				{ 0},
@@ -68,21 +68,23 @@ public class GraphicalActivity extends ActionBarActivity{
 		};
 		setChartData(sample, "", "", "");  
 	}
-	
+
 	private boolean seriesLockFlag = false;
-	
-	private synchronized void seriesLock() {
-		while (seriesLockFlag)
-			Log.d("TestingBoard GraphicalActivity", "lock");
+
+	private synchronized void seriesLock(int x) {
+		Log.d("TestingBoard GraphicalActivity", "lock" + x);
+		while (seriesLockFlag);
 		seriesLockFlag = true;
 	}
-	
-	private synchronized void seriesRelease() {
+
+	private void seriesRelease(int x) {
 		seriesLockFlag = false;
+		Log.d("TestingBoard GraphicalActivity", "release" + x);
 	}
-	
+
 	public void resetLineChart(int index) {
-		seriesLock();
+		Log.d("TestingBoard GraphicalActivity", "reset chart");
+		seriesLock(1);
 		if (dataset != null) {
 			XYSeries series = dataset.getSeriesAt(index);
 			series.clear();
@@ -91,37 +93,40 @@ public class GraphicalActivity extends ActionBarActivity{
 			setLineChartGraphicalView();
 			datasetBuffer.clear();	
 		}		
-		seriesRelease();
-		Log.d("TestingBoard GraphicalActivity", "reset chart");
+		seriesRelease(1);
 	}
-	
+
 	public void updateChart(int chartNum, ChartUpdateAdeptor adapter, double []xList) {
+		Log.d("TestingBoard GraphicalActivity", "update chart 2");
 		double []data = adapter.getIndex();
-		seriesLock();
+		Log.d("TestingBoard GraphicalActivity", "lock debugging " + 2);
+		seriesLock(2);
 		if (dataset != null) {
 			XYSeries series = dataset.getSeriesAt(chartNum);
 			for (int i = 0; i < data.length; i++) {
 				series.add(xList[i], data[i]);		
 			}
 		} 
-		seriesRelease();
+		seriesRelease(2);
 	}
-	
+
 	public void updateChart(int chartNum, ChartUpdateAdeptor adapter) {
+		Log.d("TestingBoard GraphicalActivity", "update chart 1");
 		double []data = adapter.getIndex();
-		seriesLock();
+		seriesLock(3);
 		if (dataset != null) {
 			XYSeries series = dataset.getSeriesAt(chartNum);
 			for (int i = 0; i < data.length; i++) {
 				series.add(series.getMaxX() + 1, data[i]);		
 			}
+			Log.d("TestingBoard GraphicalActivity", "lock debugging " + 3);
 		} 
-		seriesRelease();
+		seriesRelease(3);
 	}
-	
-	public void updateCurrent(double data) {
 
-		seriesLock();
+	public void updateCurrent(double data) {
+		seriesLock(4);
+		Log.d("TestingBoard GraphicalActivity", "lock debugging " + 4);
 		if (dataset != null) {
 
 			XYSeries series = dataset.getSeriesAt(0);
@@ -131,7 +136,7 @@ public class GraphicalActivity extends ActionBarActivity{
 
 			datasetBuffer.clear();
 			series.add(series.getMaxX() + 1, data);
-			
+
 			int max = (int) (series.getMaxX() + xScale/2);
 
 			renderer.setXAxisMin(max - xScale);
@@ -139,37 +144,43 @@ public class GraphicalActivity extends ActionBarActivity{
 		} else {
 			datasetBuffer.add(data);
 		}
-		
-		seriesRelease();
+
+		seriesRelease(4);
 	}
-	
+
 	public void setChartData(double [][]data, String chartTitle, String xLableText, String yLableText) {
 		values.clear();
-		
+
 		for (int i = 0; i < data.length; i++) {
 			values.add(data[i]);
 		}
-		
+
 		this.chartTitle = chartTitle;
 		this.xLableText = xLableText;
 		this.yLableText = yLableText;
 	}
-	
+
 	public GraphicalView getBarChartGraphicalView(int xMin, int xMax, int yMin, int yMax) {
+		seriesLock(5);
+		Log.d("TestingBoard GraphicalActivity", "lock debugging " + 5);
 		setCommonChartGraphicalView(xMin, xMax, yMin, yMax, 10, 4);
 		setBarChartGraphicalView();
 		graphicalView = ChartFactory.getBarChartView(getApplicationContext(), dataset, renderer, BarChart.Type.STACKED);
 		graphicalView.setBackgroundColor(Color.argb(0x00,0x55,0x00,0x22));
+
+		seriesRelease(5);
 		return graphicalView;
 	}
 
 	public GraphicalView getLineChartGraphicalView(int xMin, int xMax, int yMin, int yMax) {
+		seriesLock(6);
 		setCommonChartGraphicalView(xMin, xMax, yMin, yMax, 10, 4);
 		setLineChartGraphicalView();
 		graphicalView = ChartFactory.getLineChartView(getApplicationContext(), dataset, renderer);
+		seriesRelease(6);
 		return graphicalView;
 	}
-	
+
 	private double[] getXSeries(int xSize, double start) {
 
 		double temp[] = new double[xSize];
@@ -177,30 +188,32 @@ public class GraphicalActivity extends ActionBarActivity{
 		for (int i = 0; i < xSize; i++) {
 			temp[i] = start+i;
 		}
-		
+
 		return temp;
 	}
-	
+
 	private void setLineChartGraphicalView() {
 		x.clear();
 		for (int i = 0; i < titles.length; i++) {
 			x.add(getXSeries(values.get(i).length, 0));
 		}
-		
+
 		dataset = buildDataset(titles, x, values);
 	}
-	
+
 	private void setBarChartGraphicalView() {
+		seriesLock(8);
 		x.clear();
 		for (int i = 0; i < titles.length; i++) {
 			x.add(getXSeries(values.get(i).length, 0.5));
 		}		
-		
+
 		dataset = buildDataset(titles, x, values);
+		seriesRelease(8);
 	}
-	
+
 	protected void setCommonChartGraphicalView(int xMin, int xMax, int yMin, int yMax, int xLabel, int yLabel) {
-		
+
 		int length = renderer.getSeriesRendererCount();
 
 		for (int i = 0; i < length; i++) {
@@ -210,7 +223,7 @@ public class GraphicalActivity extends ActionBarActivity{
 
 		renderer.setOrientation(XYMultipleSeriesRenderer.Orientation.VERTICAL);
 		renderer.setMarginsColor(Color.argb(0x00,0xff,0xff,0xff));
-//		renderer.setBackgroundColor(Color.argb(0x00, 0xaa, 0xaa, 0xaa));
+		//		renderer.setBackgroundColor(Color.argb(0x00, 0xaa, 0xaa, 0xaa));
 		renderer.setGridColor(CHART_COLOR);
 		renderer.setPanLimits(new double[] {-30000, 30000, 0, 0});
 		renderer.setXLabelsColor(CHART_COLOR);
@@ -238,7 +251,7 @@ public class GraphicalActivity extends ActionBarActivity{
 
 	private XYMultipleSeriesDataset buildDataset(String[] titles,
 			List<double[]> xValues, List<double[]> yValues) {
-		
+
 		if (dataset == null) {
 			XYMultipleSeriesDataset dataset = new XYMultipleSeriesDataset();
 			addXYSeries(dataset, titles, xValues, yValues, 0);
@@ -254,11 +267,11 @@ public class GraphicalActivity extends ActionBarActivity{
 
 		for (int i = 0; i < length; i++) {
 			XYSeries series = new XYSeries(titles[i], scale);
-			
+
 			double[] xV = xValues.get(i);
 			double[] yV = yValues.get(i);
 			int seriesLength = xV.length;
-	 			
+
 			for (int k = 0; k < seriesLength; k++) { 
 				series.add(xV[k], yV[k]);
 			}
@@ -284,9 +297,9 @@ public class GraphicalActivity extends ActionBarActivity{
 		renderer.setLabelsTextSize(20);
 		renderer.setLegendTextSize(20);
 		renderer.setLegendHeight(50);
-		
+
 		renderer.setMargins(new int[] { 10, 10, 10, 10 });
- 
+
 		int length = colors.length;
 
 		for (int i = 0; i < length; i++) {
@@ -311,6 +324,6 @@ public class GraphicalActivity extends ActionBarActivity{
 		renderer.setYAxisMax(yMax);
 		renderer.setAxesColor(axesColor);
 		renderer.setLabelsColor(labelsColor);
-		
+
 	}
 }
