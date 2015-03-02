@@ -5,8 +5,6 @@ import testmaster.android.packet.UsartPacket;
 import testmaster.android.testingboard.MainFunctionActivity;
 import testmaster.android.testingboard.R;
 import android.app.Activity;
-import android.support.v4.util.CircularArray;
-import android.text.method.ScrollingMovementMethod;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -14,12 +12,11 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.Spinner;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class FunctionUSARTContext extends FunctionContext implements OnClickListener, OnItemSelectedListener, OnCheckedChangeListener{
 	private int baudrateIndex = 0;
@@ -117,6 +114,15 @@ public class FunctionUSARTContext extends FunctionContext implements OnClickList
 			UsartPacket packet = new UsartPacket();
 			packet.setPacket(sendEdit.getText().toString());
 			packet.sendPacket(packet.getPacket());
+			if (sendText != null) {
+				activity.runOnUiThread(new Runnable() {
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						sendText.append(sendEdit.getText().toString() + "\n");  
+					}
+				});
+			}		
 			break;
 		}
 	}
@@ -125,7 +131,7 @@ public class FunctionUSARTContext extends FunctionContext implements OnClickList
 	private final int bufferFull = 2000;
 
 	protected void updateTemplate(final String data) {	
-		
+
 		if (receiveText != null) {
 			activity.runOnUiThread(new Runnable() {
 
@@ -134,7 +140,7 @@ public class FunctionUSARTContext extends FunctionContext implements OnClickList
 					// TODO Auto-generated method stub
 					receiveText.append(data + "\n");   
 					buffer.append(data+"\n");			
-					
+
 					if (buffer.toString().length() > bufferFull) {
 						receiveText.setText(buffer.toString());
 						buffer.delete(0, buffer.length());
