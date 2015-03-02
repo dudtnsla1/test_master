@@ -16,6 +16,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
+import android.widget.Toast;
 import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.Spinner;
 import android.widget.TextView;
@@ -28,6 +29,7 @@ public class FunctionUSARTContext extends FunctionContext implements OnClickList
 	private EditText sendEdit = null;
 	private TextView receiveText = null;
 	private TextView sendText = null;
+	String baudrate_string;
 
 	public FunctionUSARTContext(MainFunctionActivity context) {
 		super(context);
@@ -93,6 +95,7 @@ public class FunctionUSARTContext extends FunctionContext implements OnClickList
 	public void onItemSelected(AdapterView<?> parent, View view, int position,
 			long id) {
 		baudrateIndex = position;
+		baudrate_string= parent.getItemAtPosition(position).toString();
 		//Toast.makeText(activity, parent.getItemAtPosition(position).toString(),Toast.LENGTH_SHORT ).show();
 	}
 
@@ -108,6 +111,7 @@ public class FunctionUSARTContext extends FunctionContext implements OnClickList
 		switch (v.getId()) {
 		case R.id.function_usart_setting: 
 			((PageChanger)activity).setNextPage();
+			Toast.makeText(activity, "Baud Rate : "+baudrate_string, Toast.LENGTH_SHORT).show();
 			break;
 		case R.id.function_usart_send:
 			UsartPacket packet = new UsartPacket();
