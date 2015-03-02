@@ -158,6 +158,7 @@ public class FunctionADCContext extends FunctionContext implements OnClickListen
 
 	@Override
 	public void onClick(View v) {
+		((PageChanger)activity).setNextPage();
 		// TODO Auto-generated method stub
 	}	
 	

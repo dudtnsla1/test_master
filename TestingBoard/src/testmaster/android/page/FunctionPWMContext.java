@@ -186,7 +186,7 @@ public class FunctionPWMContext extends FunctionContext implements OnClickListen
 
 			drawDuty(Integer.parseInt(pwm_duty_s));
 
-			Toast.makeText(activity, result,Toast.LENGTH_SHORT ).show();
+			Toast.makeText(activity, result+"hz",Toast.LENGTH_SHORT ).show();
 			settingChanged().sendPacket(packet.getPacket());
 		}
 	}
