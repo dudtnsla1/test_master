@@ -3,51 +3,58 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/image_main_background_edit"
-    android:padding="10dp" >
+    android:padding="10dp"
+    android:id="@+id/temp" >
 
-    <ImageButton
-        android:id="@+id/main_home_option_btn"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@drawable/ic_option" />
-
-    <TextView
-        android:id="@+id/main_textview_subject"
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content" >
+
+        <ImageButton
+            android:id="@+id/main_home_option_btn"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/ic_option" />
+          <TextView
+        android:id="@+id/main_textview_subject"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
+        android:gravity="center"
+        android:layout_centerInParent="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="10dp"
-        android:text="@string/Subject"
+        android:text="@string/main_title"
         android:textColor="#FFF"
         android:textSize="19sp"
         android:textStyle="bold" />
+
+    </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/main_home_bluefunc_parent_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
         android:background="@drawable/rounded_corner_border_gray"
         android:orientation="vertical"
-        android:layout_marginTop="60dp"
         android:padding="10dp" >
 
         <LinearLayout
-            android:baselineAligned="false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="50dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:baselineAligned="false"
             android:orientation="horizontal" >
 
             <LinearLayout
-                android:layout_margin="15dp"
                 android:id="@+id/main_home_bluetooth_connect_layout"
-           		android:background="@drawable/rounded_corner_noborder_gray"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
+                android:layout_margin="15dp"
                 android:layout_weight="1"
+                android:background="@drawable/rounded_corner_noborder_gray"
                 android:orientation="vertical" >
 
                 <ImageButton
@@ -61,14 +68,13 @@
                 android:id="@+id/main_home_funtion_layout"
                 android:layout_width="60dp"
                 android:layout_height="wrap_content"
-                android:paddingTop="20dp"
-                android:paddingBottom="20dp"
-                android:gravity="center"
                 android:background="@drawable/rounded_corner_noborder_white"
-                android:orientation="vertical" >
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingBottom="20dp"
+                android:paddingTop="20dp" >
 
-                <LinearLayout
-                    style="@style/main_home_function_btn_text_layout" >
+                <LinearLayout style="@style/main_home_function_btn_text_layout" >
 
                     <ImageButton
                         android:id="@+id/main_home_adc_btn"
@@ -77,13 +83,11 @@
 
                     <TextView
                         android:id="@+id/main_home_adc_text"
-                        android:text="@string/adc_test"
-                        style="@style/main_home_function_text" />
-
+                        style="@style/main_home_function_text"
+                        android:text="@string/adc_test" />
                 </LinearLayout>
 
-                <LinearLayout
-                    style="@style/main_home_function_btn_text_layout" >
+                <LinearLayout style="@style/main_home_function_btn_text_layout" >
 
                     <ImageButton
                         android:id="@+id/main_home_pwm_btn"
@@ -92,27 +96,24 @@
 
                     <TextView
                         android:id="@+id/main_home_pwm_text"
-                        android:text="@string/pwm_test"
-                        style="@style/main_home_function_text" />
-                    
+                        style="@style/main_home_function_text"
+                        android:text="@string/pwm_test" />
                 </LinearLayout>
 
-                <LinearLayout
-                    style="@style/main_home_function_btn_text_layout" >
+                <LinearLayout style="@style/main_home_function_btn_text_layout" >
 
                     <ImageButton
                         android:id="@+id/main_home_usart_btn"
                         style="@style/main_home_function_btn"
                         android:background="@drawable/ic_usart" />
+
                     <TextView
                         android:id="@+id/main_home_usart_text"
-                        android:text="@string/usart_test"
-                        style="@style/main_home_function_text" />
-
+                        style="@style/main_home_function_text"
+                        android:text="@string/usart_test" />
                 </LinearLayout>
 
-                <LinearLayout
-                    style="@style/main_home_function_btn_text_layout" >
+                <LinearLayout style="@style/main_home_function_btn_text_layout" >
 
                     <ImageButton
                         android:id="@+id/main_home_i2c_btn"
@@ -121,13 +122,11 @@
 
                     <TextView
                         android:id="@+id/main_home_i2c_text"
-                        android:text="@string/i2c_test"
-                        style="@style/main_home_function_text" />
-                    
+                        style="@style/main_home_function_text"
+                        android:text="@string/i2c_test" />
                 </LinearLayout>
 
-                <LinearLayout
-                    style="@style/main_home_function_btn_text_layout" >
+                <LinearLayout style="@style/main_home_function_btn_text_layout" >
 
                     <ImageButton
                         android:id="@+id/main_home_clock_btn"
@@ -136,13 +135,11 @@
 
                     <TextView
                         android:id="@+id/main_home_clock_text"
-                        android:text="@string/highlow_test"
-                        style="@style/main_home_function_text" />
-                    
+                        style="@style/main_home_function_text"
+                        android:text="@string/highlow_test" />
                 </LinearLayout>
 
-                <LinearLayout
-                    style="@style/main_home_function_btn_text_layout" >
+                <LinearLayout style="@style/main_home_function_btn_text_layout" >
 
                     <ImageButton
                         android:id="@+id/main_home_motor_btn"
@@ -151,16 +148,10 @@
 
                     <TextView
                         android:id="@+id/main_home_motor_text"
-                        android:text="@string/motor_test"
-                        style="@style/main_home_function_text" />
-                    
+                        style="@style/main_home_function_text"
+                        android:text="@string/motor_test" />
                 </LinearLayout>
-
             </LinearLayout>
-
         </LinearLayout>
-
-
     </LinearLayout>
-
 </RelativeLayout>

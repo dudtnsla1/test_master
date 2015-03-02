@@ -1,5 +1,6 @@
 package testmaster.android.page;
 import testmaster.android.packet.SettingPacket;
+import testmaster.android.testingboard.MainFunctionActivity;
 import testmaster.android.testingboard.MainFunctionActivity.ContentLayoutIds;
 import android.content.Context;
 import android.support.v4.view.PagerAdapter;
@@ -28,7 +29,7 @@ public class ViewPagerAdapter extends PagerAdapter {
 		functionContext.destroy();
 	}
 
-	public ViewPagerAdapter(Context context, ContentLayoutIds content){
+	public ViewPagerAdapter(MainFunctionActivity context, ContentLayoutIds content){
 		super();
 		this.context = context;
 		this.content = content;

@@ -5,7 +5,7 @@ import java.util.Calendar;
 
 import testmaster.android.chart.PreferenceChartInfo;
 import testmaster.android.database.DataBases;
-import testmaster.android.database.DbOpenHelper;
+import testmaster.android.database.DbOpenProxy;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
@@ -31,7 +31,7 @@ public class ListActivity extends Activity implements OnItemClickListener, Prefe
 	ListPreference list;
 	ListView listView;
 	ArrayAdapterListItem adapter;
-	DbOpenHelper dbHelper;
+	DbOpenProxy dbHelper;
 	Cursor cursor;
 	SharedPreferences preference;
 	Editor editor;
@@ -48,7 +48,7 @@ public class ListActivity extends Activity implements OnItemClickListener, Prefe
 	public void init() {
 		listView = (ListView)findViewById(R.id.list_listview);
 		adapter = new ArrayAdapterListItem(this, R.layout.listview_item);
-		dbHelper = new DbOpenHelper(this);
+		dbHelper = new DbOpenProxy(this);
 		dbHelper.open();
 		preference = PreferenceManager.getDefaultSharedPreferences(this);
 		editor = preference.edit();
@@ -58,10 +58,10 @@ public class ListActivity extends Activity implements OnItemClickListener, Prefe
 		int order = intent.getExtras().getInt(FunctionPreferenceActivity.EXTRA_ORDER);
 		
 		if (kind.equals(FunctionPreferenceActivity.ADC_DATA_DEP)) {
-			cursor = dbHelper.getInfo(DbOpenHelper.KIND_ADC);
+			cursor = dbHelper.getInfo(DbOpenProxy.KIND_ADC);
 			key = KEYS_ADC[order];
 		} else if (kind.equals(FunctionPreferenceActivity.MOTOR_DATA_DEP)) {
-			cursor = dbHelper.getInfo(DbOpenHelper.KIND_MOTOR);
+			cursor = dbHelper.getInfo(DbOpenProxy.KIND_MOTOR);
 			key = KEYS_MOTOR[order];
 		}
 		

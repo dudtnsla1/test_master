@@ -5,6 +5,7 @@ import org.achartengine.GraphicalView;
 import testmaster.android.bluetoothobserver.BluetoothObserver;
 import testmaster.android.chart.GraphicalActivity;
 import testmaster.android.packet.SettingPacket;
+import testmaster.android.testingboard.MainFunctionActivity;
 import testmaster.android.testingboard.MainIntroActivity;
 import testmaster.android.testingboard.R;
 import android.app.Activity;
@@ -16,9 +17,10 @@ public abstract class FunctionContext implements PageChangeListener{
 	protected static final String _DEBUG_TAG = MainIntroActivity._DEBUG_TAG;
 	
 	protected Activity activity = null;
+	protected PageChanger pageChanger = null;
 	private LinearLayout barChartLayout;
 	protected SettingPacket packet = new SettingPacket();
-	GraphicalView chart = null;		
+	protected GraphicalView chart = null;
 
 	private void ObserverInit() {
 		dataRecvObserver.insertObserver(); 
@@ -80,9 +82,10 @@ public abstract class FunctionContext implements PageChangeListener{
 		barChartLayout.addView(chart);
 	}
 		
-	protected FunctionContext(Context context) {
+	protected FunctionContext(MainFunctionActivity context) {
 		// TODO Auto-generated constructor stub
 		activity = (Activity)context;
+		pageChanger = (PageChanger)context;
 		ObserverInit();
 	}
 

@@ -5,9 +5,9 @@ import org.achartengine.GraphicalView;
 import testmaster.android.chart.ChartUpdateAdeptor;
 import testmaster.android.chart.GraphicalActivity;
 import testmaster.android.packet.SettingPacket;
+import testmaster.android.testingboard.MainFunctionActivity;
 import testmaster.android.testingboard.R;
 import android.app.Activity;
-import android.content.Context;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -23,7 +23,7 @@ import android.widget.Toast;
 public class FunctionPWMContext extends FunctionContext implements OnClickListener, OnItemSelectedListener, OnCheckedChangeListener, ChartUpdateAdeptor{
 	private String SendHz_Frequency="0";
 	private String Pin_number_String="0";
-	private String dan=null;
+	private String dan="hz";
 	private String result = "";
 	private GraphicalView lineChart;
 	private Button setting;
@@ -59,7 +59,7 @@ public class FunctionPWMContext extends FunctionContext implements OnClickListen
 		((GraphicalActivity)activity).updateChart(2, this, xList);
 	}
 
-	public FunctionPWMContext(Context context) {
+	public FunctionPWMContext(MainFunctionActivity context) {
 
 		super(context);
 		// TODO Auto-generated constructor stub
@@ -73,7 +73,9 @@ public class FunctionPWMContext extends FunctionContext implements OnClickListen
 	@Override
 	public SettingPacket settingChanged() {
 		// TODO Auto-generated method stub
-		packet.setPWMPacket(Byte.parseByte(Pin_number_String), Byte.parseByte(SendHz_Frequency));
+		if (pwm_duty_s.equals(""))
+			pwm_duty_s = "50";
+		packet.setPWMPacket(Byte.parseByte(Pin_number_String), result, Byte.parseByte(pwm_duty_s));
 		return packet;
 	}
 	
@@ -138,8 +140,11 @@ public class FunctionPWMContext extends FunctionContext implements OnClickListen
 	@Override
 	public void onItemSelected(AdapterView<?> parent, View view, int position,
 			long id) {
-		dan =parent.getItemAtPosition(position).toString();
-		Pin_number_String=parent.getItemAtPosition(position).toString();
+		
+		if (parent.getId() == R.id.pwm_pin)
+			Pin_number_String=parent.getItemAtPosition(position).toString();
+		else
+			dan =parent.getItemAtPosition(position).toString();
 
 	}
 
@@ -184,6 +189,7 @@ public class FunctionPWMContext extends FunctionContext implements OnClickListen
 			drawDuty(Integer.parseInt(pwm_duty_s));
 
 			Toast.makeText(activity, result,Toast.LENGTH_SHORT ).show();
+			settingChanged().sendPacket(packet.getPacket());
 		}
 	}
 

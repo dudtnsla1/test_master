@@ -1,6 +1,7 @@
 package testmaster.android.testingboard;
 
 import testmaster.android.chart.GraphicalActivity;
+import testmaster.android.customview.CustomViewPager;
 import testmaster.android.page.PageChanger;
 import testmaster.android.page.ViewPagerAdapter;
 import android.content.Intent;
@@ -11,7 +12,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainFunctionActivity extends GraphicalActivity implements OnClickListener, PageChanger{
 
@@ -25,7 +28,8 @@ public class MainFunctionActivity extends GraphicalActivity implements OnClickLi
 	private final int REQUEST_CODE_PREFERENCE = 1;
 
 	public ViewPagerAdapter pagerAdapter;
-	public ViewPager viewPager;
+	public LinearLayout viewPagerLayout;
+	public CustomViewPager viewPager;
 	
 	private TextView title;
 	
@@ -65,7 +69,9 @@ public class MainFunctionActivity extends GraphicalActivity implements OnClickLi
 	
 	private void pageInit(Intent intent) {		
 		ContentLayoutIds layoutId = (ContentLayoutIds)intent.getExtras().getSerializable(MainHomeActivity.extraFunctionLayout);
-		viewPager = (ViewPager)findViewById(R.id.main_fucntion_container_viewpager);
+		viewPagerLayout = (LinearLayout)findViewById(R.id.main_fucntion_container_viewpager); 
+		viewPager = new CustomViewPager(this);
+		viewPagerLayout.addView(viewPager);
 		pagerAdapter = new ViewPagerAdapter(this, layoutId);
 		viewPager.setAdapter(pagerAdapter);
 		title = (TextView)findViewById(R.id.main_function_container_title);
@@ -121,13 +127,28 @@ public class MainFunctionActivity extends GraphicalActivity implements OnClickLi
 	@Override
 	public void setNextPage() {
 		// TODO Auto-generated method stub
-		viewPager.setCurrentItem(viewPager.getCurrentItem() + 1);
+		if (viewPager.isPagingEnale())
+			viewPager.setCurrentItem(viewPager.getCurrentItem() + 1);
+		else
+			Toast.makeText(this, "설정이 완료되지 않았습니다.", Toast.LENGTH_SHORT).show();
 	}
-
+	
 	@Override
 	public void bluetoothDisconnect() {
 		// TODO Auto-generated method stub
 		setResult(-1);
 		finish();
+	}
+
+	@Override
+	public void setEnable() {
+		// TODO Auto-generated method stub
+		viewPager.setEnable();
+	}
+
+	@Override
+	public void setDisable() {
+		// TODO Auto-generated method stub
+		viewPager.setDisable();
 	}
 }

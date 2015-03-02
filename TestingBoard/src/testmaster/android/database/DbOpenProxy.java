@@ -15,7 +15,7 @@ import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.util.Log;
 
-public class DbOpenHelper {
+public class DbOpenProxy {
 
 	private static final String DATABASE_NAME = "testingboard.db";
 	private static final int DATABASE_VERSION = 1;
@@ -98,11 +98,11 @@ public class DbOpenHelper {
 		}
 	}
 
-	public DbOpenHelper(Context context){
+	public DbOpenProxy(Context context){
 		this.mCtx = context;
 	}
 
-	public DbOpenHelper open() throws SQLException{
+	public DbOpenProxy open() throws SQLException{
 		if (!openSingletoneFlag) {
 			mDBHelper = new DatabaseHelper(mCtx, DATABASE_NAME, null, DATABASE_VERSION);
 			mDB = mDBHelper.getWritableDatabase();

@@ -30,22 +30,22 @@
                     android:layout_gravity="bottom" />
 
                 <Spinner
-                    android:id="@+id/i2c_setting_btn2"
-                    style="@style/function_setting_i2c_item"
-                    android:layout_gravity="bottom" />
-
-               <Spinner
                     android:id="@+id/i2c_setting_btn3"
                     style="@style/function_setting_i2c_item"
                     android:layout_gravity="bottom" />
 
-                <Spinner
-                    android:id="@+id/i2c_setting_btn4"
+               <Spinner
+                    android:id="@+id/i2c_setting_btn5"
                     style="@style/function_setting_i2c_item"
                     android:layout_gravity="bottom" />
 
                 <Spinner
-                    android:id="@+id/i2c_setting_btn5"
+                    android:id="@+id/i2c_setting_btn7"
+                    style="@style/function_setting_i2c_item"
+                    android:layout_gravity="bottom" />
+
+                <Spinner
+                    android:id="@+id/i2c_setting_btn9"
                     style="@style/function_setting_i2c_item"
                     android:layout_gravity="bottom" />
             </TableRow>
@@ -70,21 +70,21 @@
                     android:layout_gravity="center" />
 
                 <Spinner
+                    android:id="@+id/i2c_setting_btn2"
+                    style="@style/function_setting_i2c_item"
+                    android:layout_gravity="bottom" />
+
+                <Spinner
+                    android:id="@+id/i2c_setting_btn4"
+                    style="@style/function_setting_i2c_item" />
+
+                <Spinner
                     android:id="@+id/i2c_setting_btn6"
                     style="@style/function_setting_i2c_item"
                     android:layout_gravity="bottom" />
 
                 <Spinner
-                    android:id="@+id/i2c_setting_btn7"
-                    style="@style/function_setting_i2c_item" />
-
-                <Spinner
                     android:id="@+id/i2c_setting_btn8"
-                    style="@style/function_setting_i2c_item"
-                    android:layout_gravity="bottom" />
-
-                <Spinner
-                    android:id="@+id/i2c_setting_btn9"
                     style="@style/function_setting_i2c_item"
                     android:layout_gravity="bottom" />
 
@@ -121,17 +121,7 @@
                     android:layout_gravity="bottom" />
 
                 <Spinner
-                    android:id="@+id/i2c_setting_btn12"
-                    style="@style/function_setting_i2c_item"
-                    android:layout_gravity="bottom" />
-
-                <Spinner
                     android:id="@+id/i2c_setting_btn13"
-                    style="@style/function_setting_i2c_item"
-                    android:layout_gravity="bottom" />
-
-                <Spinner
-                    android:id="@+id/i2c_setting_btn14"
                     style="@style/function_setting_i2c_item"
                     android:layout_gravity="bottom" />
 
@@ -141,7 +131,17 @@
                     android:layout_gravity="bottom" />
 
                 <Spinner
-                    android:id="@+id/i2c_setting_btn16"
+                    android:id="@+id/i2c_setting_btn17"
+                    style="@style/function_setting_i2c_item"
+                    android:layout_gravity="bottom" />
+
+                <Spinner
+                    android:id="@+id/i2c_setting_btn19"
+                    style="@style/function_setting_i2c_item"
+                    android:layout_gravity="bottom" />
+
+                <Spinner
+                    android:id="@+id/i2c_setting_btn21"
                     style="@style/function_setting_i2c_item"
                     android:layout_gravity="bottom" />
             </TableRow>
@@ -162,7 +162,17 @@
                 android:layout_height="wrap_content" >
 
                 <Spinner
-                    android:id="@+id/i2c_setting_btn17"
+                    android:id="@+id/i2c_setting_btn12"
+                    style="@style/function_setting_i2c_item"
+                    android:layout_gravity="bottom" />
+
+                <Spinner
+                    android:id="@+id/i2c_setting_btn14"
+                    style="@style/function_setting_i2c_item"
+                    android:layout_gravity="bottom" />
+
+                <Spinner
+                    android:id="@+id/i2c_setting_btn16"
                     style="@style/function_setting_i2c_item"
                     android:layout_gravity="bottom" />
 
@@ -172,17 +182,7 @@
                     android:layout_gravity="bottom" />
 
                 <Spinner
-                    android:id="@+id/i2c_setting_btn19"
-                    style="@style/function_setting_i2c_item"
-                    android:layout_gravity="bottom" />
-
-                <Spinner
                     android:id="@+id/i2c_setting_btn20"
-                    style="@style/function_setting_i2c_item"
-                    android:layout_gravity="bottom" />
-
-                <Spinner
-                    android:id="@+id/i2c_setting_btn21"
                     style="@style/function_setting_i2c_item"
                     android:layout_gravity="bottom" />
 

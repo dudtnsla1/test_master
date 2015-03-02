@@ -2,7 +2,20 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
-    
+    android:orientation="vertical"
+    android:paddingTop="30dp" >
+
+    <TextView
+        style="@style/setting_paragraph_name"
+        android:text="@string/function_usart_data_receive" />
+
+    <TextView
+        android:id="@+id/function_i2c_receive_textview"
+        style="@style/function_usart_scrollview"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:gravity="bottom"
+        android:scrollbarAlwaysDrawVerticalTrack="true"
+        android:scrollbars="vertical" />
 
 </LinearLayout>

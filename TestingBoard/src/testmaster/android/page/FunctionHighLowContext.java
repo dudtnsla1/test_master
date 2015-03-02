@@ -1,16 +1,10 @@
 package testmaster.android.page;
 
-import testmaster.android.packet.PacketInfo;
 import testmaster.android.packet.SettingPacket;
+import testmaster.android.testingboard.MainFunctionActivity;
 import testmaster.android.testingboard.R;
-import android.R.drawable;
-import android.R.string;
-import android.content.Context;
-import android.content.DialogInterface;
-import android.graphics.drawable.Drawable;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.Button;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
@@ -27,7 +21,7 @@ public class FunctionHighLowContext extends FunctionContext implements OnClickLi
 	static String state3="Off";
 	static String state4="Off";
 	
-	public FunctionHighLowContext(Context context) {
+	public FunctionHighLowContext(MainFunctionActivity context) {
 		super(context);
 		// TODO Auto-generated constructor stub
 	}
@@ -81,12 +75,6 @@ public class FunctionHighLowContext extends FunctionContext implements OnClickLi
 				packet.setHightLowPacket((byte)0, (byte)0);
 			}
 		});
-		
-		
-		
-		
-		
-		
 		
 		return 0;
 	}

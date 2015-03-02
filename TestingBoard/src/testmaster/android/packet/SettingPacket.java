@@ -18,10 +18,11 @@ public class SettingPacket extends BluetoothPacket implements PacketInfo{
 		endPacket();
 	}
 	
-	public void setPWMPacket(byte pin, byte buadrateNum) {
+	public void setPWMPacket(byte pin, String hz, byte duty) {
 		initPacket(MODE_PWM);
 		packet.append(pin);
-		packet.append(buadrateNum);
+		packet.append(ByteBuffer.allocate(4).putInt(Integer.parseInt(hz)).array(), 0, 4);
+		packet.append(duty);
 		endPacket();
 	}
 	
@@ -38,8 +39,13 @@ public class SettingPacket extends BluetoothPacket implements PacketInfo{
 		endPacket();
 	}
 	
-	public void setI2CPacket() {
+	public void setI2CPacket(byte slaveAddr, byte reAddr, byte data, byte read, byte []order) {
 		initPacket(MODE_I2C);
+		packet.append(slaveAddr);
+		packet.append(reAddr);
+		packet.append(data);
+		packet.append(read);
+		packet.append(order, 0, 11);
 		endPacket();		
 	}
 	

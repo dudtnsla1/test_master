@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#EEE"
+    android:background="#FFF"
     android:orientation="vertical" >
 
   
@@ -24,7 +24,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_margin="5dp"
-        android:background="@drawable/rounded_corner_border_lightgray"
+        android:background="@drawable/rounded_corner_border_gray"
         android:orientation="vertical" >
 
         <!--
@@ -34,11 +34,12 @@
             layout="@layout/function_content_adc_activity1" />
         -->
 
-        <android.support.v4.view.ViewPager
+        <LinearLayout
+            android:orientation="vertical"
             android:id="@+id/main_fucntion_container_viewpager"
             android:layout_width="match_parent"
             android:layout_height="match_parent" >
-        </android.support.v4.view.ViewPager>
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

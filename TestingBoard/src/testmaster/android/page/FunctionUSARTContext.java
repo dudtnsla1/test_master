@@ -2,11 +2,10 @@ package testmaster.android.page;
 
 import testmaster.android.packet.SettingPacket;
 import testmaster.android.packet.UsartPacket;
+import testmaster.android.testingboard.MainFunctionActivity;
 import testmaster.android.testingboard.R;
 import android.app.Activity;
-import android.content.Context;
 import android.text.method.ScrollingMovementMethod;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -28,7 +27,7 @@ public class FunctionUSARTContext extends FunctionContext implements OnClickList
 	private TextView receiveText = null;
 	private TextView sendText = null;
 
-	public FunctionUSARTContext(Context context) {
+	public FunctionUSARTContext(MainFunctionActivity context) {
 		super(context);
 		// TODO Auto-generated constructor stub
 	}
@@ -117,7 +116,6 @@ public class FunctionUSARTContext extends FunctionContext implements OnClickList
 	}
 
 	protected void updateTemplate(final String data) {	
-		Log.i("TestingBoard FunctionUSARTContext", "read:" + data);
 		if (receiveText != null) {
 			activity.runOnUiThread(new Runnable() {
 

@@ -37,7 +37,7 @@ public class MainIntroActivity extends Activity {
 				startActivityForResult(intent, MAIN_ACTIVITY_RESULT);
 				overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
 			}
-		}, 500);
+		}, 1000);
 	}
 
 	@Override

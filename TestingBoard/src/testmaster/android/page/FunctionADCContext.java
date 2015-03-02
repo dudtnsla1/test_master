@@ -4,9 +4,10 @@ import org.achartengine.GraphicalView;
 
 import testmaster.android.chart.ChartFacade;
 import testmaster.android.chart.GraphicalActivity;
-import testmaster.android.database.DbOpenHelper;
+import testmaster.android.database.DbOpenProxy;
 import testmaster.android.packet.PacketInfo;
 import testmaster.android.packet.SettingPacket;
+import testmaster.android.testingboard.MainFunctionActivity;
 import testmaster.android.testingboard.R;
 import android.app.Activity;
 import android.content.Context;
@@ -41,7 +42,7 @@ public class FunctionADCContext extends FunctionContext implements OnClickListen
 	private ChartFacade databaseDrawer;
 	
 	private int pinNumber;
-	DbOpenHelper dbHelper;
+	DbOpenProxy dbHelper;
 
 	@Override
 	public void updatePreference() {
@@ -49,12 +50,13 @@ public class FunctionADCContext extends FunctionContext implements OnClickListen
 		databaseDrawer.updateLables();
 	}
 	
-	public FunctionADCContext(Context context) {
+	public FunctionADCContext(MainFunctionActivity context) {
 		// TODO Auto-generated constructor stub
 		super(context);
-		dbHelper = new DbOpenHelper(context);
+		dbHelper = new DbOpenProxy(context);
 		dbHelper.open();
 		databaseDrawer = new ChartFacade(dbHelper, (GraphicalActivity)activity, ChartFacade.KIND_ADC);
+		pageChanger.setEnable();
 	}
 
 	private void setUnitSpinner(Activity context) {

@@ -2,7 +2,7 @@ package testmaster.android.page;
 
 import testmaster.android.bluetoothobserver.BluetoothObservable;
 import testmaster.android.chart.PreferenceChartInfo;
-import testmaster.android.database.DbOpenHelper;
+import testmaster.android.database.DbOpenProxy;
 import testmaster.android.testingboard.R;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -14,11 +14,11 @@ import android.widget.ImageButton;
 
 public class ChartOnClickAdpater implements OnClickListener, PreferenceChartInfo{
 	
-	private DbOpenHelper dbHelper;
+	private DbOpenProxy dbHelper;
 	private Activity activity;
 	private int dataKind;	
  
-	public ChartOnClickAdpater(DbOpenHelper dbHelper, Activity activity , int dataKind) {
+	public ChartOnClickAdpater(DbOpenProxy dbHelper, Activity activity , int dataKind) {
 		this.activity = activity;
 		this.dbHelper = dbHelper;
 		this.dataKind = dataKind;

@@ -1,32 +1,38 @@
 package testmaster.android.page;
 
+import testmaster.android.testingboard.MainIntroActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
-import android.widget.Toast;
+import android.widget.Spinner;
 
 public class OnSpinnerItemClicked implements OnItemSelectedListener {
-	public static String[] S_Value= new String[100];
+	private Spinner master, slave;
 	
+	private int position = 0;
+	
+	public int getPosition() {
+		return position;
+	}
+
+	public OnSpinnerItemClicked(Spinner master, Spinner slave) {
+		// TODO Auto-generated constructor stub
+		this.master = master;
+		this.slave = slave;
+	}
 
 	@Override
 	public void onItemSelected(AdapterView<?> parent, View view, int position,
 			long id) {
-		//Log.e("what",parent.getItemAtPosition(position).toString());
-		//Log.e("whatn",position+"".toString());
-		//Log.e("gogo",parent.getId()-2131361892+"");
-		try
-		{
-			S_Value[parent.getId()-2131361892]=parent.getItemAtPosition(position).toString();
+		if (parent == master && position != 0) {
+			slave.setSelection(0);
+			Log.d(MainIntroActivity._DEBUG_TAG + " OnSpinnerItemClicked", "Master");
+		} else if (parent == slave && position != 0){
+			master.setSelection(0);
+			Log.d(MainIntroActivity._DEBUG_TAG + " OnSpinnerItemClicked", "Slave");
 		}
-		catch (Exception e){
-
-		}
-		//Toast.makeText(parent.getContext(), "Clicked : " +
-		//      parent.getItemAtPosition(position).toString()+position+"", Toast.LENGTH_SHORT).show();
-
-
+		this.position = position;
 	}
 
 	@Override

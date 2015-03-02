@@ -72,14 +72,14 @@ public class GraphicalActivity extends ActionBarActivity{
 	private boolean seriesLockFlag = false;
 
 	private synchronized void seriesLock(int x) {
-		Log.d("TestingBoard GraphicalActivity", "lock" + x);
+//		Log.d("TestingBoard GraphicalActivity", "lock" + x);
 		while (seriesLockFlag);
 		seriesLockFlag = true;
 	}
 
 	private void seriesRelease(int x) {
 		seriesLockFlag = false;
-		Log.d("TestingBoard GraphicalActivity", "release" + x);
+//		Log.d("TestingBoard GraphicalActivity", "release" + x);
 	}
 
 	public void resetLineChart(int index) {
@@ -126,7 +126,6 @@ public class GraphicalActivity extends ActionBarActivity{
 
 	public void updateCurrent(double data) {
 		seriesLock(4);
-		Log.d("TestingBoard GraphicalActivity", "lock debugging " + 4);
 		if (dataset != null) {
 
 			XYSeries series = dataset.getSeriesAt(0);

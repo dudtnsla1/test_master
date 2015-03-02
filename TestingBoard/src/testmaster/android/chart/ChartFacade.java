@@ -1,18 +1,18 @@
 package testmaster.android.chart;
 
 import testmaster.android.database.DataBases.CreateDB;
-import testmaster.android.database.DbOpenHelper;
+import testmaster.android.database.DbOpenProxy;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.preference.PreferenceManager;
 
 public class ChartFacade implements PreferenceChartInfo, ChartUpdateAdeptor {
 	private GraphicalActivity chartActivity;
-	private DbOpenHelper dbHelper;
+	private DbOpenProxy dbHelper;
 	private Cursor cursor = null;
 	private int kind;
 	
-	public ChartFacade (DbOpenHelper dbHelper, GraphicalActivity chartActivity, int kind) {
+	public ChartFacade (DbOpenProxy dbHelper, GraphicalActivity chartActivity, int kind) {
 		this.chartActivity = chartActivity;
 		this.dbHelper = dbHelper;
 		this.kind = kind;
