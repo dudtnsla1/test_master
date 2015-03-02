@@ -164,9 +164,7 @@ public class FunctionI2CContext extends FunctionContext implements OnClickListen
 		editsListenDeco.addEditText(Register_ADDRESS);
 		editsListenDeco.addEditText(Write_DATA);
 		editsListenDeco.addEditText(Number_READ);
-		
-		Address_Check = (Button) activity.findViewById(R.id.function_i2c_setting_btn);
-		Address_Check.setOnClickListener(this);
+	
 
 		Send_btn = (Button) activity.findViewById(R.id.function_i2c_send_btn);
 		Send_btn.setOnClickListener(this);
@@ -203,12 +201,13 @@ public class FunctionI2CContext extends FunctionContext implements OnClickListen
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 		switch (v.getId()) {
-		case R.id.function_i2c_setting_btn:
-			break;
 		case R.id.function_i2c_send_btn: case R.id.function_i2c_receive_btn:
 			showDialog();
 			break;
-		case R.id.function_i2c_send_btn_true: case R.id.function_i2c_receive_btn_true:
+		case R.id.function_i2c_send_btn_true: 
+			settingChanged();
+			break;
+		case R.id.function_i2c_receive_btn_true:
 			((PageChanger)activity).setNextPage();
 			break;
 		}

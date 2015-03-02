@@ -107,11 +107,6 @@
                 android:hint="@string/Number_Read"
                 android:inputType="number" >
             </EditText>
-
-            <Button
-                android:id="@+id/function_i2c_setting_btn"
-                style="@style/function_setting_submit_button2"
-                android:layout_gravity="bottom" />
         </LinearLayout>
         
     </LinearLayout>
