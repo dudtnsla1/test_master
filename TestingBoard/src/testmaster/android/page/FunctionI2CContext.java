@@ -98,9 +98,9 @@ public class FunctionI2CContext extends FunctionContext implements OnClickListen
 	@Override
 	public SettingPacket settingChanged() {
 		// TODO Auto-generated method stub
-		packet.setI2CPacket(Byte.parseByte(editsListenDeco.getText(Slave_ADDRESS)), 
-				Byte.parseByte(editsListenDeco.getText(Register_ADDRESS)),
-				Byte.parseByte(editsListenDeco.getText(Write_DATA)),
+		packet.setI2CPacket(parseByteFromHex(editsListenDeco.getText(Slave_ADDRESS)), 
+				parseByteFromHex(editsListenDeco.getText(Register_ADDRESS)),
+				parseByteFromHex(editsListenDeco.getText(Write_DATA)),
 				Byte.parseByte(editsListenDeco.getText(Number_READ)),
 				order);
 		return packet;
@@ -181,13 +181,22 @@ public class FunctionI2CContext extends FunctionContext implements OnClickListen
 	}
 	
 	private void initSecondPage() {
-		receiveText = (TextView)activity.findViewById(R.id.function_usart_receive_textview);
+		receiveText = (TextView)activity.findViewById(R.id.function_i2c_receive_textview);
 	}
 
 	@Override
 	public void saveSettingData() {
 		// TODO Auto-generated method stub
 
+	}
+	
+	private byte parseByteFromHex(String string) {
+		int start = 0;
+		for (int i = 0; i < string.length(); i++) {
+			if (string.charAt(i) == 'x' || string.charAt(i) == 'X')
+				start = i + 1;
+		}
+		return (byte) Integer.parseInt(string.substring(start, string.length()), 16);
 	}
 
 	@Override
@@ -205,19 +214,26 @@ public class FunctionI2CContext extends FunctionContext implements OnClickListen
 		}
 	}
 	
-	protected void updateTemplate(final String data) {	
-		Log.i("TestingBoard FunctionUSARTContext", "read:" + data);
+	private StringBuffer buffer = new StringBuffer();
+	private final int bufferFull = 2000;
+	
+	protected void updateTemplate(final String data) {			
 		if (receiveText != null) {
 			activity.runOnUiThread(new Runnable() {
 
 				@Override
 				public void run() {
 					// TODO Auto-generated method stub
-					receiveText.append(data + "\n");    
-					receiveText.setMovementMethod(new ScrollingMovementMethod());
+					receiveText.append(data + "\n");   
+					buffer.append(data+"\n");			
+					
+					if (buffer.toString().length() > bufferFull) {
+						receiveText.setText(buffer.toString());
+						buffer.delete(0, buffer.length());
+					}	
 				}
 			});
-		}
+		}		
 	}
 }
 

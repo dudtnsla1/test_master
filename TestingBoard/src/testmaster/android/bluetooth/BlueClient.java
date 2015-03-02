@@ -2,7 +2,6 @@ package testmaster.android.bluetooth;
 
 import java.io.IOException;
 import java.util.UUID;
-
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;

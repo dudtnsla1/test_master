@@ -25,6 +25,7 @@ public class NotNullEditTextDecorator {
 	public void addEditText(EditText edit) {
 		if (!edit.getText().toString().equals(""))
 			editedCount++;
+		Log.d(MainIntroActivity._DEBUG_TAG + " NotNullEditTextAdapter", "add" + edit.getText().toString() + editedCount);
 		editList.add(edit);
 		edit.addTextChangedListener(new NotNullTextWhatcher());
 		if (editedCount == editList.size()) {

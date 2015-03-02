@@ -6,8 +6,10 @@ import testmaster.android.chart.ChartUpdateAdeptor;
 import testmaster.android.chart.GraphicalActivity;
 import testmaster.android.packet.SettingPacket;
 import testmaster.android.testingboard.MainFunctionActivity;
+import testmaster.android.testingboard.MainIntroActivity;
 import testmaster.android.testingboard.R;
 import android.app.Activity;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -35,7 +37,7 @@ public class FunctionPWMContext extends FunctionContext implements OnClickListen
 
 	private Spinner hzSpinner;
 	private Spinner Pin_number_pwm;
-	
+
 	public void drawDuty(int duty) {
 		data[0] = 5;
 		data[1] = 5;
@@ -45,7 +47,7 @@ public class FunctionPWMContext extends FunctionContext implements OnClickListen
 		data[5] = 5;
 		data[6] = 90;
 		data[7] = 90;
-		
+
 		xList[0] = 0;
 		xList[1] = 10;
 		xList[2] = 10;
@@ -54,9 +56,11 @@ public class FunctionPWMContext extends FunctionContext implements OnClickListen
 		xList[5] = 110;
 		xList[6] = 110;
 		xList[7] = 120;
-		
+
+		Log.d(MainIntroActivity._DEBUG_TAG + "FunctionPWMContext", "duty-" + duty);
 		((GraphicalActivity)activity).resetLineChart(2);
 		((GraphicalActivity)activity).updateChart(2, this, xList);
+		updateChart();
 	}
 
 	public FunctionPWMContext(MainFunctionActivity context) {
@@ -78,7 +82,7 @@ public class FunctionPWMContext extends FunctionContext implements OnClickListen
 		packet.setPWMPacket(Byte.parseByte(Pin_number_String), result, Byte.parseByte(pwm_duty_s));
 		return packet;
 	}
-	
+
 	private void setUnitSpinner(Activity context) {
 		hzSpinner = (Spinner)activity.findViewById(R.id.pwmspinner1);
 		ArrayAdapter<CharSequence> pwmadapter = ArrayAdapter.createFromResource(context, R.array.pwm_hz, android.R.layout.simple_spinner_item);
@@ -91,8 +95,6 @@ public class FunctionPWMContext extends FunctionContext implements OnClickListen
 		pwmadapter2.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 		Pin_number_pwm.setAdapter(pwmadapter2);
 		Pin_number_pwm.setOnItemSelectedListener(this);
-
-
 
 		editText = (EditText) activity.findViewById(R.id.editText1);
 		setting = (Button) activity.findViewById(R.id.function_pwm_setting);
@@ -140,7 +142,7 @@ public class FunctionPWMContext extends FunctionContext implements OnClickListen
 	@Override
 	public void onItemSelected(AdapterView<?> parent, View view, int position,
 			long id) {
-		
+
 		if (parent.getId() == R.id.pwm_pin)
 			Pin_number_String=parent.getItemAtPosition(position).toString();
 		else
@@ -159,13 +161,9 @@ public class FunctionPWMContext extends FunctionContext implements OnClickListen
 		// TODO Auto-generated method stub
 
 
-		try	{
-			SendHz_Frequency=editText.getText().toString();
-			pwm_duty_s=pwm_duty_e.getText().toString();
-
-		} catch(Exception e){
-		}
-
+		SendHz_Frequency=editText.getText().toString();
+		pwm_duty_s=pwm_duty_e.getText().toString();
+		
 		if(SendHz_Frequency.equals("")||pwm_duty_s.equals("")) {
 			Toast.makeText(activity, "항목을 모두 입력하세요.",Toast.LENGTH_SHORT ).show();
 		} else {
