@@ -150,6 +150,7 @@
         </LinearLayout>
 
         <LinearLayout
+			android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="30dp" >
@@ -168,13 +169,13 @@
                 android:gravity="center"
                 android:hint="  D 계수"
                 android:inputType="textVisiblePassword" />
+
+            <Button
+                android:id="@+id/btn_PID"
+                style="@style/function_setting_submit_button2"
+                android:layout_marginRight="30dp" />
+
         </LinearLayout>
     </LinearLayout>
-
-    <Button
-        android:id="@+id/btn_PID"
-        style="@style/function_setting_submit_button2"
-        android:layout_gravity="right"
-        android:layout_marginRight="30dp" />
 
 </LinearLayout>

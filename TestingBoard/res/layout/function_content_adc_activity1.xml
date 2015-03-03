@@ -9,25 +9,23 @@
         style="@style/setting_paragraph_name"
         android:text="@string/function_adc_data_config" />
 
-    
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="15dp"
-            android:textSize="20sp"
-            android:textColor="#666666"
-            android:layout_gravity="center"
-            android:text="@string/function_adc_result_fure" />
-
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="15dp"
+        android:layout_marginBottom="2dp"
+        android:text="@string/function_adc_result_fure"
+        android:textColor="#666666"
+        android:textSize="20sp" />
 
     <LinearLayout
         android:id="@+id/function_adc_modify_layout"
-		style="@style/setting_sub2"
+        style="@style/setting_sub2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:visibility="invisible"
-        android:gravity="start|center" >
+        android:gravity="start|center"
+        android:visibility="gone" >
 
         <TextView
             android:id="@+id/function_adc_result_variable"
@@ -61,28 +59,61 @@
     </LinearLayout>
 
     <LinearLayout
-       	style="@style/setting_sub1"
+        style="@style/setting_sub1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" 
-        android:orientation="horizontal">
+        android:layout_height="wrap_content"
+        android:orientation="horizontal" >
 
-        <TextView
-            android:id="@+id/textView1"
+        <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/pin_number" />
-
-        <Spinner
-            android:id="@+id/function_adc_pinSpinner"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:background="@drawable/rounded_corner_noborder_gray"
             android:gravity="center"
-            android:prompt="@string/pin_number" />
+            android:padding="10dp" >
+
+            <TextView
+                android:id="@+id/textView1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/pin_number" />
+
+            <View
+                android:id="@+id/view1"
+                android:layout_marginLeft="5dp"
+                android:layout_width="2dp"
+                android:layout_height="20dp"
+                android:background="#FFF" />
+
+            <Spinner
+                android:id="@+id/function_adc_pinSpinner"
+                android:layout_width="70dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:prompt="@string/pin_number" />
+        </LinearLayout>
 
         <Button
             android:id="@+id/function_adc_setting"
-            style="@style/function_setting_submit_button" />
+            style="@style/function_setting_submit_button"
+            android:layout_marginLeft="50dp" />
+    </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="10dp"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:padding="20dp" >
+
+        <ImageView
+        	android:padding="10dp"
+            android:id="@+id/imageView1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#23F2"
+            android:src="@drawable/ic_adc" />
     </LinearLayout>
 
 </LinearLayout>

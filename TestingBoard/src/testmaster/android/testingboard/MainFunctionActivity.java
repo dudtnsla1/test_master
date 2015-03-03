@@ -86,7 +86,10 @@ public class MainFunctionActivity extends GraphicalActivity implements OnClickLi
 		chartInit();
 		setContentView(R.layout.main_function_container);
 		pageInit(getIntent());
+
+		getSupportActionBar().setHomeAsUpIndicator(R.drawable.ic_back);
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+		getSupportActionBar().show();
 	}	
 	
 	@Override

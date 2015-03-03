@@ -15,7 +15,7 @@
         android:allowBackup="false"
         android:icon="@drawable/ic_main_icon"
         android:label="@string/app_name"
-        android:theme="@style/CustomActionBarTheme" >
+        android:theme="@android:style/Theme.Holo.Light" >
         <activity
             android:clearTaskOnLaunch="true"
             android:name="testmaster.android.testingboard.MainIntroActivity" android:theme="@android:style/Theme.Light.NoTitleBar.Fullscreen">
@@ -25,8 +25,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:label="@string/main_title" android:name="testmaster.android.testingboard.MainHomeActivity"></activity>
-        <activity android:name="MainFunctionActivity" android:theme="@style/MyApp.ActionBarTheme" android:windowSoftInputMode="adjustPan"></activity>
+        <activity android:label="@string/main_title" android:name="testmaster.android.testingboard.MainHomeActivity" android:theme="@android:style/Theme.Holo.Light.NoActionBar.Fullscreen"></activity>
+        <activity android:name="MainFunctionActivity" android:theme="@style/CustomActionBarTheme" android:windowSoftInputMode="adjustPan" android:label="@string/app_name"></activity>
         <activity android:name="MainPreferenceActivity"></activity>
         <activity android:name="FunctionPreferenceActivity"></activity>
         <activity android:name="ListActivity"></activity>

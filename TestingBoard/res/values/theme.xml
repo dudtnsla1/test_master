@@ -1,33 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <style name="MyApp.ActionBarTheme" parent="Theme.AppCompat.Light"></style>
+	<style name="CustomActionBarTheme" parent="@style/Theme.AppCompat.Light">
+		<item name="actionBarStyle">@style/MyActionBar</item>
+		<item name="android:windowBackground">@color/switch_thumb_normal_material_light</item>
+		<item name="android:colorBackground">@color/switch_thumb_normal_material_light</item>
+	</style>
 
-    <!-- Bonus: if you want to style whole Action Bar, not just the menu -->
+	<!-- ActionBar styles -->
+	<style name="MyActionBar" parent="@style/Base.Widget.AppCompat.ActionBar.Solid">
+		<item name="background">@color/main_home_emerald_alpha_b</item>
+		<item name="titleTextStyle">@style/MyTitleTextStyle</item>
+	</style>
 
-    <style name="MyAppActionBar">
-        <item name="android:background">#0F0</item>
-    </style>
-
-    <style name="CustomActionBarTheme" parent="@android:style/Theme.Holo.Light">
-        <item name="android:actionBarStyle">@style/MyActionBar</item>
-        <item name="android:actionBarTabTextStyle">@style/MyActionBarTabText</item>
-        <item name="android:actionMenuTextColor">#ff33b5e5</item>
-    </style>
-
-    <!-- ActionBar styles -->
-    <style name="MyActionBar" parent="@android:style/Widget.Holo.ActionBar">
-        <item name="android:titleTextStyle">@style/MyActionBarTitleText</item>
-    </style>
-
-    <!-- ActionBar title text -->
-    <style name="MyActionBarTitleText" parent="@android:style/TextAppearance.Holo.Widget.ActionBar.Title">
-        <item name="android:textColor">#ff33b5e5</item>
-    </style>
-
-    <!-- ActionBar tabs text styles -->
-    <style name="MyActionBarTabText" parent="@android:style/Widget.Holo.ActionBar.TabText">
-        <item name="android:textColor">#ff33b5e5</item>
-    </style>
+	<style name="MyTitleTextStyle"
+		parent="@style/Base.TextAppearance.AppCompat.Widget.ActionBar.Title">
+		<item name="android:textColor">@color/white</item>
+		<item name="android:textStyle">bold</item>
+	</style>
 
 </resources>

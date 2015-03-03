@@ -27,15 +27,15 @@ public class GraphicalActivity extends ActionBarActivity{
 	private List<Double> datasetBuffer = new ArrayList<Double>();
 	private final int CHART_COLOR = Color.argb(0xff, 0x0, 0xAA, 0xAA);
 
-	static final String[] titles = new String[] { "State1", "State2" , "State3", "State4"};
+	private static final String[] titles = new String[] { "State1", "State2" , "State3", "State4"};
 	private String chartTitle = "";
 	private String xLableText = "";
 	private String yLableText = "";
-	int[] colors = new int[] { Color.rgb(0xff, 0x00, 0x00), Color.rgb(0x00, 0x00, 0xff), Color.rgb(0x00, 0x00, 0x00), Color.rgb(0x00, 0x00, 0xff)};
-	PointStyle[] styles = new PointStyle[] { PointStyle.SQUARE, PointStyle.SQUARE, PointStyle.SQUARE, PointStyle.SQUARE};
+	private int[] colors = new int[] { Color.rgb(0xff, 0x00, 0x00), Color.rgb(0x00, 0x00, 0xff), Color.rgb(0x00, 0x00, 0x00), Color.rgb(0x00, 0x00, 0xff)};
+	private PointStyle[] styles = new PointStyle[] { PointStyle.SQUARE, PointStyle.SQUARE, PointStyle.SQUARE, PointStyle.SQUARE};
 	private int xScale = 0;
 
-	XYMultipleSeriesRenderer renderer = buildRenderer(colors, styles);
+	private XYMultipleSeriesRenderer renderer = buildRenderer(colors, styles);
 
 	public void setOrientationHorizontal() {
 		renderer.setOrientation(XYMultipleSeriesRenderer.Orientation.HORIZONTAL);
@@ -238,6 +238,7 @@ public class GraphicalActivity extends ActionBarActivity{
 		renderer.setZoomEnabled(false);
 		renderer.setShowLegend(false);
 		renderer.setZoomEnabled(false, false);
+		renderer.setPointSize(3);
 
 		setChartSettings(renderer, chartTitle, xLableText,
 				yLableText, xMin, xMax, yMin, yMax,

@@ -2,4 +2,5 @@
 <resources xmlns:android="http://schemas.android.com/apk/res/android">
 <color name="main_home_gray_alpha_b">#BAAA</color>
 <color name="main_home_emerald_alpha_b">#F7CC</color>
+<color name="white">#FFF</color>
 </resources>

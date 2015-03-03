@@ -23,6 +23,7 @@
 </LinearLayout>
 
         <LinearLayout
+            android:layout_marginLeft="70dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal" >
@@ -51,6 +52,7 @@
             android:orientation="horizontal" >
 
             <EditText
+            android:layout_marginLeft="70dp"
                 android:id="@+id/Register_Address"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
@@ -74,6 +76,7 @@
             android:orientation="horizontal" >
 
             <EditText
+           android:layout_marginLeft="70dp"
                 android:id="@+id/Write_data"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
@@ -99,6 +102,7 @@
             android:orientation="horizontal" >
 
             <EditText
+            android:layout_marginLeft="70dp"
                 android:id="@+id/Number_of_Read"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"

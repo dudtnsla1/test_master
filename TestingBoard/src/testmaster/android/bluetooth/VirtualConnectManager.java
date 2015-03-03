@@ -46,7 +46,7 @@ public class VirtualConnectManager extends ConnectManager implements DestroyInte
 
 				/**/
 				Thread.sleep(10);
-				read_str = "axgbasdgasgkahgoheqghograsg" + (i++);
+				read_str = "123";
 				/**/
 //				Log.i("TestingBoard ConnectManager", "read:" + read_str);
 
