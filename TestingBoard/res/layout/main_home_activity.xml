@@ -30,21 +30,21 @@
             android:textStyle="bold" />
     </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/main_home_bluefunc_parent_layout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="80dp"
         android:background="@drawable/rounded_corner_border_gray"
-        android:orientation="vertical"
         android:padding="10dp" >
 
         <LinearLayout
+            android:id="@+id/LinearLayout1"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginBottom="40dp"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="10dp"
             android:baselineAligned="false"
             android:orientation="horizontal" >
 
@@ -52,7 +52,6 @@
                 android:id="@+id/main_home_bluetooth_connect_layout"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
-                android:layout_margin="15dp"
                 android:layout_weight="1"
                 android:background="@drawable/rounded_corner_noborder_gray"
                 android:orientation="vertical" >
@@ -153,6 +152,6 @@
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
-    </LinearLayout>
+    </RelativeLayout>
 
 </RelativeLayout>
