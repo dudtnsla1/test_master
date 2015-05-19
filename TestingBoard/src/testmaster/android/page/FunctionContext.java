@@ -74,7 +74,7 @@ public abstract class FunctionContext implements PageChangeListener{
 		if (chart != null)
 			chart.repaint();
 	}
-		
+
 	protected void setBarChart(GraphicalView chart) {
 		this.chart = chart;
 		barChartLayout = (LinearLayout)activity.findViewById(R.id.chart_layout);
@@ -87,7 +87,5 @@ public abstract class FunctionContext implements PageChangeListener{
 		activity = (Activity)context;
 		pageChanger = (PageChanger)context;
 		ObserverInit();
-	}
-
-	
+	}	
 }
