@@ -39,12 +39,12 @@ public class MainHomeActivity extends Activity {
 
 	
 	private int []functionButtonIds = new int[] {
-			R.id.main_home_adc_btn, 
-			R.id.main_home_pwm_btn,
-			R.id.main_home_usart_btn,
-			R.id.main_home_i2c_btn, 
-			R.id.main_home_clock_btn,
-			R.id.main_home_motor_btn
+			R.id.main_activity2_adc, 
+			R.id.main_activity2_pwm,
+			R.id.main_activity2_uart,
+			R.id.main_activity2_i2c, 
+			R.id.main_activity2_High_low,
+			R.id.main_activity2_Motor
 	};
 
 	private int []functionTextIds = new int[] {
@@ -140,7 +140,7 @@ public class MainHomeActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
-		setContentView(R.layout.main_home_activity);
+		setContentView(R.layout.main_home_change);
 		init();
 	}	
 
