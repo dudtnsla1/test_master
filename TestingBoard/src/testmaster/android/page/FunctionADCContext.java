@@ -8,6 +8,7 @@ import testmaster.android.database.DbOpenProxy;
 import testmaster.android.packet.SettingPacket;
 import testmaster.android.testingboard.MainFunctionActivity;
 import testmaster.android.testingboard.R;
+import testmaster.android.tool.Modifyer;
 import android.app.Activity;
 import android.util.Log;
 import android.view.View;
@@ -54,6 +55,8 @@ public class FunctionADCContext extends FunctionContext implements
 	float sum = 0;
 	Boolean on = false;
 	Boolean clean = false;
+	
+	Modifyer modifyer;
 
 	/**
 	 * Setting Page
@@ -382,8 +385,7 @@ public class FunctionADCContext extends FunctionContext implements
 
 	@Override
 	public void onClick(View v) {
-		// 여기에 수식이랑 핀번호 확인!!
-
+		modifyer = new Modifyer();
 		((PageChanger) activity).setNextPage();
 		// TODO Auto-generated method stub
 	}

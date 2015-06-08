@@ -6,7 +6,6 @@ import testmaster.android.page.PageChanger;
 import testmaster.android.page.ViewPagerAdapter;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;

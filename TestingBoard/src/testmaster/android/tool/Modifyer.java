@@ -1,122 +1,66 @@
 package testmaster.android.tool;
 
-import testmaster.android.testingboard.R;
-import android.app.Activity;
-import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.Button;
+import java.util.ArrayList;
 
 public class Modifyer {
 
-	private String modify = "";
-	private Button result_y;
-	private Button value_x;
-	private Activity activity;
+	private ArrayList<calcI> calcList = new ArrayList<calcI>();
 	
-	private KeyPadClickAdapter keypadAdapter = new KeyPadClickAdapter();
-	private FunctionClickAdapter funcAdapter = new FunctionClickAdapter();
-
-	private Button keypad[] = new Button[10];	
-	
-	private final boolean KEYPAD = false, FUNC = true;
-	private boolean last_input_key = KEYPAD;
-	
-	private int keypadIds[] = {
-			R.id.one,
-			R.id.two,
-			R.id.three,
-			R.id.four,
-			R.id.five,
-			R.id.six,
-			R.id.seven,
-			R.id.eight,
-			R.id.nine,
-			R.id.zero
+	private abstract class calcI {
+		boolean variable = false;
+		float b;
+		abstract public float calc(float x);
 	};
-
-	private Button func[] = new Button[10];	
-	private int funcIds[] = {
-			R.id.plus,
-			R.id.minus,
-			R.id.divide,
-			R.id.multiply,
-			R.id.equal,
-			R.id.leftguard,
-			R.id.rightguard,
-			R.id.result_y,
-			R.id.value_x,
-			R.id.backspace
-	};
-
-	public String getModify()
-	{
-		return modify;
-	}
-
-	private void initKeypad()
-	{
-		for (int i = 0; i < keypad.length; i++) {
-			keypad[i] = (Button)activity.findViewById(keypadIds[i]);
-			keypad[i].setContentDescription( (i + 1) + "");
-			keypad[i].setOnClickListener(keypadAdapter);
-		}		
-	}
-
-	private void initFunc()
-	{	
-		String funcDescript[] = {
-				"+",
-				"-",
-				"/",
-				"*",
-				"=",
-				"(",
-				")",
-				"y",
-				"x",
-				"<-"
-		};
-
-		for (int i = 0; i < funcDescript.length; i++) {
-			func[i].setContentDescription(funcDescript[i]);
-			func[i].setOnClickListener(funcAdapter);
-		}		
-	}
-
-	public Modifyer(Activity activity) {
-		this.activity = activity;
-		initKeypad();
-		initFunc();
-	}
-
-	private class FunctionClickAdapter implements OnClickListener {
+	
+	private class Devide extends calcI {
 		@Override
-		public void onClick(View v) {
-			
-			switch (v.getId()) {
-			case R.id.backspace:
-				if (modify.length() > 1)
-					modify = modify.substring(0, modify.length() - 2);
-				else
-					modify = "";
-				break;
-			default:
-				if (last_input_key == KEYPAD)
-					modify += v.getContentDescription();
-			}
-			
-			last_input_key = FUNC;
+		public float calc(float x) {
+			return x / b;
 		}		
 	}
 	
-	private class KeyPadClickAdapter implements OnClickListener {
+	private class Multi extends calcI {
 		@Override
-		public void onClick(View v) {
-			
-			modify += v.getContentDescription();
-
-			last_input_key = KEYPAD;
+		public float calc(float x) {
+			return x * b;
+		}
+	}
+	
+	private class Plus extends calcI {
+		@Override
+		public float calc(float x) {
+			return x + b;
+		}		
+	}
+	
+	private class Sub extends calcI {
+		@Override
+		public float calc(float x) {
+			return x - b;
+		}		
+	}
+	
+	public boolean setModify(String modify)
+	{
+		return parsingModify(modify);
+	}
+	
+	private boolean parsingModify(String modify)
+	{
+		return true;
+	}
+	
+	public float getY(float x)
+	{
+		for (int i = 0; i < calcList.size(); i++) {
+			if (calcList.get(i).variable == true)
+				calcList.get(i).b = x;				
 		}
 		
+		for (int i = 0; i < calcList.size(); i++) {
+			x = calcList.get(i).calc(x);
+		}
+		
+		return x;
 	}
 }
