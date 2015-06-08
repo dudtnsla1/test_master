@@ -1,3 +1,4 @@
+
 package testmaster.android.page;
 
 import org.achartengine.GraphicalView;
@@ -12,7 +13,6 @@ import android.app.Activity;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
