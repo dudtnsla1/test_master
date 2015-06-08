@@ -5,28 +5,25 @@
     android:orientation="vertical" >
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="5"
+        android:gravity="center"
         android:orientation="vertical"
         android:paddingLeft="20dp" >
- <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="50dp"
-        android:orientation="vertical"
-         >
-        <TextView
-            style="@style/setting_paragraph_name"
-            android:layout_width="150dp"
-            android:gravity="center"
-            android:layout_height="wrap_content"
-            android:text="@string/function_i2c_SlaveSet" />
-</LinearLayout>
 
         <LinearLayout
-            android:layout_marginLeft="70dp"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                style="@style/setting_paragraph_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/function_i2c_SlaveSet" />
 
             <EditText
                 android:id="@+id/i2cEdit"
@@ -38,21 +35,22 @@
                 android:inputType="textVisiblePassword" >
             </EditText>
         </LinearLayout>
-        
-         <TextView
-            style="@style/setting_paragraph_name"
-            android:layout_width="150dp"
-            android:gravity="center"
-            android:layout_height="wrap_content"
-            android:text="@string/Register_Address" />
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <TextView
+                style="@style/setting_paragraph_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="@string/Register_Address" />
 
             <EditText
-            android:layout_marginLeft="70dp"
                 android:id="@+id/Register_Address"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
@@ -62,47 +60,21 @@
                 android:inputType="textVisiblePassword" >
             </EditText>
         </LinearLayout>
-        
-         <TextView
-            style="@style/setting_paragraph_name"
-            android:layout_width="150dp"
-            android:gravity="center"
-            android:layout_height="wrap_content"
-            android:text="@string/Write_Data" />
 
         <LinearLayout
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical" >
 
-            <EditText
-           android:layout_marginLeft="70dp"
-                android:id="@+id/Write_data"
-                android:layout_width="150dp"
+            <TextView
+                style="@style/setting_paragraph_name"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:hint="@string/Write_Data"
-                android:inputType="textVisiblePassword" >
-
-                <requestFocus />
-            </EditText>
-        </LinearLayout>
-        
-         <TextView
-            style="@style/setting_paragraph_name"
-            android:layout_width="150dp"
-            android:gravity="center"
-            android:layout_height="wrap_content"
-            android:text="@string/Number_Read" />
-
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal" >
+                android:text="@string/Number_Read" />
 
             <EditText
-            android:layout_marginLeft="70dp"
                 android:id="@+id/Number_of_Read"
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
@@ -112,55 +84,32 @@
                 android:inputType="number" >
             </EditText>
         </LinearLayout>
-        
     </LinearLayout>
-<LinearLayout
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="10dp"
         android:orientation="horizontal" >
-</LinearLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" 
-        android:gravity="center">
-
-        <Button
-            android:id="@+id/function_i2c_send_btn"
-            style="@style/function_setting_i2c_send"
-            android:layout_gravity="center" />
-
-        <Button
-            android:id="@+id/function_i2c_receive_btn"
-            style="@style/function_setting_i2c_receive"
-            android:layout_gravity="center" />
     </LinearLayout>
 
-    
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="20dp"
-        android:orientation="horizontal" >
-</LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal" 
-        android:gravity="center">
+        android:gravity="center"
+        android:orientation="horizontal" >
+    </LinearLayout>
 
-        <Button
-            android:id="@+id/function_i2c_send_btn_true"
-            style="@style/function_setting_i2c_send_true"
-            android:layout_gravity="center" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:gravity="center"
+        android:orientation="horizontal" >
 
         <Button
             android:id="@+id/function_i2c_receive_btn_true"
             style="@style/function_setting_i2c_receive_true"
             android:layout_gravity="center" />
     </LinearLayout>
-    
-    
-    
-    
-    
+
 </LinearLayout>

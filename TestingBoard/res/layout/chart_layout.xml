@@ -8,7 +8,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#ACCC"
+        android:background="#B3E5FC"
         android:gravity="center"
         android:layout_marginBottom="5dp"
         android:padding="5dp" >
@@ -38,7 +38,7 @@
         android:id="@+id/chart_layout"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:background="#6ACC"
+        android:background="#BBDEFB"
         android:orientation="vertical" >
     </LinearLayout>
 

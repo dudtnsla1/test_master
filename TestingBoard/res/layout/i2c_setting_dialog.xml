@@ -9,7 +9,7 @@
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#999999"
+            android:background="#90CAF9"
             android:stretchColumns="*" >
 
             <View
@@ -54,7 +54,7 @@
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#999999"
+            android:background="#90CAF9"
             android:stretchColumns="*" >
 
             <View
@@ -104,7 +104,7 @@
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#999999"
+            android:background="#90CAF9"
             android:stretchColumns="*" >
 
             <View
@@ -150,7 +150,7 @@
         <TableLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#999999"
+            android:background="#90CAF9"
             android:stretchColumns="*" >
 
             <View

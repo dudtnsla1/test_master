@@ -4,5 +4,5 @@
          android:layout_width="fill_parent"
          android:layout_height="fill_parent"
          android:textSize="15sp"
-         android:textColor="#0C0C0C"         
+         android:textColor="#E1F5FE"         
          android:gravity="center"/>

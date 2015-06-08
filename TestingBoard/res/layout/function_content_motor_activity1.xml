@@ -38,7 +38,7 @@
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                android:gravity="center"
+                    android:gravity="center"
                     android:hint="  Gear 비"
                     android:inputType="number" />
             </LinearLayout>
@@ -60,7 +60,7 @@
                     android:layout_width="150dp"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                android:gravity="center"
+                    android:gravity="center"
                     android:hint="  Pulse"
                     android:inputType="number" />
             </LinearLayout>
@@ -88,8 +88,8 @@
                 android:layout_width="150dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:gravity="center"
                 android:layout_marginLeft="30dp"
+                android:gravity="center"
                 android:hint="@string/objective_RPM_"
                 android:inputType="number" >
             </EditText>
@@ -150,10 +150,10 @@
         </LinearLayout>
 
         <LinearLayout
-			android:gravity="center"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="30dp" >
+            android:layout_marginLeft="30dp"
+            android:gravity="center" >
 
             <TextView
                 style="@style/setting_unit_font_size"
@@ -174,7 +174,6 @@
                 android:id="@+id/btn_PID"
                 style="@style/function_setting_submit_button2"
                 android:layout_marginRight="30dp" />
-
         </LinearLayout>
     </LinearLayout>
 

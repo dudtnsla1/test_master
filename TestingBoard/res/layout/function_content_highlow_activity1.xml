@@ -2,87 +2,151 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#B3E5FC"
     android:orientation="vertical" >
 
-    <TextView
-        style="@style/setting_paragraph_name"
-        android:text="@string/function_highlow1_config" />
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:gravity="center"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:orientation="horizontal" >
 
-        <ToggleButton
-            android:id="@+id/highlow1"
-            android:layout_gravity="center"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/selector"
-            android:textColor="@android:color/transparent"
-            android:textOff="Off"
-            android:textOn="On" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:background="#64B5F6"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/high_llow" />
+
+            <TextView
+                style="@style/setting_paragraph_name"
+                android:text="@string/function_highlow1_config" />
+
+            <ToggleButton
+                android:id="@+id/highlow1"
+                android:layout_width="115dp"
+                android:layout_height="33dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="40dp"
+                android:background="@drawable/selector"
+                android:gravity="right"
+                android:textColor="@android:color/transparent"
+                android:textOff="Off"
+                android:textOn="On" />
+        </LinearLayout>
     </LinearLayout>
 
-    <TextView
-        style="@style/setting_paragraph_name"
-        android:text="@string/function_highlow2_config" />
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:gravity="center"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:orientation="horizontal" >
 
-        <ToggleButton
-            android:id="@+id/highlow2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/selector"
-            android:textColor="@android:color/transparent"
-            android:textOff="Off"
-            android:textOn="On" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:background="#90CAF9"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/high_llow" />
+
+            <TextView
+                style="@style/setting_paragraph_name"
+                android:text="@string/function_highlow2_config" />
+
+            <ToggleButton
+                android:id="@+id/highlow2"
+                android:layout_width="115dp"
+                android:layout_height="33dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="40dp"
+                android:background="@drawable/selector"
+                android:gravity="right"
+                android:textColor="@android:color/transparent"
+                android:textOff="Off"
+                android:textOn="On" />
+        </LinearLayout>
     </LinearLayout>
 
-    <TextView
-        style="@style/setting_paragraph_name"
-        android:text="@string/function_highlow3_config" />
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:gravity="center"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:orientation="horizontal" >
-        
-          <ToggleButton
-            android:id="@+id/highlow3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/selector"
-            android:textColor="@android:color/transparent"
-            android:textOff="Off"
-            android:textOn="On" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:background="#64B5F6"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/high_llow" />
+
+            <TextView
+                style="@style/setting_paragraph_name"
+                android:text="@string/function_highlow3_config" />
+
+            <ToggleButton
+                android:id="@+id/highlow3"
+                android:layout_width="115dp"
+                android:layout_height="33dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="40dp"
+                android:background="@drawable/selector"
+                android:gravity="right"
+                android:textColor="@android:color/transparent"
+                android:textOff="Off"
+                android:textOn="On" />
+        </LinearLayout>
     </LinearLayout>
 
-    <TextView
-        style="@style/setting_paragraph_name"
-        android:text="@string/function_highlow4_config" />
-
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="30dp"
-        android:gravity="center"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:orientation="horizontal" >
-          <ToggleButton
-            android:id="@+id/highlow4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/selector"
-            android:textColor="@android:color/transparent"
-            android:textOff="Off"
-            android:textOn="On" />  
-        
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:background="#90CAF9"
+            android:orientation="horizontal" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/high_llow" />
+
+            <TextView
+                style="@style/setting_paragraph_name"
+                android:text="@string/function_highlow4_config" />
+
+            <ToggleButton
+                android:id="@+id/highlow4"
+                android:layout_width="115dp"
+                android:layout_height="33dp"
+                android:layout_gravity="center"
+                android:layout_marginLeft="40dp"
+                android:background="@drawable/selector"
+                android:gravity="right"
+                android:textColor="@android:color/transparent"
+                android:textOff="Off"
+                android:textOn="On" />
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

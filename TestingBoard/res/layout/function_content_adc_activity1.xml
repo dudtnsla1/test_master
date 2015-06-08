@@ -2,118 +2,355 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#B3E5FC"
     android:gravity="center|start"
     android:orientation="vertical" >
 
-    <TextView
-        style="@style/setting_paragraph_name"
-        android:text="@string/function_adc_data_config" />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_marginTop="15dp"
-        android:layout_marginBottom="2dp"
-        android:text="@string/function_adc_result_fure"
-        android:textColor="#666666"
-        android:textSize="20sp" />
-
     <LinearLayout
-        android:id="@+id/function_adc_modify_layout"
-        style="@style/setting_sub2"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="start|center"
-        android:visibility="gone" >
-
-        <TextView
-            android:id="@+id/function_adc_result_variable"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/DATA" >
-        </TextView>
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/Equal" />
-
-        <EditText
-            android:id="@+id/function_adc_modification_edittext"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:hint="@string/Modify" >
-
-            <requestFocus android:layout_width="match_parent" />
-        </EditText>
-
-        <Spinner
-            android:id="@+id/function_adc_unitSpinner"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:prompt="@string/unit" />
-    </LinearLayout>
-
-    <LinearLayout
-        style="@style/setting_sub1"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal" >
+            android:text="@string/function_adc_result_fure"
+            android:textColor="#1565C0"
+            android:textSize="20sp" />
 
         <LinearLayout
+            style="@style/setting_sub1"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:background="@drawable/rounded_corner_noborder_gray"
-            android:gravity="center"
-            android:padding="10dp" >
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
 
-            <TextView
-                android:id="@+id/textView1"
+            <LinearLayout
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/pin_number" />
-
-            <View
-                android:id="@+id/view1"
-                android:layout_marginLeft="5dp"
-                android:layout_width="2dp"
-                android:layout_height="20dp"
-                android:background="#FFF" />
-
-            <Spinner
-                android:id="@+id/function_adc_pinSpinner"
-                android:layout_width="70dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
+                android:layout_height="50dp"
+                android:background="@drawable/rounded_corner_noborder_gray"
                 android:gravity="center"
-                android:prompt="@string/pin_number" />
-        </LinearLayout>
+                android:padding="10dp" >
 
-        <Button
-            android:id="@+id/function_adc_setting"
-            style="@style/function_setting_submit_button"
-            android:layout_marginLeft="50dp" />
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#E1F5FE"
+                    android:text="@string/pin_number" />
+
+                <Spinner
+                    android:id="@+id/function_adc_pinSpinner"
+                    android:layout_width="70dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:prompt="@string/pin_number" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/function_adc_setting"
+                style="@style/function_setting_submit_button3"
+                android:layout_marginRight="50dp" />
+        </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="30dp"
-        android:gravity="center"
-        android:padding="20dp" >
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
+        android:layout_weight="3"
+        android:gravity="center_horizontal"
+        android:orientation="vertical" >
 
-        <ImageView
-        	android:padding="10dp"
-            android:id="@+id/imageView1"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/function_adc_result_calibration"
+            android:textColor="#1565C0"
+            android:textSize="20sp" />
+
+        <!-- 첫번째 줄 -->
+
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="#23F2"
-            android:src="@drawable/ic_adc" />
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:orientation="horizontal" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp" 
+                android:gravity="center_horizontal">
+
+                <EditText
+                    android:id="@+id/edittext_cal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_alignParentTop="true"
+                    android:layout_gravity="center_horizontal"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:hint="X = value, Y= result"
+                    android:textSize="20sp"
+                    android:inputType="numberDecimal"
+                     />
+
+            </RelativeLayout>
+        </LinearLayout>
+
+        <!-- 두번째 줄 -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"          >
+
+                <Button
+                    android:id="@+id/one"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="#4FC3F7"
+                    android:layout_margin="3px"
+                    android:text="1"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/two"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="#4FC3F7"
+                    android:layout_margin="3px"
+                    android:layout_toRightOf="@id/one"
+                    android:text="2"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/three"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="#4FC3F7"
+                    android:layout_margin="3px"
+                    android:layout_toRightOf="@id/two"
+                    android:text="3"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/backspace"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="#4FC3F7"
+                    android:layout_margin="3px"
+                    android:layout_toRightOf="@id/three"
+                    android:text="←"
+                    android:textSize="20sp" />
+                
+                <Button
+                    android:id="@+id/leftguard"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="#4FC3F7"
+                    android:layout_margin="3px"
+                    android:layout_toRightOf="@id/backspace"
+                    android:text="("
+                    android:textSize="20sp" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <!-- 세번째 줄 -->
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="60dp"
+                android:orientation="horizontal">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" 
+                android:gravity="center_horizontal">
+
+                <Button
+                    android:id="@+id/four"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="#4FC3F7"
+                    android:layout_margin="3px"
+                    android:text="4"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/five"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="#4FC3F7"
+                    android:layout_margin="3px"
+                    android:layout_toRightOf="@id/four"
+                    android:text="5"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/six"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="#4FC3F7"
+                    android:layout_margin="3px"
+                    android:layout_toRightOf="@id/five"
+                    android:text="6"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/plus"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="#4FC3F7"
+                    android:layout_margin="3px"
+                    android:layout_toRightOf="@id/six"
+                    android:text="+"
+                    android:textSize="20sp" />
+                
+                <Button
+                    android:id="@+id/rightguard"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="#4FC3F7"
+                    android:layout_margin="3px"
+                    android:layout_toRightOf="@id/plus"
+                    android:text=")"
+                    android:textSize="20sp" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <!-- 네번째 줄 -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center_horizontal" >
+
+                <Button
+                    android:id="@+id/seven"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="#4FC3F7"
+                    android:layout_margin="3px"
+                    android:text="7"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/eight"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="#4FC3F7"
+                    android:layout_margin="3px"
+                    android:layout_toRightOf="@id/seven"
+                    android:text="8"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/nine"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="#4FC3F7"
+                    android:layout_margin="3px"
+                    android:layout_toRightOf="@id/eight"
+                    android:text="9"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/minus"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="#4FC3F7"
+                    android:layout_margin="3px"
+                    android:layout_toRightOf="@id/nine"
+                    android:text="-"
+                    android:textSize="20sp" />
+                <Button
+                    android:id="@+id/result_y"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="#4FC3F7"
+                    android:layout_margin="3px"
+                    android:layout_toRightOf="@id/minus"
+                    android:text="Y"
+                    android:textSize="20sp" />
+            </RelativeLayout>
+        </LinearLayout>
+
+        <!-- 다섯번째 줄 -->
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:orientation="horizontal" >
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" 
+                android:gravity="center_horizontal">
+
+                <Button
+                    android:id="@+id/zero"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="#4FC3F7"
+                    android:layout_margin="3px"
+                    android:text="0"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/multiply"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="#4FC3F7"
+                    android:layout_margin="3px"
+                    android:layout_toRightOf="@id/zero"
+                    android:text="*"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/divide"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="#4FC3F7"
+                    android:layout_margin="3px"
+                    android:layout_toRightOf="@id/multiply"
+                    android:text="÷"
+                    android:textSize="20sp" />
+
+                <Button
+                    android:id="@+id/equal"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="#4FC3F7"
+                    android:layout_margin="3px"
+                    android:layout_toRightOf="@id/divide"
+                    android:text="="
+                    android:textSize="20sp" />
+                
+                <Button
+                    android:id="@+id/value_x"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:background="#4FC3F7"
+                    android:layout_margin="3px"
+                    android:layout_toRightOf="@id/equal"
+                    android:text="X"
+                    android:textSize="20sp" />
+            </RelativeLayout>
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

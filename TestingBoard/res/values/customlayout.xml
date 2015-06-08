@@ -49,15 +49,24 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginLeft">30dp</item>
         <item name="android:textSize">12sp</item>
-        <item name="android:text">@string/configure</item>
+        
     </style>
 
+        <style name="function_setting_submit_button3">
+        <item name="android:background">@drawable/rounded_corner_noborder_button</item>
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">30dp</item>
+ 
+    </style>
+    
+    
     <style name="function_setting_i2c_item_ex_M">
         <item name="android:layout_width">10dp</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginBottom">1dp</item>
         <item name="android:layout_marginLeft">1dp</item>
-        <item name="android:background">#b2b2b2</item>
+        <item name="android:background">#90CAF9</item>
         <item name="android:gravity">center</item>
         <item name="android:padding">3dp</item>
         <item name="android:textSize">10sp</item>
@@ -79,7 +88,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginBottom">1dp</item>
         <item name="android:layout_marginLeft">1dp</item>
-        <item name="android:background">#b2b2b2</item>
+        <item name="android:background">#90CAF9</item>
         <item name="android:gravity">center</item>
         <item name="android:padding">3dp</item>
         <item name="android:textSize">10sp</item>
@@ -91,7 +100,7 @@
         <item name="android:layout_height">50dp</item>
         <item name="android:layout_marginBottom">1dp</item>
         <item name="android:layout_marginLeft">1dp</item>
-        <item name="android:background">#666666</item>
+        <item name="android:background">#64B5F6</item>
         <item name="android:gravity">center</item>
         <item name="android:padding">3dp</item>
     </style>
@@ -102,7 +111,7 @@
         <item name="android:layout_height">30dp</item>
         <item name="android:layout_marginLeft">30dp</item>
         <item name="android:textSize">12sp</item>
-        <item name="android:text">@string/confirm</item>
+        
     </style>
 
     <style name="function_setting_i2c_send">
@@ -136,7 +145,6 @@
         <item name="android:layout_height">40dp</item>
         <item name="android:layout_marginLeft">30dp</item>
         <item name="android:textSize">12sp</item>
-        <item name="android:text">@string/receive</item>
     </style>
 
     <style name="function_setting_highlow_button_high">
@@ -161,7 +169,7 @@
         <item name="android:background">@drawable/rounded_corner_noborder_button</item>
         <item name="android:layout_width">wrap_content</item>
         <item name="android:layout_height">wrap_content</item>
-        <item name="android:text">@string/Send</item>
+        
     </style>
 
     <style name="function_usart_textarea">
