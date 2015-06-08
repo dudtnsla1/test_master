@@ -8,8 +8,7 @@
     <string name="baudrate_summary">주파수를 설정하세요.</string>
     <string name="database_setting">데이터베이스</string>
     <string name="data_setting">저장된 데이터 불러오기</string>
-    <string name="adc_chart_setting">ADC 차트 설정</string>
-    <string name="motor_chart_setting">Motor 차트 설정</string>
+    <string name="adc_chart_setting">차트 범위 설정</string>
     <string name="pwm_pulse_setting">PWM 차트 설정</string>
     <string name="i2c_pulse_setting">I2C 차트 설정</string>
     <string name="baudrate">주파수</string>
@@ -95,5 +94,6 @@
     <string name="y_max">Y Size</string>
     <string name="x_max_summary">x의치 최대값을 설정하세요.</string>
     <string name="y_max_summary">y의치 최대값을 설정하세요.</string>
+    <string name="all">All</string>
 
 </resources>

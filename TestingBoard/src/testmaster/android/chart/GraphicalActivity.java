@@ -61,10 +61,10 @@ public class GraphicalActivity extends ActionBarActivity{
 	protected void chartInit() {
 
 		double [][] sample = new double[][] {
-				{ 0},
-				{ 0},
-				{ 0},
-				{ 0},
+				{ 0, 10},
+				{ 0, 10},
+				{ 0, 10},
+				{ 0, 10},
 		};
 		setChartData(sample, "", "", "");  
 	}

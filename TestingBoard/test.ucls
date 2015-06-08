@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class-diagram version="1.1.8" icons="true" always-add-relationships="false" generalizations="true" realizations="true" 
+  associations="true" dependencies="false" nesting-relationships="true">  
+  <class id="1" language="java" name="testmaster.android.page.FunctionPWMContext" project="TestingBoard" 
+    file="/TestingBoard/src/testmaster/android/page/FunctionPWMContext.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="315" width="278" x="41" y="392"/>    
+    <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="false" static="true"/>      
+      <operations public="true" package="true" protected="true" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="2" language="java" name="testmaster.android.page.FunctionMotorContext" project="TestingBoard" 
+    file="/TestingBoard/src/testmaster/android/page/FunctionMotorContext.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="261" width="238" x="1237" y="392"/>    
+    <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="false" static="true"/>      
+      <operations public="true" package="true" protected="true" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="3" language="java" name="testmaster.android.page.FunctionContext" project="TestingBoard" 
+    file="/TestingBoard/src/testmaster/android/page/FunctionContext.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="315" width="211" x="787" y="37"/>    
+    <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="false" static="true"/>      
+      <operations public="true" package="true" protected="true" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="4" language="java" name="testmaster.android.page.FunctionHighLowContext" project="TestingBoard" 
+    file="/TestingBoard/src/testmaster/android/page/FunctionHighLowContext.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="171" width="254" x="943" y="392"/>    
+    <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="false" static="true"/>      
+      <operations public="true" package="true" protected="true" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="5" language="java" name="testmaster.android.page.FunctionI2CContext.I2CSpinner" project="TestingBoard" 
+    file="/TestingBoard/src/testmaster/android/page/FunctionI2CContext.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="117" width="173" x="359" y="747"/>    
+    <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="false" static="true"/>      
+      <operations public="true" package="true" protected="true" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="6" language="java" name="testmaster.android.page.FunctionUSARTContext" project="TestingBoard" 
+    file="/TestingBoard/src/testmaster/android/page/FunctionUSARTContext.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="315" width="278" x="625" y="392"/>    
+    <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="false" static="true"/>      
+      <operations public="true" package="true" protected="true" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="7" language="java" name="testmaster.android.page.FunctionOscilloscopeContext" project="TestingBoard" 
+    file="/TestingBoard/src/testmaster/android/page/FunctionOscilloscopeContext.java" binary="false" 
+    corner="BOTTOM_RIGHT">    
+    <position height="225" width="273" x="1515" y="392"/>    
+    <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="false" static="true"/>      
+      <operations public="true" package="true" protected="true" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="8" language="java" name="testmaster.android.page.FunctionContextFactory" project="TestingBoard" 
+    file="/TestingBoard/src/testmaster/android/page/FunctionContextFactory.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="99" width="368" x="210" y="37"/>    
+    <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="false" static="true"/>      
+      <operations public="true" package="true" protected="true" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <class id="9" language="java" name="testmaster.android.page.FunctionI2CContext" project="TestingBoard" 
+    file="/TestingBoard/src/testmaster/android/page/FunctionI2CContext.java" binary="false" corner="BOTTOM_RIGHT">    
+    <position height="243" width="226" x="359" y="392"/>    
+    <display autosize="true" stereotype="true" package="false" initial-value="false" signature="true" 
+      sort-features="false" accessors="true" visibility="true">      
+      <attributes public="true" package="true" protected="true" private="false" static="true"/>      
+      <operations public="true" package="true" protected="true" private="false" static="true"/>    
+    </display>  
+  </class>  
+  <generalization id="10">    
+    <end type="SOURCE" refId="1"/>    
+    <end type="TARGET" refId="3"/>  
+  </generalization>  
+  <generalization id="11">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="3"/>  
+  </generalization>  
+  <generalization id="12">    
+    <end type="SOURCE" refId="2"/>    
+    <end type="TARGET" refId="3"/>  
+  </generalization>  
+  <nesting id="13">    
+    <end type="SOURCE" refId="9"/>    
+    <end type="TARGET" refId="5"/>  
+  </nesting>  
+  <generalization id="14">    
+    <end type="SOURCE" refId="4"/>    
+    <end type="TARGET" refId="3"/>  
+  </generalization>  
+  <generalization id="15">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="3"/>  
+  </generalization>  
+  <association id="16">    
+    <end type="SOURCE" refId="9" navigable="false">      
+      <attribute id="17" name="I2C_Setting_Spinner"/>      
+      <multiplicity id="18" minimum="0" maximum="2147483647"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="19">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="3"/>  
+  </generalization>  
+  <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
+    sort-features="false" accessors="true" visibility="false">    
+    <attributes public="true" package="true" protected="true" private="true" static="true"/>    
+    <operations public="false" package="false" protected="false" private="false" static="true"/>  
+  </classifier-display>  
+  <association-display labels="true" multiplicity="true"/>
+</class-diagram>

@@ -22,6 +22,8 @@ public abstract class FunctionContextFactory{
 			return (FunctionContext) new FunctionHighLowContext(context);
 		else if (content == ContentLayoutIds.MOTOR)
 			return (FunctionContext) new FunctionMotorContext(context);
+		else if (content == ContentLayoutIds.OSCILLOSCOPE)
+			return (FunctionContext) new FunctionOscilloscopeContext(context);
 		return null;
 	}
 }

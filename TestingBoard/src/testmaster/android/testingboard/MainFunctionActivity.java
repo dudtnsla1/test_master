@@ -24,6 +24,7 @@ public class MainFunctionActivity extends GraphicalActivity implements OnClickLi
 	private static final int []PAGES_I2C = {R.layout.function_content_i2c_activity1, R.layout.function_content_i2c_activity2};
 	private static final int []PAGES_CLOCK = {R.layout.function_content_highlow_activity1};
 	private static final int []PAGES_MOTOR = {R.layout.function_content_motor_activity1, R.layout.chart_layout};
+	private static final int []PAGES_OSCILLOSCOPE = {R.layout.function_content_oscilloscope_activity1, R.layout.function_content_oscilloscope_activity2};
 	
 	private final int REQUEST_CODE_PREFERENCE = 1;
 
@@ -34,7 +35,7 @@ public class MainFunctionActivity extends GraphicalActivity implements OnClickLi
 	private TextView title;
 	
 	public enum ContentLayoutIds {
-		ADC(PAGES_ADC, 0), PWM(PAGES_PWM, 0), USART(PAGES_USART, 0), I2C(PAGES_I2C, 0), HIGHLOW(PAGES_CLOCK, 0), MOTOR(PAGES_MOTOR, 0);
+		ADC(PAGES_ADC, 0), PWM(PAGES_PWM, 0), USART(PAGES_USART, 0), I2C(PAGES_I2C, 0), HIGHLOW(PAGES_CLOCK, 0), MOTOR(PAGES_MOTOR, 0), OSCILLOSCOPE(PAGES_OSCILLOSCOPE, 0);
 		int []ids;
 		int settingLayoutNum;
 		ContentLayoutIds(int []ids, int settingLayoutNum) {
@@ -58,7 +59,8 @@ public class MainFunctionActivity extends GraphicalActivity implements OnClickLi
 		ContentLayoutIds.USART,
 		ContentLayoutIds.I2C,
 		ContentLayoutIds.HIGHLOW,
-		ContentLayoutIds.MOTOR
+		ContentLayoutIds.MOTOR,
+		ContentLayoutIds.OSCILLOSCOPE
 	};
 	
 	@Override

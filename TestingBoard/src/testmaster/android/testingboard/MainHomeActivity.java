@@ -35,7 +35,8 @@ public class MainHomeActivity extends Activity {
 			R.id.main_activity2_uart,
 			R.id.main_activity2_i2c, 
 			R.id.main_activity2_High_low,
-			R.id.main_activity2_Motor
+			R.id.main_activity2_Motor,
+			R.id.main_activity2_Oscilloscope
 	};
 
 	private ImageButton functionButtons[] = new ImageButton[functionButtonIds.length];

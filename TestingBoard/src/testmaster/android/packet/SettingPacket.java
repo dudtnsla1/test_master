@@ -79,4 +79,9 @@ public class SettingPacket extends BluetoothPacket implements PacketInfo{
 	public byte[] getPacket() {
 		return packet.toByteArray();
 	}
+	
+	public void setOscilloPacket()
+	{
+		
+	}
 }

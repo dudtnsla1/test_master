@@ -40,8 +40,7 @@ public class FunctionHighLowContext extends FunctionContext implements OnClickLi
 	}
 
 	@Override
-	public int pageChanged(int pageNum) {
-		
+	public int pageChanged(int pageNum) {		
 				
 		toggle1 =((ToggleButton) activity.findViewById(R.id.highlow1));
 		toggle1.setOnClickListener(new OnClickListener() {
