@@ -9,7 +9,6 @@ import testmaster.android.testingboard.MainFunctionActivity;
 import testmaster.android.testingboard.MainIntroActivity;
 import testmaster.android.testingboard.R;
 import android.app.Activity;
-import android.content.Context;
 import android.widget.LinearLayout;
 
 public abstract class FunctionContext implements PageChangeListener{

@@ -27,7 +27,6 @@ public class FunctionPWMContext extends FunctionContext implements OnClickListen
 	private String Pin_number_String="0";
 	private String dan="hz";
 	private String result = "";
-	private GraphicalView lineChart;
 	private Button setting;
 	private EditText editText;
 	private EditText pwm_duty_e;

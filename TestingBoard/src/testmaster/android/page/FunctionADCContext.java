@@ -24,34 +24,45 @@ import android.widget.Spinner;
 
 public class FunctionADCContext extends FunctionContext implements
 		OnClickListener, OnItemSelectedListener, OnCheckedChangeListener {
+	
+	private Button keypad[] = new Button[10];	
+	private int keypadIds[] = {
+			R.id.one,
+			R.id.two,
+			R.id.three,
+			R.id.four,
+			R.id.five,
+			R.id.six,
+			R.id.seven,
+			R.id.eight,
+			R.id.nine,
+			R.id.zero
+	};
+	
+	privatei 
+	
+	plus = (Button) activity.findViewById(R.id.plus);
+	minus = (Button) activity.findViewById(R.id.minus);
+	divide = (Button) activity.findViewById(R.id.divide);
+	multiply = (Button) activity.findViewById(R.id.multiply);
+	equal = (Button) activity.findViewById(R.id.equal);
+	backspace = (Button) activity.findViewById(R.id.backspace);
+	leftguard = (Button) activity.findViewById(R.id.leftguard);
+	rightguard = (Button) activity.findViewById(R.id.rightguard);
+	result_y = (Button) activity.findViewById(R.id.result_y);
+	value_x = (Button) activity.findViewById(R.id.value_x);
 
+	private Button func[] = new Button[10];
 	// 수식 입력 버튼
-	Button one;
-	Button two;
-	Button three;
-	Button four;
-	Button five;
-	Button six;
-	Button seven;
-	Button eight;
-	Button nine;
-	Button zero;
-	Button plus;
-	Button minus;
-	Button divide;
-	Button multiply;
-	Button equal;
-	Button backspace;
-	Button leftguard;
-	Button rightguard;
-	Button result_y;
-	Button value_x;
 
-	EditText text;
-	String string;
-	String temp;
-	int length;
-	int yunsan;
+	private Button result_y;
+	private Button value_x;
+
+	private EditText text;
+	private String string;
+	private String temp;
+	private int length;
+	private int yunsan;
 	float sum = 0;
 	Boolean on = false;
 	Boolean clean = false;
@@ -64,8 +75,6 @@ public class FunctionADCContext extends FunctionContext implements
 	 */
 
 	private Button configure;
-	private EditText modify;
-	private Spinner unitSpinner;
 	private Spinner pinSpinner;
 	// private RadioGroup adcValueCalibrationSelect;
 	private GraphicalView chart;
@@ -111,28 +120,8 @@ public class FunctionADCContext extends FunctionContext implements
 		configure = (Button) activity.findViewById(R.id.function_adc_setting);
 		configure.setOnClickListener(this);
 
-		one = (Button) activity.findViewById(R.id.one);
-		two = (Button) activity.findViewById(R.id.two);
-		three = (Button) activity.findViewById(R.id.three);
-		four = (Button) activity.findViewById(R.id.four);
-		five = (Button) activity.findViewById(R.id.five);
-		six = (Button) activity.findViewById(R.id.six);
-		seven = (Button) activity.findViewById(R.id.seven);
-		eight = (Button) activity.findViewById(R.id.eight);
-		nine = (Button) activity.findViewById(R.id.nine);
-		zero = (Button) activity.findViewById(R.id.zero);
-		plus = (Button) activity.findViewById(R.id.plus);
-		minus = (Button) activity.findViewById(R.id.minus);
-		divide = (Button) activity.findViewById(R.id.divide);
-		multiply = (Button) activity.findViewById(R.id.multiply);
-		equal = (Button) activity.findViewById(R.id.equal);
-		backspace = (Button) activity.findViewById(R.id.backspace);
 		text = (EditText) activity.findViewById(R.id.edittext_cal);
 
-		leftguard = (Button) activity.findViewById(R.id.leftguard);
-		rightguard = (Button) activity.findViewById(R.id.rightguard);
-		result_y = (Button) activity.findViewById(R.id.result_y);
-		value_x = (Button) activity.findViewById(R.id.value_x);
 		one.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View arg0) {
 				function("1");

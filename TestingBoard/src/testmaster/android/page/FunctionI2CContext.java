@@ -3,14 +3,11 @@ package testmaster.android.page;
 
 import testmaster.android.packet.SettingPacket;
 import testmaster.android.testingboard.MainFunctionActivity;
-import testmaster.android.testingboard.MainIntroActivity;
 import testmaster.android.testingboard.R;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.text.method.ScrollingMovementMethod;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -23,10 +20,6 @@ import android.widget.TextView;
 public class FunctionI2CContext extends FunctionContext implements
 		OnClickListener {
 
-	private Button Address_Check;
-	private Button Send_btn;
-	private Button Receive_btn;
-	private Button btn_Send_true;
 	private Button btn_Receive_true;
 	private I2CSpinner[] I2C_Setting_Spinner = new I2CSpinner[11];
 	private byte[] order = new byte[11];

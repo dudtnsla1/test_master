@@ -27,7 +27,6 @@ public class MainHomeActivity extends Activity {
 
 	private static final int REQUEST_ENABLE_BT = 0;	
 	private static final int REQUEST_FUNCTION_ACTIVITY = 1;
-
 	
 	private int []functionButtonIds = new int[] {
 			R.id.main_activity2_adc, 
@@ -146,7 +145,6 @@ public class MainHomeActivity extends Activity {
 		private boolean bluetoothConnect() {
 			Set<BluetoothDevice> pairedDevices = mBluetoothAdapter
 					.getBondedDevices();
-
 
 			if(pairedDevices.size()>0){
 				final BluetoothDevice[] item =new BluetoothDevice[pairedDevices.size()];
