@@ -6,6 +6,7 @@ import testmaster.android.page.PageChanger;
 import testmaster.android.page.ViewPagerAdapter;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,7 +24,7 @@ public class MainFunctionActivity extends GraphicalActivity implements OnClickLi
 	private static final int []PAGES_I2C = {R.layout.function_content_i2c_activity1, R.layout.function_content_i2c_activity2};
 	private static final int []PAGES_CLOCK = {R.layout.function_content_highlow_activity1};
 	private static final int []PAGES_MOTOR = {R.layout.function_content_motor_activity1, R.layout.chart_layout};
-	private static final int []PAGES_OSCILLOSCOPE = {R.layout.function_content_oscilloscope_activity1, R.layout.function_content_oscilloscope_activity2};
+	private static final int []PAGES_OSCILLOSCOPE = {R.layout.function_content_oscilloscope_acivity_new1};
 	
 	private final int REQUEST_CODE_PREFERENCE = 1;
 

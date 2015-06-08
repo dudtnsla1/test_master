@@ -12,6 +12,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 
 public class FunctionOscilloscopeContext extends FunctionContext implements OnClickListener, ChartUpdateAdeptor, PreferenceChartInfo {
+	private OscChartOnClickAdapter oscChartListener;
+	
 	
 	public FunctionOscilloscopeContext(MainFunctionActivity context) {
 
@@ -45,13 +47,18 @@ public class FunctionOscilloscopeContext extends FunctionContext implements OnCl
 	}
 
 	private void initFirstPage(Activity context) {
+		//chart = ((GraphicalActivity)activity).getLineChartGraphicalView(0, 80, 0, 3500);
+		
+		//setBarChart(chart);
+		//updatePreference();
+
+		oscChartListener = new OscChartOnClickAdapter(activity);
+		oscChartListener.setOSCChartListener();
 		
 	}
 
 	private void initSecondPage(Activity context) {
-		chart = ((GraphicalActivity)activity).getLineChartGraphicalView(0, 80, 0, 3500);
-		setBarChart(chart);
-		updatePreference();
+		
 	}
 
 	@Override

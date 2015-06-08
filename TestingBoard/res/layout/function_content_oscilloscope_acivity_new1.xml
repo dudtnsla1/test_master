@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#B3E5FC"
+        android:gravity="center"
+        android:layout_marginBottom="5dp"
+        android:padding="5dp" >
+
+        <ImageButton
+            android:id="@+id/oscchart_reset_btn"
+            style="@style/barchart_layout_button"
+            android:background="@drawable/ic_reset" />
+
+        <ImageButton
+            android:id="@+id/oscchart_scale_btn"
+            style="@style/barchart_layout_button"
+            android:background="@drawable/oscscale" />
+
+        <ImageButton
+            android:id="@+id/oscchart_stop_btn"
+            style="@style/barchart_layout_button"
+            android:background="@drawable/oscstop" />
+
+        <ImageButton
+            android:id="@+id/oscchart_auto_btn"
+            style="@style/barchart_layout_button"
+            android:background="@drawable/oscauto" />
+    </LinearLayout>
+
+    <LinearLayout 
+        android:id="@+id/oscchart_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:background="#BBDEFB"
+        android:orientation="vertical" >
+    </LinearLayout>
+
+</LinearLayout>
