@@ -38,6 +38,7 @@ public class VirtualConnectManager extends ConnectManager implements DestroyInte
 		int i = 0;
 		String read_str = null;
 
+		Log.i("TestingBoard ConnectManager", "thread start");
 		//		BufferedReader in = new BufferedReader(new InputStreamReader(mmInStream));
 		try {
 			while (state) {
@@ -45,10 +46,10 @@ public class VirtualConnectManager extends ConnectManager implements DestroyInte
 				//				read_str = in.readLine();
 
 				/**/
-				Thread.sleep(10);
+				Thread.sleep(500);
 				read_str = "123";
 				/**/
-//				Log.i("TestingBoard ConnectManager", "read:" + read_str);
+				Log.i("TestingBoard ConnectManager", "read:" + read_str);
 
 				BluetoothObservable.update(read_str);
 			}

@@ -6,7 +6,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 
-public class Calculator {
+public class Modifyer {
 
 	private String modify = "";
 	private Button result_y;
@@ -83,7 +83,7 @@ public class Calculator {
 		}		
 	}
 
-	public Calculator(Activity activity) {
+	public Modifyer(Activity activity) {
 		this.activity = activity;
 		initKeypad();
 		initFunc();

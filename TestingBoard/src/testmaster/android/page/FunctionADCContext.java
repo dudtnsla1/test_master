@@ -63,8 +63,6 @@ public class FunctionADCContext extends FunctionContext implements
 	 */
 
 	private Button configure;
-	private EditText modify;
-	private Spinner unitSpinner;
 	private Spinner pinSpinner;
 	// private RadioGroup adcValueCalibrationSelect;
 	private GraphicalView chart;
@@ -78,6 +76,12 @@ public class FunctionADCContext extends FunctionContext implements
 	public void updatePreference() {
 		databaseDrawer.updateSelectedDatabases();
 		databaseDrawer.updateLables();
+	}
+	
+	@Override
+	protected void updateTemplate(String data) {
+		// TODO Auto-generated method stub
+		super.updateTemplate(data);
 	}
 
 	public FunctionADCContext(MainFunctionActivity context) {
@@ -294,7 +298,6 @@ public class FunctionADCContext extends FunctionContext implements
 		string = text.getText().toString();
 
 		text.setText(string + a);
-
 	}
 
 	private void initSecondPage(Activity context) {

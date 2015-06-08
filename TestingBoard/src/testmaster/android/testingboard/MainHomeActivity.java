@@ -27,7 +27,7 @@ public class MainHomeActivity extends Activity {
 
 	private static final int REQUEST_ENABLE_BT = 0;	
 	private static final int REQUEST_FUNCTION_ACTIVITY = 1;
-	
+
 	private int []functionButtonIds = new int[] {
 			R.id.main_activity2_adc, 
 			R.id.main_activity2_pwm,
@@ -75,6 +75,8 @@ public class MainHomeActivity extends Activity {
 		else if (!mBluetoothAdapter.isEnabled()) {
 			Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
 			startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
+		} else {
+			bluetoothConnectVirtual();
 		}
 	}
 
@@ -89,7 +91,7 @@ public class MainHomeActivity extends Activity {
 	public void superOnbackPressed() {
 		super.onBackPressed();
 	}	
-	
+
 	@Override
 	public void onBackPressed() {
 		// TODO Auto-generated method stub
@@ -117,7 +119,7 @@ public class MainHomeActivity extends Activity {
 			}
 		}).show();
 	}
-	
+
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		// TODO Auto-generated method stub
@@ -126,58 +128,47 @@ public class MainHomeActivity extends Activity {
 				init();
 			}
 		} else if (requestCode == REQUEST_ENABLE_BT) {
-			if (resultCode == 0) { 
+			if (resultCode == 0)
 				Toast.makeText(this, "블루투스를 사용 할 수 없습니다.", Toast.LENGTH_SHORT).show();
+			else {
+				bluetoothConnectVirtual();
 			}
+
 		}
 		super.onActivityResult(requestCode, resultCode, data);
 	}
-	
-	private class BluetoothConnectOnClick implements OnClickListener {
-		Animation resizeBluetooth = null;
 
-		private boolean bluetoothConnectVirtual() {
-			VirtualConnectManager blue = new VirtualConnectManager();
-			blue.start();
-			return true;
-		}
-
-		private boolean bluetoothConnect() {
-			Set<BluetoothDevice> pairedDevices = mBluetoothAdapter
-					.getBondedDevices();
-
-			if(pairedDevices.size()>0){
-				final BluetoothDevice[] item =new BluetoothDevice[pairedDevices.size()];
-				int count=0;
-				for (BluetoothDevice device : pairedDevices) {
-					item[count] = device;
-					count++;
-				}
-				blueClient = new BlueClient(item[0]);
-				blueClient.start();
-				while(blueClient.connecting){};
-				if (blueClient.isConnected())
-					Toast.makeText(getApplicationContext(), "Blue가 연결되었습니다.", Toast.LENGTH_SHORT).show();
-				else
-					Toast.makeText(getApplicationContext(), "Blue연결에 실패하였습니다.", Toast.LENGTH_SHORT).show();
-			} else {
-				Toast.makeText(getApplicationContext(), "Blue연결에 실패하였습니다.", Toast.LENGTH_SHORT).show();
-				return false;
-			}
-			return blueClient.isConnected();
-		}
-
-		@Override
-		public void onClick(View v) {
-			if (resizeBluetooth != null) {
-				if (!resizeBluetooth.hasEnded())
-					return;
-			}
-
-			if (!bluetoothConnectVirtual())
-				return;
-		}
+	private boolean bluetoothConnectVirtual() {
+		VirtualConnectManager blue = new VirtualConnectManager();
+		blue.start();
+		return true;
 	}
+
+	private boolean bluetoothConnect() {
+		Set<BluetoothDevice> pairedDevices = mBluetoothAdapter
+				.getBondedDevices();
+
+		if(pairedDevices.size()>0){
+			final BluetoothDevice[] item =new BluetoothDevice[pairedDevices.size()];
+			int count=0;
+			for (BluetoothDevice device : pairedDevices) {
+				item[count] = device;
+				count++;
+			}
+			blueClient = new BlueClient(item[0]);
+			blueClient.start();
+			while(blueClient.connecting){};
+			if (blueClient.isConnected())
+				Toast.makeText(getApplicationContext(), "Blue가 연결되었습니다.", Toast.LENGTH_SHORT).show();
+			else
+				Toast.makeText(getApplicationContext(), "Blue연결에 실패하였습니다.", Toast.LENGTH_SHORT).show();
+		} else {
+			Toast.makeText(getApplicationContext(), "Blue연결에 실패하였습니다.", Toast.LENGTH_SHORT).show();
+			return false;
+		}
+		return blueClient.isConnected();
+	}
+
 
 	private class FunctionOnClick implements OnClickListener {
 
@@ -205,19 +196,19 @@ public class MainHomeActivity extends Activity {
 			startActivity(intent);
 		}
 	}
-	
+
 	private BluetoothObserver bluetoothServerObserver = new BluetoothObserver("MainActivity Server Observer") {
 
 		@Override
 		public void update(String data) {
 			// TODO Auto-generated method stub
-			
+
 		}
 
 		@Override
 		public void bluetoothDisconnect() {
 			runOnUiThread(new Runnable() {
-				
+
 				@Override
 				public void run() {
 					// TODO Auto-generated method stub
@@ -229,8 +220,8 @@ public class MainHomeActivity extends Activity {
 		@Override
 		public void resetData() {
 			// TODO Auto-generated method stub
-			
+
 		}
-		
+
 	};
 }
