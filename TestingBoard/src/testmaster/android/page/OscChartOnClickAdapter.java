@@ -4,6 +4,7 @@ import testmaster.android.bluetoothobserver.BluetoothObservable;
 import testmaster.android.testingboard.R;
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
 import android.text.AlteredCharSequence;
 import android.view.View;
@@ -57,8 +58,9 @@ public class OscChartOnClickAdapter implements OnClickListener {
 
 			AlertDialog.Builder builder = new AlertDialog.Builder(activity);
 			builder.setTitle("Set Time");
-			builder.setItems(items, new DialogInterface.OnClickListener() {
 
+			builder.setItems(items, new DialogInterface.OnClickListener() {
+				
 				@Override
 				public void onClick(DialogInterface dialog, int which) {
 					// TODO Auto-generated method stub
@@ -117,6 +119,7 @@ public class OscChartOnClickAdapter implements OnClickListener {
 				
 			});
 			AlertDialog alter = builder.create();
+			
 			alter.show();
 			break;
 			
