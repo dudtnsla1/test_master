@@ -332,6 +332,7 @@ public class FunctionADCContext extends FunctionContext implements
 	@Override
 	public SettingPacket settingChanged() {
 		// TODO Auto-generated method stub
+		
 		packet.setADCPacket((byte) pinNumber);
 		return packet;
 	}
@@ -386,6 +387,8 @@ public class FunctionADCContext extends FunctionContext implements
 	@Override
 	public void onClick(View v) {
 		modifyer = new Modifyer();
+		modifyer.setModify(text.getText().toString());
+		
 		((PageChanger) activity).setNextPage();
 		// TODO Auto-generated method stub
 	}
