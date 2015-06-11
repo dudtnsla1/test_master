@@ -8,8 +8,10 @@ import testmaster.android.database.DbOpenProxy;
 import testmaster.android.packet.SettingPacket;
 import testmaster.android.testingboard.MainFunctionActivity;
 import testmaster.android.testingboard.R;
-import testmaster.android.tool.Modifyer;
+import testmaster.android.tool.Modifier;
 import android.app.Activity;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -24,6 +26,34 @@ import android.widget.Spinner;
 
 public class FunctionADCContext extends FunctionContext implements
 		OnClickListener, OnItemSelectedListener, OnCheckedChangeListener {
+	
+	class ModifiedTextWatcher implements TextWatcher {
+
+		@Override
+		public void beforeTextChanged(CharSequence s, int start, int count,
+				int after) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void onTextChanged(CharSequence s, int start, int before,
+				int count) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void afterTextChanged(Editable s) {
+			// TODO Auto-generated method stub
+			if (s.toString().equals("")) 
+				pageChanger.setEnable();
+			else if (modifyer.setModify(s.toString()))
+				pageChanger.setEnable();
+			else
+				pageChanger.setDisable();
+		}	
+	}
 
 	// 수식 입력 버튼
 	Button one;
@@ -56,7 +86,7 @@ public class FunctionADCContext extends FunctionContext implements
 	Boolean on = false;
 	Boolean clean = false;
 	
-	Modifyer modifyer;
+	private Modifier modifyer = new Modifier();
 
 	/**
 	 * Setting Page
@@ -83,8 +113,9 @@ public class FunctionADCContext extends FunctionContext implements
 	
 	@Override
 	protected void updateTemplate(String data) {
-		// TODO Auto-generated method stub
-		super.updateTemplate(data);
+		// TODO Auto-generated method stub		
+		((GraphicalActivity)activity).updateCurrent(modifyer.getY(Float.parseFloat(data)));
+		updateChart();
 	}
 
 	public FunctionADCContext(MainFunctionActivity context) {
@@ -95,7 +126,6 @@ public class FunctionADCContext extends FunctionContext implements
 		dbHelper.open();
 		databaseDrawer = new ChartFacade(dbHelper,
 				(GraphicalActivity) activity, ChartFacade.KIND_ADC);
-		pageChanger.setEnable();
 	}
 
 	private void setUnitSpinner(Activity context) {
@@ -134,6 +164,7 @@ public class FunctionADCContext extends FunctionContext implements
 		equal = (Button) activity.findViewById(R.id.equal);
 		backspace = (Button) activity.findViewById(R.id.backspace);
 		text = (EditText) activity.findViewById(R.id.edittext_cal);
+		text.addTextChangedListener(new ModifiedTextWatcher());
 
 		leftguard = (Button) activity.findViewById(R.id.leftguard);
 		rightguard = (Button) activity.findViewById(R.id.rightguard);
@@ -220,7 +251,7 @@ public class FunctionADCContext extends FunctionContext implements
 
 		divide.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View arg0) {
-				function2("÷");
+				function2("/");
 			}
 		});
 
@@ -236,7 +267,7 @@ public class FunctionADCContext extends FunctionContext implements
 		});
 		result_y.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View arg0) {
-				function("Y");
+				function(".");
 			}
 		});
 		value_x.setOnClickListener(new View.OnClickListener() {
@@ -386,7 +417,7 @@ public class FunctionADCContext extends FunctionContext implements
 
 	@Override
 	public void onClick(View v) {
-		modifyer = new Modifyer();
+		modifyer = new Modifier();
 		modifyer.setModify(text.getText().toString());
 		
 		((PageChanger) activity).setNextPage();
