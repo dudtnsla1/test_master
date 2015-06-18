@@ -57,6 +57,11 @@ public class GraphicalActivity extends ActionBarActivity{
 			graphicalView.repaint();
 		}
 	}
+	
+	public void setAutoScale() 
+	{
+		renderer.setScale(0);
+	}
 
 	protected void chartInit() {
 
