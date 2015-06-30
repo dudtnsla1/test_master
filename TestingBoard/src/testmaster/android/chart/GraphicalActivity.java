@@ -58,9 +58,9 @@ public class GraphicalActivity extends ActionBarActivity{
 		}
 	}
 	
-	public void setAutoScale() 
+	public void setYAxisMax(float y) 
 	{
-		renderer.setScale(0);
+		renderer.setYAxisMax(y);
 	}
 
 	protected void chartInit() {

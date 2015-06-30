@@ -109,7 +109,6 @@ public class FunctionADCContext extends FunctionContext implements
 	public void updatePreference() {
 		databaseDrawer.updateSelectedDatabases();
 		databaseDrawer.updateLables();
-		((GraphicalActivity)activity).setAutoScale();
 	}
 	
 	@Override

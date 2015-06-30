@@ -5,14 +5,14 @@ import java.util.ArrayList;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
-import testmaster.android.bluetooth.ConnectManager;
+import testmaster.android.bluetooth.BluetoothConnectManager;
 import testmaster.android.packet.PacketInfo;
 import testmaster.android.resource.DestroyDecorator;
 import testmaster.android.resource.DestroyInterface;
 
 public class BluetoothObservable implements DestroyInterface{
 
-	private static ConnectManager bluetoothServer = null;
+	private static BluetoothConnectManager bluetoothServer = null;
 	private static ArrayList<BluetoothObserver> observerList = new ArrayList<BluetoothObserver>();
 	private static BluetoothObservable This;
 	private static boolean enableSwitch = true;
@@ -41,14 +41,14 @@ public class BluetoothObservable implements DestroyInterface{
 		Log.d("TestingBoard BluetoothObservable", "bluetooth enable");
 	}
 
-	public static void setBluetoothServer(ConnectManager conn) {
+	public static void setBluetoothServer(BluetoothConnectManager conn) {
 		if (conn == null) {
 			disconnected();
 		}
 		bluetoothServer = conn;
 	}
 
-	public static ConnectManager getBluetoothServer() {
+	public static BluetoothConnectManager getBluetoothServer() {
 		return bluetoothServer;
 	}
 

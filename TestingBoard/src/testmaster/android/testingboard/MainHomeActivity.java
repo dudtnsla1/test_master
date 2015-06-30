@@ -3,7 +3,7 @@ package testmaster.android.testingboard;
 import java.util.Set;
 
 import testmaster.android.bluetooth.BlueClient;
-import testmaster.android.bluetooth.VirtualConnectManager;
+import testmaster.android.bluetooth.BluetoothVirtualConnectManager;
 import testmaster.android.bluetoothobserver.BluetoothObservable;
 import testmaster.android.bluetoothobserver.BluetoothObserver;
 import testmaster.android.resource.LoadedImage;
@@ -76,7 +76,7 @@ public class MainHomeActivity extends Activity {
 			Intent enableBtIntent = new Intent(BluetoothAdapter.ACTION_REQUEST_ENABLE);
 			startActivityForResult(enableBtIntent, REQUEST_ENABLE_BT);
 		} else {
-			bluetoothConnectVirtual();
+			bluetoothConnect();
 		}
 	}
 
@@ -131,7 +131,7 @@ public class MainHomeActivity extends Activity {
 			if (resultCode == 0)
 				Toast.makeText(this, "블루투스를 사용 할 수 없습니다.", Toast.LENGTH_SHORT).show();
 			else {
-				bluetoothConnectVirtual();
+				bluetoothConnect();
 			}
 
 		}
@@ -139,7 +139,7 @@ public class MainHomeActivity extends Activity {
 	}
 
 	private boolean bluetoothConnectVirtual() {
-		VirtualConnectManager blue = new VirtualConnectManager();
+		BluetoothVirtualConnectManager blue = new BluetoothVirtualConnectManager();
 		blue.start();
 		return true;
 	}

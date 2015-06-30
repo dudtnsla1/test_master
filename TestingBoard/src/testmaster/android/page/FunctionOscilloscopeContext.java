@@ -5,20 +5,35 @@ import testmaster.android.chart.GraphicalActivity;
 import testmaster.android.chart.PreferenceChartInfo;
 import testmaster.android.packet.SettingPacket;
 import testmaster.android.testingboard.MainFunctionActivity;
+import testmaster.android.testingboard.R;
 import android.app.Activity;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ImageButton;
 
-public class FunctionOscilloscopeContext extends FunctionContext implements OnClickListener, ChartUpdateAdeptor, PreferenceChartInfo {
+public class FunctionOscilloscopeContext extends FunctionContext implements ChartUpdateAdeptor, PreferenceChartInfo {
 	private OscChartOnClickAdapter oscChartListener;
-	
-	
+		
 	public FunctionOscilloscopeContext(MainFunctionActivity context) {
 
 		super(context);
 		// TODO Auto-generated constructor stub
+	}
+	
+	private float maxAxisY = 1;
+	
+	protected void updateTemplate(String data) {
+//		Log.d("TestingBoard FunctionContext", "bluetooth Observer Updated:" + data);
+		if (Integer.parseInt(data) > maxAxisY)
+			maxAxisY = Integer.parseInt(data);
+		super.updateTemplate(data);
+	}
+	
+	public void autoSacle() 
+	{
+		((GraphicalActivity)activity).setYAxisMax(maxAxisY);
 	}
 	
 	@Override
@@ -47,14 +62,13 @@ public class FunctionOscilloscopeContext extends FunctionContext implements OnCl
 	}
 
 	private void initFirstPage(Activity context) {
-		//chart = ((GraphicalActivity)activity).getLineChartGraphicalView(0, 80, 0, 3500);
+		chart = ((GraphicalActivity)activity).getLineChartGraphicalView(0, 80, 0, 3500);
 		
-		//setBarChart(chart);
-		//updatePreference();
+		setBarChart(chart);
+		updatePreference();
 
-		oscChartListener = new OscChartOnClickAdapter(activity);
-		oscChartListener.setOSCChartListener();
-		
+		oscChartListener = new OscChartOnClickAdapter(activity, this);
+		oscChartListener.setOSCChartListener();		
 	}
 
 	private void initSecondPage(Activity context) {
@@ -71,11 +85,5 @@ public class FunctionOscilloscopeContext extends FunctionContext implements OnCl
 	public double[] getIndex() {
 		// TODO Auto-generated method stub
 		return null;
-	}
-
-	@Override
-	public void onClick(View v) {
-		// TODO Auto-generated method stub
-		
 	}
 }

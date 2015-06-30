@@ -13,7 +13,7 @@ import testmaster.android.resource.DestroyInterface;
 import android.bluetooth.BluetoothSocket;
 import android.util.Log;
 
-public class ConnectManager extends Thread implements DestroyInterface{
+public class BluetoothConnectManager extends Thread implements DestroyInterface{
 
 	private final BluetoothSocket mmSocket;
 	private final InputStream mmInStream;
@@ -31,13 +31,13 @@ public class ConnectManager extends Thread implements DestroyInterface{
 		return connected;
 	} 
 	
-	protected ConnectManager() {
+	protected BluetoothConnectManager() {
 		mmSocket = null;
 		mmInStream = null;
 		mmOutStream = null;
 	}
 
-	public ConnectManager(BluetoothSocket socket) {
+	public BluetoothConnectManager(BluetoothSocket socket) {
 		DestroyDecorator.addDecorate(this);
 		mmSocket = socket;
 		InputStream ip = null;

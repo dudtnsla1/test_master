@@ -1,11 +1,11 @@
 package testmaster.android.packet;
 
-import testmaster.android.bluetooth.ConnectManager;
+import testmaster.android.bluetooth.BluetoothConnectManager;
 import testmaster.android.bluetoothobserver.BluetoothObservable;
 
 public class BluetoothPacket {
 
-	protected ConnectManager bluetoothServer = null;
+	protected BluetoothConnectManager bluetoothServer = null;
 	
 	public BluetoothPacket() {
 		bluetoothServer = BluetoothObservable.getBluetoothServer();

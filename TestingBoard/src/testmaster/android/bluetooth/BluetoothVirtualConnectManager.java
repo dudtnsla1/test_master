@@ -11,7 +11,7 @@ import android.bluetooth.BluetoothSocket;
 import android.os.Message;
 import android.util.Log;
 
-public class VirtualConnectManager extends ConnectManager implements DestroyInterface{
+public class BluetoothVirtualConnectManager extends BluetoothConnectManager implements DestroyInterface{
 
 	private final BluetoothSocket mmSocket;
 	
@@ -26,7 +26,7 @@ public class VirtualConnectManager extends ConnectManager implements DestroyInte
 		return true;
 	}
 
-	public VirtualConnectManager() {
+	public BluetoothVirtualConnectManager() {
 		super();
 		DestroyDecorator.addDecorate(this);
 
@@ -35,7 +35,7 @@ public class VirtualConnectManager extends ConnectManager implements DestroyInte
 	}
 
 	public void run() {
-		int i = 0;
+		int i = 100;
 		String read_str = null;
 
 		Log.i("TestingBoard ConnectManager", "thread start");
@@ -46,8 +46,8 @@ public class VirtualConnectManager extends ConnectManager implements DestroyInte
 				//				read_str = in.readLine();
 
 				/**/
-				Thread.sleep(100);
-				read_str = "123";
+				Thread.sleep(1000);
+				read_str = (i += 10) + "";
 				/**/
 				Log.i("TestingBoard ConnectManager", "read:" + read_str);
 

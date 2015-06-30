@@ -15,7 +15,7 @@ public class BlueClient extends Thread{
 
 	public BluetoothAdapter mBluetoothAdapter;
 
-	ConnectManager connectManager;
+	BluetoothConnectManager connectManager;
 
 	public boolean connecting = true;
 	public boolean connected = false;
@@ -45,7 +45,7 @@ public class BlueClient extends Thread{
 			connecting = false;
 			return;
 		}
-		connectManager = new ConnectManager(mmSocket);
+		connectManager = new BluetoothConnectManager(mmSocket);
 		connectManager.start();
 
 		connecting = false;

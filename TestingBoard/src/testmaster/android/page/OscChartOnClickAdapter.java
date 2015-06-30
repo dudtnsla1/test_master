@@ -15,12 +15,14 @@ import android.widget.Toast;
 public class OscChartOnClickAdapter implements OnClickListener {
 
 	private Activity activity;
+	FunctionContext functionContext;
 	final CharSequence[] items = { "0.1ms", "0.2ms", "0.5ms", "1.0ms", "2.0ms",
 			"5.0ms", "10ms", "20ms", "50ms", "0.1sec", "0.2sec", "0.5sec" };
 
-	public OscChartOnClickAdapter(Activity activity)
+	public OscChartOnClickAdapter(Activity activity, FunctionContext functionContext)
 	{
 		this.activity = activity;
+		this.functionContext = functionContext;
 	}
 	
 	public void setOSCChartListener() {
@@ -49,7 +51,7 @@ public class OscChartOnClickAdapter implements OnClickListener {
 		switch (v.getId()) {
 		case R.id.oscchart_auto_btn:
 			// 자동 버튼 누르면
-
+			((FunctionOscilloscopeContext)functionContext).autoSacle();
 			break;
 		case R.id.oscchart_reset_btn:
 			streamReset();
