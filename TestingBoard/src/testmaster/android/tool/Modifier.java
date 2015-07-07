@@ -27,8 +27,8 @@ public class Modifier {
 	Stack<precedence> operatorStack = new Stack<precedence>();
 	Stack<Integer> operandIndexStack = new Stack<Integer>(); 
 	private int operandIndexCur = 0;
-	private float operandArray[] = new float[100];
-	private int xIndexArray[] = new int[100];
+	private float operandArray[] = new float[200];
+	private int xIndexArray[] = new int[200];
 	private int xIndexCur = 0;
 
 	private enum precedence {lparen, rparen, plus, minus, times, divide, mod, eos, operand, x};

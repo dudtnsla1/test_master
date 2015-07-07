@@ -18,7 +18,7 @@ public class UsbSerialManager {
 	private String writeBuf = "$\r\n";
 	private int count = 0;
 
-	private void readOneBlock() throws IOException {
+	public void readOneBlock() throws IOException {
 		
 		int max = 0;
 		int min = 0;
@@ -30,17 +30,17 @@ public class UsbSerialManager {
 		readByte = usb.read(readBuf, 100);
 		Log.d("TestingBoard UsbSerialManager", readByte + " byteread success");
 
-		for (int i = 0; i < 100; i += 2) {
+		for (int i = 0; i < 200; i += 2) {
 
-			data[i/2] = readBuf[i] + ((double)readBuf[i])/100;
-			
+			data[i/2] = readBuf[i] + ((double)readBuf[i + 1])/100;
+/*			
 			if (data[i/2] != 49.49)
 				Log.d("TestingBoard UsbSerialManager", readByte + "byteread wrong data:" + data[i]);
-
+*/
 			if (data[i/2] > max)
-				max = (int)data[i];
+				max = (int)data[i/2];
 			if (data[i/2] < min)
-				min = (int)data[i];
+				min = (int)data[i/2];
 		}
 
 		command.oscilloLoop(data, min, max);
@@ -72,7 +72,7 @@ public class UsbSerialManager {
 		driverOpen();
 	}
 
-	public void driverOpen()
+	private void driverOpen()
 	{
 		try {
 			usb.open();

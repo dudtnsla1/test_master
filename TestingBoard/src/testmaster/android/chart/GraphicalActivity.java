@@ -54,6 +54,7 @@ public class GraphicalActivity extends ActionBarActivity{
 			renderer.setYAxisMin(yMin);
 			renderer.setYAxisMax(yMax);
 			xScale = (int) (xMax - xMin);
+//			yScale = (int) (yMax - yMin);
 			graphicalView.repaint();
 		}
 	}

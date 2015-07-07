@@ -15,6 +15,8 @@ public class FunctionOscilloscopeContext extends FunctionContext implements Pref
 	private OscChartOnClickAdapter oscChartListener;
 	private UsbSerialManager usbManager;
 	private OscChartOnClickAdapter chartFacade;
+	
+	private int default5Milliseconds = 50;
 
 	private OscilloCommand oscilloCommand = new OscilloCommand() {
 
@@ -40,7 +42,7 @@ public class FunctionOscilloscopeContext extends FunctionContext implements Pref
 				updateChart();
 
 				if (chartFacade.isAutoScaleable())
-					((GraphicalActivity)activity).setLables(0, 1000, lowestData - 10, highestData + 10);
+					((GraphicalActivity)activity).setLables(0, oscChartListener.xScale, lowestData - 1, highestData + 1);
 			}
 		}
 	};
@@ -56,18 +58,11 @@ public class FunctionOscilloscopeContext extends FunctionContext implements Pref
 	protected void updateTemplate(String data) {
 	}
 
-	public void autoSacle() 
-	{
-		((GraphicalActivity)activity).setYAxisMax(maxAxisY);
-	}
-
 	@Override
 	public void updatePreference() {
 		SharedPreferences preference = PreferenceManager.getDefaultSharedPreferences(activity);
-		String x_max = "100";
 		String y_max = "100";
-		//		String y_max = preference.getString(KEY_Y_MAX, "3500");
-		((GraphicalActivity)activity).setLables(0, Integer.parseInt(x_max), 0, Integer.parseInt(y_max));
+		((GraphicalActivity)activity).setLables(0, 50, 0, Integer.parseInt(y_max));
 	}
 
 	@Override
@@ -92,14 +87,13 @@ public class FunctionOscilloscopeContext extends FunctionContext implements Pref
 		packet.setOscilloPacket();
 		packet.sendPacket(packet.getPacket());
 		chartFacade = new OscChartOnClickAdapter(context);
+		chartFacade.setOSCChartListener();
 		usbManager = new UsbSerialManager(context, oscilloCommand);
-		chart = ((GraphicalActivity)activity).getLineChartGraphicalView(0, 80, 0, 3500);
+		chart = ((GraphicalActivity)activity).getLineChartGraphicalView(0, 50, 0, 3500);
 
 		setBarChart(chart);
 		updatePreference();
 
-//		oscChartListener = new OscChartOnClickAdapter(activity, this);
-//		oscChartListener.setOSCChartListener();		
 	}
 
 	private void initSecondPage(Activity context) {

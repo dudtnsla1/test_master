@@ -17,18 +17,27 @@ public class OscChartOnClickAdapter implements OnClickListener {
 
 	private boolean autoScaleable = false;
 	private boolean usbEnable = true;
+	private boolean watchUsbIsEnable = true;
+
+	static private final int default5Milliseconds = 50;
+	static public int xScale = default5Milliseconds;
+	
+	public int getXScale() {
+		return xScale;
+	}
 
 	public boolean isAutoScaleable() {
 		return autoScaleable;
 	}
 	
 	public boolean isUsbEnable() {
+		watchUsbIsEnable = true;
 		return usbEnable;
 	}
 	
 	private Activity activity;
-	final CharSequence[] items = { "0.1ms", "0.2ms", "0.5ms", "1.0ms", "2.0ms",
-			"5.0ms", "10ms", "20ms", "50ms", "0.1sec", "0.2sec", "0.5sec" };
+	final CharSequence[] items = { "1.0ms", "2.0ms", "5.0ms", "7.0ms",
+			"10ms", "0.1s"};
 
 	public OscChartOnClickAdapter(Activity activity)
 	{
@@ -55,6 +64,11 @@ public class OscChartOnClickAdapter implements OnClickListener {
 			// 자동 버튼 누르면
 			break;
 		case R.id.oscchart_reset_btn:
+/*
+			usbEnable = true;
+			watchUsbIsEnable = false;
+			while (
+*/
 			break;
 		case R.id.oscchart_scale_btn:
 
@@ -67,55 +81,24 @@ public class OscChartOnClickAdapter implements OnClickListener {
 				public void onClick(DialogInterface dialog, int which) {
 					// TODO Auto-generated method stub
 					switch (which) {
-					case 0: //"0.1ms"
-
+					case 0: //"1.0ms"
+						xScale = 100;
 						break;
-						
-					case 1:// "0.2ms", 
-
+					case 1: // "2.0ms",
+						xScale = 70;
 						break;
-						
-					case 2: // "0.5ms"
-						
-
+					case 2: //"5.0ms"  
+						xScale = 50;
 						break;
-						
-					case 3: //"1.0ms"
-
+					case 3:// "7.0ms",
+						xScale = 20;
 						break;
-						
-					case 4: // "2.0ms",
-
+					case 4:// "10ms",
+						xScale = 10;
 						break;
-						
-					case 5: //"5.0ms"  
-
+					case 5:// "0.1s",
+						xScale = 2;
 						break;
-						
-					case 6:// "10ms",
-
-						break;
-						
-					case 7: //"20ms",
-
-						break;
-						
-					case 8: //"50ms",
-
-						break;
-						
-					case 9: //"0.1sec"
-
-						break;
-						
-					case 10:  //"0.2sec"
-
-						break;
-						
-					case 11:  //"0.5sec"
-						Toast.makeText(activity, "0.5sec",Toast.LENGTH_SHORT).show();
-						break;
-					
 					}
 				}
 				
@@ -131,5 +114,4 @@ public class OscChartOnClickAdapter implements OnClickListener {
 			break;
 		}
 	}
-
 }

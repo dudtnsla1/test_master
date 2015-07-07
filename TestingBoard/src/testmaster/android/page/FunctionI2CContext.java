@@ -8,6 +8,9 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -26,10 +29,36 @@ public class FunctionI2CContext extends FunctionContext implements
 	private TextView receiveText;
 	private static EditText Slave_ADDRESS;
 	private static EditText Register_ADDRESS;
-	private static EditText Write_DATA;
 	private static EditText Number_READ;
+	private static EditText PresentEdit;
+	private static String presentStr;
 
 	private NotNullEditTextDecorator editsListenDeco;
+
+	class TextEditWatcher implements TextWatcher {
+
+		@Override
+		public void beforeTextChanged(CharSequence s, int start, int count,
+				int after) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void onTextChanged(CharSequence s, int start, int before,
+				int count) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public synchronized void afterTextChanged(Editable s) {
+			// TODO Auto-generated method stub
+			Log.d("TestingBoard FunctionUSAUTContext", "remove test - " + s.toString());
+			presentStr = s.toString();
+		}
+		
+	}
 
 	private int spinnerId[] = new int[] { R.id.i2c_setting_btn1,
 			R.id.i2c_setting_btn2, R.id.i2c_setting_btn3,
@@ -77,6 +106,8 @@ public class FunctionI2CContext extends FunctionContext implements
 
 	public FunctionI2CContext(MainFunctionActivity context) {
 		super(context);
+		editsListenDeco = new NotNullEditTextDecorator(activity, pageChanger);
+
 		// TODO Auto-generated constructor stub
 	}
 
@@ -86,7 +117,6 @@ public class FunctionI2CContext extends FunctionContext implements
 		packet.setI2CPacket(
 				parseByteFromHex(editsListenDeco.getText(Slave_ADDRESS)),
 				parseByteFromHex(editsListenDeco.getText(Register_ADDRESS)),
-				parseByteFromHex(editsListenDeco.getText(Write_DATA)),
 				Byte.parseByte(editsListenDeco.getText(Number_READ)), order);
 		return packet;
 	}
@@ -137,21 +167,18 @@ public class FunctionI2CContext extends FunctionContext implements
 	}
 
 	private void initFistPage(Activity context) {
-
-		pageChanger.setDisable();
-		editsListenDeco = new NotNullEditTextDecorator(activity, pageChanger);
-
+		
 		Slave_ADDRESS = (EditText) activity.findViewById(R.id.i2cEdit);
-		Register_ADDRESS = (EditText) activity
-				.findViewById(R.id.Register_Address);
-
+		Register_ADDRESS = (EditText) activity.findViewById(R.id.Register_Address);
 		Number_READ = (EditText) activity.findViewById(R.id.Number_of_Read);
-
-		// editsListenDeco.addEditText(Slave_ADDRESS);
-		// editsListenDeco.addEditText(Register_ADDRESS);
-		// editsListenDeco.addEditText(Number_READ);
-
-		// editsListenDeco.addEditText(Write_DATA);  -->필요없음
+		PresentEdit = (EditText) activity.findViewById(R.id.present_edit);
+		
+		editsListenDeco.init();
+		editsListenDeco.addEditText(Slave_ADDRESS);
+		editsListenDeco.addEditText(Register_ADDRESS);
+		editsListenDeco.addEditText(Number_READ);
+		PresentEdit.addTextChangedListener(new TextEditWatcher());
+		
 		
 		btn_Receive_true = (Button) activity
 				.findViewById(R.id.function_i2c_receive_btn_true);
@@ -200,11 +227,11 @@ public class FunctionI2CContext extends FunctionContext implements
 				@Override
 				public void run() {
 					// TODO Auto-generated method stub
-					receiveText.append(data + "\n");
+					receiveText.append(presentStr + ":" + data + "\n");
 					buffer.append(data + "\n");
 
 					if (buffer.toString().length() > bufferFull) {
-						receiveText.setText(buffer.toString());
+						receiveText.setText(presentStr + ":" + buffer.toString());
 						buffer.delete(0, buffer.length());
 					}
 				}

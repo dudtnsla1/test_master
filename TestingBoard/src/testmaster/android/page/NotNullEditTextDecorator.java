@@ -20,10 +20,11 @@ public class NotNullEditTextDecorator {
 		// TODO Auto-generated constructor stub
 		this.context = context;
 		this.pageChanger = pageChanger;
+		pageChanger.setDisable();
 	}
 
 	public void addEditText(EditText edit) {
-		if (!edit.getText().toString().equals("")) {			
+		if (!edit.getText().toString().equals("")) {		
 			editedCount++;
 		}
 	
@@ -72,6 +73,8 @@ public class NotNullEditTextDecorator {
 		@Override
 		public void afterTextChanged(Editable s) {
 			// TODO Auto-generated method stub
+			
+			Log.d("TestingBoard NouNullEditTextDecorator", editedCount + "count-" + s.toString());
 
 			textList.set(index, s.toString());
 
@@ -79,14 +82,20 @@ public class NotNullEditTextDecorator {
 				editedCount--;
 			}
 
-			if (editedCount == editList.size()) {
+			if (editedCount >= editList.size()) {
 				pageChanger.setEnable();
 			}
 		}		
 	}
 
+	public void init() {
+		destroy();
+	}
 	public void destroy() {
+		Log.d("TestingBoard NotNullEditTextDecorator", "destroy");
 		editList.clear();
 		textList.clear();
+		editedCount = 0;
+		pageChanger.setDisable();
 	}
 }

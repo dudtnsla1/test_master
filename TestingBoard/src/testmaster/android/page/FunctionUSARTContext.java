@@ -5,6 +5,9 @@ import testmaster.android.packet.UsartPacket;
 import testmaster.android.testingboard.MainFunctionActivity;
 import testmaster.android.testingboard.R;
 import android.app.Activity;
+import android.text.Editable;
+import android.text.TextWatcher;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView;
@@ -23,13 +26,43 @@ public class FunctionUSARTContext extends FunctionContext implements OnClickList
 	private Spinner usartSpinner;
 	private Button Send_rate;
 	private Button send;
+	
+	class TextEditWatcher implements TextWatcher {
+
+		@Override
+		public void beforeTextChanged(CharSequence s, int start, int count,
+				int after) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void onTextChanged(CharSequence s, int start, int before,
+				int count) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public synchronized void afterTextChanged(Editable s) {
+			// TODO Auto-generated method stub
+			Log.d("TestingBoard FunctionUSAUTContext", "remove test - " + s.toString());
+			presentString = s.toString();
+		}
+		
+	}
+
+	private EditText endcharEdit = null, startcharEdit = null, dividecharEdit = null, turncharEdit = null, presentcharEdit = null;
 	private EditText sendEdit = null;
 	private TextView receiveText = null;
 	private TextView sendText = null;
-	String baudrate_string;
+	private String baudrate_string;
+	private String presentString = "";
+	private NotNullEditTextDecorator editsListenDeco;
 
 	public FunctionUSARTContext(MainFunctionActivity context) {
 		super(context);
+		editsListenDeco = new NotNullEditTextDecorator(context, pageChanger);
 		// TODO Auto-generated constructor stub
 	}
 
@@ -46,8 +79,12 @@ public class FunctionUSARTContext extends FunctionContext implements OnClickList
 	@Override
 	public SettingPacket settingChanged() {
 		// TODO Auto-generated method stub
-
-		packet.setUSARTPacket((byte)baudrateIndex);
+//보어레이트, 스타트문자, 마지막문자, 구분할 문자, 턴 넘버
+		packet.setUSARTPacket((byte)baudrateIndex, 
+				editsListenDeco.getText(startcharEdit), 
+				editsListenDeco.getText(endcharEdit),
+				editsListenDeco.getText(dividecharEdit),
+				editsListenDeco.getText(turncharEdit));
 		return packet;
 	}
 
@@ -72,14 +109,23 @@ public class FunctionUSARTContext extends FunctionContext implements OnClickList
 
 	private void initFirstPage(Activity context) {
 		setUnitSpinner(context);
-
+		editsListenDeco.init();
+		dividecharEdit = (EditText)context.findViewById(R.id.dividechar_edit);
+		endcharEdit = (EditText)context.findViewById(R.id.endchar_edit);
+		turncharEdit = (EditText)context.findViewById(R.id.turnchar_edit);
+		startcharEdit = (EditText)context.findViewById(R.id.startchar_edit);
+		presentcharEdit = (EditText)context.findViewById(R.id.presentchar_edit);
+		presentcharEdit.addTextChangedListener(new TextEditWatcher());
+		editsListenDeco.addEditText(dividecharEdit);
+		editsListenDeco.addEditText(endcharEdit);
+		editsListenDeco.addEditText(turncharEdit);
+		editsListenDeco.addEditText(startcharEdit);
 	}
 
 
 	@Override
 	public void saveSettingData() {
 		// TODO Auto-generated method stub
-
 	}
 
 	@Override
@@ -138,11 +184,11 @@ public class FunctionUSARTContext extends FunctionContext implements OnClickList
 				@Override
 				public void run() {
 					// TODO Auto-generated method stub
-					receiveText.append(data + "\n");   
+					receiveText.append(presentString + ":" + data + "\n");   
 					buffer.append(data+"\n");			
 
 					if (buffer.toString().length() > bufferFull) {
-						receiveText.setText(buffer.toString());
+						receiveText.setText(presentString + ":" + buffer.toString());
 						buffer.delete(0, buffer.length());
 					}	
 				}

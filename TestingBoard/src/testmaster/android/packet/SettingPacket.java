@@ -33,17 +33,40 @@ public class SettingPacket extends BluetoothPacket implements PacketInfo{
 		endPacket();
 	}
 	
- 	public void setUSARTPacket(byte buadrateNum) {
+	/*
+	 * 		packet.setUSARTPacket((byte)baudrateIndex, 
+				editsListenDeco.getText(startcharEdit), 
+				editsListenDeco.getText(endcharEdit),
+				editsListenDeco.getText(dividecharEdit),
+				editsListenDeco.getText(turncharEdit));
+	 */
+	
+	public byte[] dalarNewLineHandling(String buf) {
+		byte[] b = buf.getBytes();
+		
+		for (int i = 0; i < b.length; i++) {
+			if (b[i] == 36 || b[i] == 10) 
+				b[i]--;
+		}
+		
+		return b;
+	}
+	
+	public void setUSARTPacket(byte buadrateNum, String startChar, String endChar,
+			String divideChar, String turnChar) { 
 		initPacket(MODE_USART);
 		packet.append(buadrateNum);
+		packet.append(dalarNewLineHandling(startChar), 0, startChar.length());
+		packet.append(dalarNewLineHandling(endChar), 0, endChar.length());
+		packet.append(dalarNewLineHandling(divideChar), 0, divideChar.length());
+		packet.append(dalarNewLineHandling(turnChar), 0, turnChar.length());
 		endPacket();
 	}
 	
-	public void setI2CPacket(byte slaveAddr, byte reAddr, byte data, byte read, byte []order) {
+	public void setI2CPacket(byte slaveAddr, byte reAddr, byte read, byte []order) {
 		initPacket(MODE_I2C);
 		packet.append(slaveAddr);
 		packet.append(reAddr);
-		packet.append(data);
 		packet.append(read);
 		packet.append(order, 0, 11);
 		endPacket();		
