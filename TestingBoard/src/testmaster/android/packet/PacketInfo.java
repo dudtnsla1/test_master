@@ -9,4 +9,5 @@ public interface PacketInfo {
 	public static final int MODE_MOTOR = 5;
 	public static final int MODE_HIGHLOW = 6;
 	public static final int MODE_RESET = 7;
+	public static final int MODE_OSCILLO = 8;
 }

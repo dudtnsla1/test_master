@@ -66,10 +66,10 @@ public class GraphicalActivity extends ActionBarActivity{
 	protected void chartInit() {
 
 		double [][] sample = new double[][] {
-				{ 0, 10},
-				{ 0, 10},
-				{ 0, 10},
-				{ 0, 10},
+				{ 0},
+				{ 0},
+				{ 0},
+				{ 0},
 		};
 		setChartData(sample, "", "", "");  
 	}
@@ -88,7 +88,6 @@ public class GraphicalActivity extends ActionBarActivity{
 	}
 
 	public void resetLineChart(int index) {
-		Log.d("TestingBoard GraphicalActivity", "reset chart");
 		seriesLock(1);
 		if (dataset != null) {
 			XYSeries series = dataset.getSeriesAt(index);
@@ -102,9 +101,7 @@ public class GraphicalActivity extends ActionBarActivity{
 	}
 
 	public void updateChart(int chartNum, ChartUpdateAdeptor adapter, double []xList) {
-		Log.d("TestingBoard GraphicalActivity", "update chart 2");
 		double []data = adapter.getIndex();
-		Log.d("TestingBoard GraphicalActivity", "lock debugging " + 2);
 		seriesLock(2);
 		if (dataset != null) {
 			XYSeries series = dataset.getSeriesAt(chartNum);
@@ -116,7 +113,6 @@ public class GraphicalActivity extends ActionBarActivity{
 	}
 
 	public void updateChart(int chartNum, ChartUpdateAdeptor adapter) {
-		Log.d("TestingBoard GraphicalActivity", "update chart 1");
 		double []data = adapter.getIndex();
 		seriesLock(3);
 		if (dataset != null) {
@@ -124,7 +120,6 @@ public class GraphicalActivity extends ActionBarActivity{
 			for (int i = 0; i < data.length; i++) {
 				series.add(series.getMaxX() + 1, data[i]);		
 			}
-			Log.d("TestingBoard GraphicalActivity", "lock debugging " + 3);
 		} 
 		seriesRelease(3);
 	}

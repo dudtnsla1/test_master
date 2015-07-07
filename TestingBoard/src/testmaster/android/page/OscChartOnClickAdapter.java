@@ -1,12 +1,13 @@
 package testmaster.android.page;
 
-import testmaster.android.bluetoothobserver.BluetoothObservable;
+import testmaster.android.dataobserver.DataObservable;
 import testmaster.android.testingboard.R;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.DialogInterface;
 import android.text.AlteredCharSequence;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageButton;
@@ -14,15 +15,24 @@ import android.widget.Toast;
 
 public class OscChartOnClickAdapter implements OnClickListener {
 
+	private boolean autoScaleable = false;
+	private boolean usbEnable = true;
+
+	public boolean isAutoScaleable() {
+		return autoScaleable;
+	}
+	
+	public boolean isUsbEnable() {
+		return usbEnable;
+	}
+	
 	private Activity activity;
-	FunctionContext functionContext;
 	final CharSequence[] items = { "0.1ms", "0.2ms", "0.5ms", "1.0ms", "2.0ms",
 			"5.0ms", "10ms", "20ms", "50ms", "0.1sec", "0.2sec", "0.5sec" };
 
-	public OscChartOnClickAdapter(Activity activity, FunctionContext functionContext)
+	public OscChartOnClickAdapter(Activity activity)
 	{
 		this.activity = activity;
-		this.functionContext = functionContext;
 	}
 	
 	public void setOSCChartListener() {
@@ -36,25 +46,15 @@ public class OscChartOnClickAdapter implements OnClickListener {
 				.setOnClickListener(this);
 	}
 
-	private void streamStop() {
-		// 그래프 멈추게하는거 이걸로 하면 되는감
-		BluetoothObservable.disableUpdate();
-	}
-
-	private void streamReset() {
-		BluetoothObservable.resetData();
-	}
-
 	@Override
 	public void onClick(View v) {
 		// TODO Auto-generated method stub
 		switch (v.getId()) {
 		case R.id.oscchart_auto_btn:
+			autoScaleable = !autoScaleable;
 			// 자동 버튼 누르면
-			((FunctionOscilloscopeContext)functionContext).autoSacle();
 			break;
 		case R.id.oscchart_reset_btn:
-			streamReset();
 			break;
 		case R.id.oscchart_scale_btn:
 
@@ -126,7 +126,8 @@ public class OscChartOnClickAdapter implements OnClickListener {
 			break;
 			
 		case R.id.oscchart_stop_btn:
-			streamStop();
+			Log.d("TestingBoard OscilloChartFacade", "usb enable " + usbEnable);
+			usbEnable = !usbEnable;
 			break;
 		}
 	}

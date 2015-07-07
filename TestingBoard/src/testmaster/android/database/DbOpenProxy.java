@@ -3,9 +3,9 @@ package testmaster.android.database;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-import testmaster.android.bluetoothobserver.BluetoothObservable;
-import testmaster.android.bluetoothobserver.BluetoothObserver;
 import testmaster.android.database.DataBases.CreateDB;
+import testmaster.android.dataobserver.DataObservable;
+import testmaster.android.dataobserver.DataObserver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -29,7 +29,7 @@ public class DbOpenProxy {
 	private ArrayList<String> storedData = new ArrayList<String>();
 	private static boolean openSingletoneFlag = false;
 
-	BluetoothObserver dbObserver = new BluetoothObserver("DB Observer") {
+	DataObserver dbObserver = new DataObserver("DB Observer") {
 
 		@Override
 		public void update(String data) {
@@ -106,14 +106,14 @@ public class DbOpenProxy {
 		if (!openSingletoneFlag) {
 			mDBHelper = new DatabaseHelper(mCtx, DATABASE_NAME, null, DATABASE_VERSION);
 			mDB = mDBHelper.getWritableDatabase();
-			BluetoothObservable.insertObserver(dbObserver);
+			DataObservable.insertObserver(dbObserver);
 			openSingletoneFlag = true;
 		}
 		return this;
 	}
 
 	public void close(){
-		BluetoothObservable.deleteObserver(dbObserver);
+		DataObservable.deleteObserver(dbObserver);
 		if (mDB != null) {
 			mDB.close();
 		}

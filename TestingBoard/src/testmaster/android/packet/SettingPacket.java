@@ -65,6 +65,12 @@ public class SettingPacket extends BluetoothPacket implements PacketInfo{
 		initPacket(MODE_RESET);
 		endPacket();				
 	}
+
+	public void setOscilloPacket()
+	{
+		initPacket(MODE_OSCILLO);
+		endPacket();
+	}
 	
 	public void initPacket(int mode) {
 		packet.clear();
@@ -73,15 +79,11 @@ public class SettingPacket extends BluetoothPacket implements PacketInfo{
 	}
 	
 	public void endPacket() {
-		packet.append("\r\n".getBytes(), 0, 2);;			
+		packet.append("\r\n".getBytes(), 0, 2);
 	}
 	
 	public byte[] getPacket() {
 		return packet.toByteArray();
 	}
 	
-	public void setOscilloPacket()
-	{
-		
-	}
 }

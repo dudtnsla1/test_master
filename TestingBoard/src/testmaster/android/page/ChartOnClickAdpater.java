@@ -1,8 +1,8 @@
 package testmaster.android.page;
 
-import testmaster.android.bluetoothobserver.BluetoothObservable;
 import testmaster.android.chart.PreferenceChartInfo;
 import testmaster.android.database.DbOpenProxy;
+import testmaster.android.dataobserver.DataObservable;
 import testmaster.android.testingboard.R;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -32,11 +32,11 @@ public class ChartOnClickAdpater implements OnClickListener, PreferenceChartInfo
 	}
 	
 	private void streamStart() {
-		BluetoothObservable.enableUpate();
+		DataObservable.enableUpate();
 	}
 	
 	private void streamStop() {
-		BluetoothObservable.disableUpdate();		
+		DataObservable.disableUpdate();		
 	}
 	
 	private void dataBaseUpload() {
@@ -67,7 +67,7 @@ public class ChartOnClickAdpater implements OnClickListener, PreferenceChartInfo
 	}	
 	
 	private void streamReset() {
-		BluetoothObservable.resetData();
+		DataObservable.resetData();
 	}
 
 	@Override

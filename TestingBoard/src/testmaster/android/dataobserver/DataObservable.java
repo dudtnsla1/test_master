@@ -1,4 +1,4 @@
-package testmaster.android.bluetoothobserver;
+package testmaster.android.dataobserver;
 
 import java.util.ArrayList;
 
@@ -10,11 +10,11 @@ import testmaster.android.packet.PacketInfo;
 import testmaster.android.resource.DestroyDecorator;
 import testmaster.android.resource.DestroyInterface;
 
-public class BluetoothObservable implements DestroyInterface{
+public class DataObservable implements DestroyInterface{
 
 	private static BluetoothConnectManager bluetoothServer = null;
-	private static ArrayList<BluetoothObserver> observerList = new ArrayList<BluetoothObserver>();
-	private static BluetoothObservable This;
+	private static ArrayList<DataObserver> observerList = new ArrayList<DataObserver>();
+	private static DataObservable This;
 	private static boolean enableSwitch = true;
 
 	public static Handler messageReceiver = new Handler() {
@@ -52,7 +52,7 @@ public class BluetoothObservable implements DestroyInterface{
 		return bluetoothServer;
 	}
 
-	public static int insertObserver(BluetoothObserver ob) {
+	public static int insertObserver(DataObserver ob) {
 		observerList.add(ob);
 		Log.d("TestingBoard BluetoothObservable", 
 				ob.getName() + " Observer Added");
@@ -81,7 +81,7 @@ public class BluetoothObservable implements DestroyInterface{
 		}
 	}
 
-	public static void deleteObserver(BluetoothObserver ob) {
+	public static void deleteObserver(DataObserver ob) {
 		for (int i = 0; i < observerList.size(); i++) {
 			if (observerList.get(i).equals(ob)) {
 				Log.d("TestingBoard BluetoothObservable",
@@ -93,7 +93,7 @@ public class BluetoothObservable implements DestroyInterface{
 
 	public static void insertDestroyDecorator() {
 		if (This == null)
-			This = new BluetoothObservable();
+			This = new DataObservable();
 		DestroyDecorator.addDecorate(This);
 	}
 

@@ -2,8 +2,8 @@ package testmaster.android.page;
 
 import org.achartengine.GraphicalView;
 
-import testmaster.android.bluetoothobserver.BluetoothObserver;
 import testmaster.android.chart.GraphicalActivity;
+import testmaster.android.dataobserver.DataObserver;
 import testmaster.android.packet.SettingPacket;
 import testmaster.android.testingboard.MainFunctionActivity;
 import testmaster.android.testingboard.MainIntroActivity;
@@ -40,7 +40,7 @@ public abstract class FunctionContext implements PageChangeListener{
 		updateChart();		
 	}
 	
-	private BluetoothObserver dataRecvObserver = new BluetoothObserver("Function Observer") {	
+	private DataObserver dataRecvObserver = new DataObserver("Function Observer") {	
 		
 		@Override
 		public void update(String data) {

@@ -4,8 +4,8 @@ import java.util.Set;
 
 import testmaster.android.bluetooth.BlueClient;
 import testmaster.android.bluetooth.BluetoothVirtualConnectManager;
-import testmaster.android.bluetoothobserver.BluetoothObservable;
-import testmaster.android.bluetoothobserver.BluetoothObserver;
+import testmaster.android.dataobserver.DataObservable;
+import testmaster.android.dataobserver.DataObserver;
 import testmaster.android.resource.LoadedImage;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -51,7 +51,7 @@ public class MainHomeActivity extends Activity {
 			LoadedImage.loadImage(this);
 			onceInitialize = true;		
 			bluetoothServerObserver.insertObserver();
-			BluetoothObservable.insertDestroyDecorator();
+			DataObservable.insertDestroyDecorator();
 		}
 		initBluetooth();
 	}
@@ -197,7 +197,7 @@ public class MainHomeActivity extends Activity {
 		}
 	}
 
-	private BluetoothObserver bluetoothServerObserver = new BluetoothObserver("MainActivity Server Observer") {
+	private DataObserver bluetoothServerObserver = new DataObserver("MainActivity Server Observer") {
 
 		@Override
 		public void update(String data) {

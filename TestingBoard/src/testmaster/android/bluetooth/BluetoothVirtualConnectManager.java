@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import testmaster.android.bluetoothobserver.BluetoothObservable;
+import testmaster.android.dataobserver.DataObservable;
 import testmaster.android.resource.DestroyDecorator;
 import testmaster.android.resource.DestroyInterface;
 import android.bluetooth.BluetoothSocket;
@@ -18,7 +18,7 @@ public class BluetoothVirtualConnectManager extends BluetoothConnectManager impl
 	private boolean state = true;
 
 	private void detroy() {
-		BluetoothObservable.disconnected();
+		DataObservable.disconnected();
 	}
 
 	public boolean isConnected() {
@@ -31,7 +31,7 @@ public class BluetoothVirtualConnectManager extends BluetoothConnectManager impl
 		DestroyDecorator.addDecorate(this);
 
 		mmSocket = null;
-		BluetoothObservable.setBluetoothServer(this);
+		DataObservable.setBluetoothServer(this);
 	}
 
 	public void run() {
@@ -51,7 +51,7 @@ public class BluetoothVirtualConnectManager extends BluetoothConnectManager impl
 				/**/
 				Log.i("TestingBoard ConnectManager", "read:" + read_str);
 
-				BluetoothObservable.update(read_str);
+				DataObservable.update(read_str);
 			}
 		}
 

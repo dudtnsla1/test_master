@@ -1,25 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <resources>
 
-<!-- 0x0403 / 0x6001: FTDI FT232R UART -->
+    <usb-device product-id="688" vendor-id="1118" />
+    <usb-device product-id="24577" vendor-id="1027" />
 
+    <!-- FT232RL -->
 
-<usb-device product-id="24577" vendor-id="1027"/>
+    <usb-device product-id="24596" vendor-id="1027" />
 
-<!-- 0x2341 / Arduino -->
+    <!-- FT232H -->
 
+    <usb-device product-id="24592" vendor-id="1027" />
 
-<usb-device vendor-id="9025"/>
+    <!-- FT2232C/D/HL -->
 
-<!-- 0x16C0 / 0x0483: Teensyduino -->
+    <usb-device product-id="24593" vendor-id="1027" />
 
+    <!-- FT4232HL -->
 
-<usb-device product-id="1155" vendor-id="5824"/>
+    <usb-device product-id="24597" vendor-id="1027" />
 
-<!-- 0x10C4 / 0xEA60: CP210x UART Bridge -->
+    <!-- FT230X -->
 
+    <usb-device product-id="45088" vendor-id="1412" />
 
-<usb-device product-id="60000" vendor-id="4292"/>
+    <!-- REX-USB60F -->
 
 </resources>

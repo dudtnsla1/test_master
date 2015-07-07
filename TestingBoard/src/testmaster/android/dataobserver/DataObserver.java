@@ -1,9 +1,9 @@
-package testmaster.android.bluetoothobserver;
+package testmaster.android.dataobserver;
 
-public abstract class BluetoothObserver {
+public abstract class DataObserver {
 	private String name;
 	
-	public BluetoothObserver(String name) {
+	public DataObserver(String name) {
 		this.name = name;
 	}
 	
@@ -12,11 +12,11 @@ public abstract class BluetoothObserver {
 	}
 	
 	public void insertObserver() {
-		BluetoothObservable.insertObserver(this);
+		DataObservable.insertObserver(this);
 	}
 
 	public void deleteObserver() {
-		BluetoothObservable.deleteObserver(this);
+		DataObservable.deleteObserver(this);
 	}
 	
 	public abstract void update(String data);	

@@ -6,7 +6,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 
-import testmaster.android.bluetoothobserver.BluetoothObservable;
+import testmaster.android.dataobserver.DataObservable;
 import testmaster.android.packet.AckPacket;
 import testmaster.android.resource.DestroyDecorator;
 import testmaster.android.resource.DestroyInterface;
@@ -24,7 +24,7 @@ public class BluetoothConnectManager extends Thread implements DestroyInterface{
 	private boolean connected = false;
 
 	private void detroy() {
-		BluetoothObservable.disconnected();
+		DataObservable.disconnected();
 	}
 
 	public boolean isConnected() {
@@ -56,7 +56,7 @@ public class BluetoothConnectManager extends Thread implements DestroyInterface{
 			connected = true;
 			mmInStream = ip;
 			mmOutStream = op;
-			BluetoothObservable.setBluetoothServer(this);
+			DataObservable.setBluetoothServer(this);
 		}
 		else { 
 			mmInStream = null;
@@ -88,7 +88,7 @@ public class BluetoothConnectManager extends Thread implements DestroyInterface{
 					continue;
 
 				Log.i("TestingBoard ConnectManager", "read:" + read_str);
-				BluetoothObservable.update(read_str);
+				DataObservable.update(read_str);
 				ackPacket.send();
 //				mmOutStream.write(buffer);
 			}

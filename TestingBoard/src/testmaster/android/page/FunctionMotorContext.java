@@ -14,10 +14,10 @@ import android.widget.Button;
 import android.widget.EditText;
 
 public class FunctionMotorContext extends FunctionContext implements OnClickListener{
-	
+
 
 	Button btn_Send_PID;
-	
+
 	private NotNullEditTextDecorator editsListenDeco;
 
 	private EditText PID_P_e;
@@ -44,19 +44,19 @@ public class FunctionMotorContext extends FunctionContext implements OnClickList
 		dbHelper.close();
 		super.destroy();
 	}
-	
+
 	@Override
 	protected void updateTemplate(String data) {
 		// TODO Auto-generated method stub
 		super.updateTemplate(data);
 	}
-	
+
 	@Override
 	public void updatePreference() {
 		databaseDrawer.updateSelectedDatabases();
 		databaseDrawer.updateLables();
 	}
-	
+
 	public FunctionMotorContext(MainFunctionActivity context) {
 		super(context);
 		// TODO Auto-generated constructor stub
@@ -76,7 +76,7 @@ public class FunctionMotorContext extends FunctionContext implements OnClickList
 				editsListenDeco.getText(Motor_Pulse_e));
 		return packet;
 	}
-	
+
 	public void initFirstPage() {
 		pageChanger.setDisable();
 		editsListenDeco = new NotNullEditTextDecorator(activity, pageChanger);
@@ -86,21 +86,21 @@ public class FunctionMotorContext extends FunctionContext implements OnClickList
 		PID_P_e= (EditText) activity.findViewById(R.id.pid_p_Edit);
 		PID_I_e= (EditText) activity.findViewById(R.id.pid_i_Edit);		
 		PID_D_e= (EditText) activity.findViewById(R.id.pid_d_Edit);
-		
+
 		editsListenDeco.addEditText(Motor_Gear_e);
 		editsListenDeco.addEditText(Motor_Pulse_e);
 		editsListenDeco.addEditText(Object_RPM_e);
 		editsListenDeco.addEditText(PID_P_e);
 		editsListenDeco.addEditText(PID_I_e);
 		editsListenDeco.addEditText(PID_D_e);
-		
+
 		btn_Send_PID = (Button) activity.findViewById(R.id.btn_PID);
 		btn_Send_PID.setOnClickListener(this);
-		
+
 		packet.setInitPacket();
 		packet.sendPacket(packet.getPacket());
 	}
-	
+
 	public void initSecondPage() {
 		chart = ((GraphicalActivity)activity).getLineChartGraphicalView(0, 100, 0, 1000);
 		setBarChart(chart);

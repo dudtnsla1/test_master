@@ -25,15 +25,16 @@ public class MainFunctionActivity extends GraphicalActivity implements OnClickLi
 	private static final int []PAGES_CLOCK = {R.layout.function_content_highlow_activity1};
 	private static final int []PAGES_MOTOR = {R.layout.function_content_motor_activity1, R.layout.chart_layout};
 	private static final int []PAGES_OSCILLOSCOPE = {R.layout.function_content_oscilloscope_acivity_new1};
-	
+
 	private final int REQUEST_CODE_PREFERENCE = 1;
 
-	public ViewPagerAdapter pagerAdapter;
-	public LinearLayout viewPagerLayout;
-	public CustomViewPager viewPager;
-	
+	private ViewPagerAdapter pagerAdapter;
+	private LinearLayout viewPagerLayout;
+	private CustomViewPager viewPager;
+	private ContentLayoutIds layoutId;
+
 	private TextView title;
-	
+
 	public enum ContentLayoutIds {
 		ADC(PAGES_ADC, 0), PWM(PAGES_PWM, 0), USART(PAGES_USART, 0), I2C(PAGES_I2C, 0), HIGHLOW(PAGES_CLOCK, 0), MOTOR(PAGES_MOTOR, 0), OSCILLOSCOPE(PAGES_OSCILLOSCOPE, 0);
 		int []ids;
@@ -43,16 +44,16 @@ public class MainFunctionActivity extends GraphicalActivity implements OnClickLi
 			this.settingLayoutNum = settingLayoutNum;
 			// TODO Auto-generated constructor stub
 		}
-		
+
 		public int getSettingChangeIndex() {
 			return settingLayoutNum;
 		}
-		
+
 		public int []getPageIds() {
 			return ids;
 		}
 	}
-	
+
 	public static final ContentLayoutIds contentLayoutIds[] = {
 		ContentLayoutIds.ADC, 
 		ContentLayoutIds.PWM,
@@ -62,15 +63,15 @@ public class MainFunctionActivity extends GraphicalActivity implements OnClickLi
 		ContentLayoutIds.MOTOR,
 		ContentLayoutIds.OSCILLOSCOPE
 	};
-	
+
 	@Override
 	public void onBackPressed() {
 		pagerAdapter.destroy();
 		super.onBackPressed();
 	};
-	
-	private void pageInit(Intent intent) {		
-		ContentLayoutIds layoutId = (ContentLayoutIds)intent.getExtras().getSerializable(MainHomeActivity.extraFunctionLayout);
+
+	private void pageInit(Intent intent) {
+		layoutId = (ContentLayoutIds)intent.getExtras().getSerializable(MainHomeActivity.extraFunctionLayout);
 		viewPagerLayout = (LinearLayout)findViewById(R.id.main_fucntion_container_viewpager); 
 		viewPager = new CustomViewPager(this);
 		viewPagerLayout.addView(viewPager);
@@ -79,11 +80,11 @@ public class MainFunctionActivity extends GraphicalActivity implements OnClickLi
 		title = (TextView)findViewById(R.id.main_function_container_title);
 		title.setText(layoutId.toString());
 	}
-	
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
-		
+
 		super.onCreate(savedInstanceState);
 		chartInit();
 		setContentView(R.layout.main_function_container);
@@ -93,7 +94,7 @@ public class MainFunctionActivity extends GraphicalActivity implements OnClickLi
 		getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 		getSupportActionBar().show();
 	}	
-	
+
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.main_intro, menu);
@@ -122,7 +123,7 @@ public class MainFunctionActivity extends GraphicalActivity implements OnClickLi
 		}
 		return super.onOptionsItemSelected(item);
 	}
-	
+
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
 		pagerAdapter.updatePreference();
@@ -137,12 +138,14 @@ public class MainFunctionActivity extends GraphicalActivity implements OnClickLi
 		else
 			Toast.makeText(this, "설정이 완료되지 않았습니다.", Toast.LENGTH_SHORT).show();
 	}
-	
+
 	@Override
 	public void bluetoothDisconnect() {
 		// TODO Auto-generated method stub
-		setResult(-1);
-		finish();
+		if (layoutId != ContentLayoutIds.OSCILLOSCOPE) {
+			setResult(-1);
+			finish();
+		}
 	}
 
 	@Override
