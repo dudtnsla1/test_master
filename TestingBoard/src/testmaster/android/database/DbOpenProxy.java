@@ -4,8 +4,6 @@ import java.util.ArrayList;
 import java.util.Calendar;
 
 import testmaster.android.database.DataBases.CreateDB;
-import testmaster.android.dataobserver.DataObservable;
-import testmaster.android.dataobserver.DataObserver;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;

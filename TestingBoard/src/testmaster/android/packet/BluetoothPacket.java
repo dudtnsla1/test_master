@@ -1,7 +1,7 @@
 package testmaster.android.packet;
 
 import testmaster.android.bluetooth.BluetoothConnectManager;
-import testmaster.android.dataobserver.DataObservable;
+import testmaster.android.database.DataObservable;
 
 public class BluetoothPacket {
 

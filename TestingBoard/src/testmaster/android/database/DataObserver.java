@@ -1,4 +1,4 @@
-package testmaster.android.dataobserver;
+package testmaster.android.database;
 
 public abstract class DataObserver {
 	private String name;

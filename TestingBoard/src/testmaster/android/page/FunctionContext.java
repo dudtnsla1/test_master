@@ -3,7 +3,7 @@ package testmaster.android.page;
 import org.achartengine.GraphicalView;
 
 import testmaster.android.chart.GraphicalActivity;
-import testmaster.android.dataobserver.DataObserver;
+import testmaster.android.database.DataObserver;
 import testmaster.android.packet.SettingPacket;
 import testmaster.android.testingboard.MainFunctionActivity;
 import testmaster.android.testingboard.MainIntroActivity;

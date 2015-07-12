@@ -4,8 +4,8 @@ import java.util.Set;
 
 import testmaster.android.bluetooth.BlueClient;
 import testmaster.android.bluetooth.BluetoothVirtualConnectManager;
-import testmaster.android.dataobserver.DataObservable;
-import testmaster.android.dataobserver.DataObserver;
+import testmaster.android.database.DataObservable;
+import testmaster.android.database.DataObserver;
 import testmaster.android.resource.LoadedImage;
 import android.app.Activity;
 import android.app.AlertDialog;

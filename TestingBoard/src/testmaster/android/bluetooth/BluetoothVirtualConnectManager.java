@@ -4,7 +4,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import testmaster.android.dataobserver.DataObservable;
+import testmaster.android.database.DataObservable;
 import testmaster.android.resource.DestroyDecorator;
 import testmaster.android.resource.DestroyInterface;
 import android.bluetooth.BluetoothSocket;

@@ -1,6 +1,6 @@
 package testmaster.android.page;
 
-import testmaster.android.dataobserver.DataObservable;
+import testmaster.android.database.DataObservable;
 import testmaster.android.testingboard.R;
 import android.app.Activity;
 import android.app.AlertDialog;

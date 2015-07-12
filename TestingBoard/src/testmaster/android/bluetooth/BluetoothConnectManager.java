@@ -6,7 +6,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 
-import testmaster.android.dataobserver.DataObservable;
+import testmaster.android.database.DataObservable;
 import testmaster.android.packet.AckPacket;
 import testmaster.android.resource.DestroyDecorator;
 import testmaster.android.resource.DestroyInterface;
