@@ -1,0 +1,1 @@
+This project is to implement the testing board using one STM32F4 series, STM32F427. This board's main purpose is for testing any module or motor with Android device without programing any corde. You can check data from a module using any Android device.
